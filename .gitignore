@@ -125,5 +125,15 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
+# flake8
+.flake8
+
 # Pyre type checker
 .pyre/
+
+# IDEs
+.idea
+.vscode
+
+# OS
+.DS_STORE

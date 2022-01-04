@@ -1,0 +1,19 @@
+@startuml
+skinparam linetype polyline
+skinparam linetype ortho
+
+skinparam enum {
+  BackgroundColor Thistle
+}
+
+enum FileExtension {
+    yaml: int
+    yml: int
+    json: int
+    toml: int
+    ini: int
+    cfg: int
+    env: int
+}
+
+@enduml
