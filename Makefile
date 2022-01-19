@@ -1,5 +1,7 @@
+# TODO add make-docs
+
 .PHONY: clean
-clean: clean-python-cache clean-linters-cache clean-tests-cache clean-distributions clean-docs
+clean: clean-python-cache clean-linters-cache clean-tests-cache clean-docs
 
 .PHONY: lint
 lint: lint-flake8 lint-mypy
@@ -8,27 +10,22 @@ lint: lint-flake8 lint-mypy
 tests: unittests doctests
 
 clean-python-cache:
-	find . -type f -name *.py[co] -delete
-	find . -type d -name __pycache__ -exec rm -rf {} +
-	find . -type d -name .pytest_cache -exec rm -rf {} +
+	find . -type f -name *.py[co] -path .tox -prune -delete
+	find . -type d -name __pycache__ -path .tox -prune -exec rm -rf {} +
 
 clean-tests-cache:
-	find . -type d -name .pytest -exec rm -rf {} +
-	find . -type d -name .pytest_cache -exec rm -rf {} +
-	find . -type d -name htmlcov -exec rm -rf {} +
-	find . -type f -name .coverage -exec rm -rf {} +
+	rm -rf .pytest
+	rm -rf .pytest_cache
+	rm -rf htmlcov
+	rm -rf .coverage
 
 clean-linters-cache:
-	find . -type d -name .flake8 -exec rm -rf {} +
-	find . -type d -name .mypy -exec rm -rf {} +
-	find . -type d -name .mypy_cache -exec rm -rf {} +
-
-clean-distributions:
-	find . -type d -name build -exec rm -rf {} +
-	find . -type d -name dist -exec rm -rf {} +
+	rm -rf .flake8
+	rm -rf .mypy
+	rm -rf .mypy_cache
 
 clean-docs:
-	find . -type d -name _build -exec rm -rf {} +
+	rm -rf _docs/_build
 
 .PHONY: format
 format:
@@ -50,18 +47,18 @@ lint-mypy-html:
 	- mypy --config-file pyproject.toml --html-report .mypy
 	open .mypy/index.html
 
-unittests:
-	pytest --cov=src -vv
-	find . -type f -name tests_coverage.svg -exec rm -rf {} +
+tests-coverage-badge:
 	mkdir -p _docs/_static/assets
 	coverage-badge -o _docs/_static/assets/tests_coverage.svg
 
+unittests:
+	pytest --cov=src -vv
+	tests-coverage-badge
+
 unittests-html:
 	pytest --cov=src --cov-report html -vv
+	tests-coverage-badge
 	open htmlcov/index.html
-	find . -type f -name tests_coverage.svg -exec rm -rf {} +
-	mkdir -p _docs/_static/assets
-	coverage-badge -o _docs/_static/assets/tests_coverage.svg
 
 doctests:
 	xdoctest -m src/configflow

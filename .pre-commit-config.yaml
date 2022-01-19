@@ -1,21 +1,55 @@
 default_language_version:
   python: python3.8
 repos:
-  - repo: https://github.com/ambv/black
-    rev: 21.12b0
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
     hooks:
-      - id: black
-        verbose: true
-        args: [ --config=pyproject.toml ]
+      - id: trailing-whitespace
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-json
+      - id: check-yaml
+      - id: check-toml
+      - id: detect-private-key
   - repo: https://github.com/hadialqattan/pycln
     rev: v1.1.0
     hooks:
       - id: pycln
-        verbose: true
+        name: pycln
         args: [ --config=pyproject.toml ]
   - repo: https://github.com/pycqa/isort
     rev: 5.10.1
     hooks:
       - id: isort
-        verbose: true
+        name: isort
         args: [ --settings-path pyproject.toml ]
+  - repo: https://github.com/ambv/black
+    rev: 21.12b0
+    hooks:
+      - id: black
+        name: black
+        args: [ --config=pyproject.toml ]
+  - repo: local
+    hooks:
+      - id: flake8
+        name: flake8
+        entry: pflake8
+        language: system
+        pass_filenames: false
+      - id: mypy
+        name: mypy
+        entry: mypy
+        args: ["--config-file=pyproject.toml"]
+        language: system
+        pass_filenames: false
+      - id: tests
+        name: tests
+        entry: pytest
+        language: system
+        pass_filenames: false
+      - id: clean
+        name: clean
+        entry: make
+        args: [ "clean" ]
+        language: system
+        pass_filenames: false

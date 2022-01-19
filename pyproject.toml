@@ -14,11 +14,12 @@ keywords = [
     "config",
     "setup",
     "settings",
+    "environment",
     "management",
     "pydantic",
 ]
-homepage = "..."  # TODO add link to the readthedocs
-documentation = "..."  # TODO add link to the readthedocs
+homepage = "..."  # TODO add link to the GitHub pages
+documentation = "..."  # TODO add link to the GitHub pages
 repository = "..."  # TODO add link to the GitHub
 readme = "README.md"
 classifiers = [
@@ -28,6 +29,7 @@ classifiers = [
     "Environment :: Other Environment",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Framework :: Pydantic",
@@ -42,38 +44,43 @@ classifiers = [
 packages = [{ include = "configflow", from = "src" }]
 include = [
     "README.md",
+    "CHANGELOG.md",
 ]
 
+# TODO add vault plugin
+#[tool.poetry.plugins]
+#"vault" = "configflow.sources.vault:VaultSourceLoader"
+
 [tool.poetry.dependencies]
-python = ">=3.8,<3.10"
-# data structures
-PyYAML = "^5.3.1"
+python = ">=3.7,<3.10"
+# file types
+PyYAML = ">=5.3.1"
 python-dotenv = "^0.19.2"
 toml = "^0.10.2"
-# functionality
+# utils
 awesome-pattern-matching = "^0.24.2"
 
 [tool.poetry.dev-dependencies]
 # formatters
-isort = "^5.10.1"
 pycln = "^1.1.0"
+isort = "^5.10.1"
 black = "^21.12b0"
 # linters
 wemake-python-styleguide = "^0.16.0"
-mypy = "^0.930"
-dotenv-linter = "^0.3.0"
+mypy = "^0.931"
 # flake8 extensions
-pyproject-flake8 = "^0.0.1a.2"
+pyproject-flake8 = "^0.0.1-alpha.2"
 flake8-html = "^0.4.1"
 # mypy stubs
-types-toml = "^0.10.1"
-types-PyYAML = "^6.0.1"
+types-toml = "^0.10.3"
+types-PyYAML = "^6.0.3"
 # tests
 tox = "^3.24.5"
 pytest = "^6.2.5"
 xdoctest = "^0.15.10"
-# tests' extensions
+# tox extensions
 tox-conda = "^0.9.1"
+# pytest extensions
 pytest-datafiles = "^2.0"
 pytest-lazy-fixture = "^0.6.3"
 pytest-mock = "^3.6.1"
@@ -87,13 +94,12 @@ Faker = "^11.1.0"
 # documentation
 Sphinx = "^4.3.2"
 sphinx-rtd-theme = "^1.0.0"
-# data structures
+# file types
 lxml = "^4.7.1"
-# git
-pre-commit = "^2.16.0"
-# repl
+# utils
 ipython = "^7.30.1"
 deepdiff = "^5.7.0"
+pre-commit = "^2.16.0"
 
 [tool.pycln]
 all = true
@@ -102,6 +108,7 @@ exclude = "__init__.py"
 [tool.isort]
 profile = "black"
 line_length = 100
+lines_before_imports = 1
 lines_after_imports = 2
 lines_between_types = 1
 atomic = false
@@ -113,29 +120,37 @@ force_alphabetical_sort_within_sections = true
 
 [tool.black]
 line-length = 100
-target-version = ["py38", "py39"]
+target-version = [
+    "py37",
+    "py38",
+    "py39"
+]
 include = '\.pyi?$'
 
 [tool.flake8]
 max-line-length = 100
-max-cognitive-score = 20
-max-line-complexity = 15
+max-cognitive-average = 25
+max-cognitive-score = 25
+max-line-complexity = 20
 max-imports = 15
+max-local-variables = 10
+max-annotation-complexity = 5
 inline-quotes = '"'
 docstring_style = "numpy"
 exclude = [
+    "__init__.py",
     "conftest.py",
-    "__init__.py"
 ]
-extend-ignore = """
-    S101,
-    D202, DAR101, DAR201, DAR401, DAR402,
-    WPS348,
-    WPS437
-"""
-# S101 - asserts are used only in tests
-# D202 - code is hard to read without blank line
-# DAR101, DAR201, DAR401, DAR402 - there's no sense to put all sections in small functions
+extend-ignore = [
+    "S101",
+    "D202", "DAR101", "DAR201", "DAR401", "DAR402",
+    "WPS218",
+    "WPS348",
+    "WPS437",
+]
+# S101,WPS218 - asserts are used only in tests
+# D202 - code is hard to read without a blank line after docstrings
+# DAR101, DAR201, DAR401, DAR402 - there's no sense to put all sections in docstrings
 # WPS348 - chaining is a good option for multiline methods calls
 # WPS437 - some classes doesn't have public attributes that we require
 
@@ -143,17 +158,31 @@ extend-ignore = """
 python_version = "3.8"
 warn_unused_configs = true
 ignore_missing_imports = true
+show_error_codes = true
 files = [
     "src",
     "tests",
 ]
 
+[[tool.mypy.overrides]]
+module = "*.file.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "*.conftest.*"
+ignore_errors = true
+
 [tool.pytest.ini_options]
 minversion = "6.0"
-testpaths = ["tests"]
+addopts = "--xdoc -vv --cov=src"
+testpaths = [
+    "src",
+    "tests",
+]
 
 [tool.coverage.run]
 omit = [
+    ".tox",
     "*/__init__.py",
     "*/enums.py",
 ]
