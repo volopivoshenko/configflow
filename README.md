@@ -1,8 +1,8 @@
 <!--suppress HtmlDeprecatedAttribute -->
-<p align="center">
+<div align="center">
     <img src="_docs/_static/assets/logo_256.png" alt="logo">
-</p>
-
-# ConfigFlow
+    <h1>ConfigFlow</h1>
+    <br>
+</div>
 
 ConfigFlow – is the configuration management library for Python.
