@@ -1,6 +1,6 @@
 <!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
-    <img src="_docs/_static/assets/logo_256.png" alt="logo">
+    <img src="_docs/_static/assets/logo_256.png" alt="logo", style="left: 10px">
     <h1>ConfigFlow</h1>
     <br>
 </div>
