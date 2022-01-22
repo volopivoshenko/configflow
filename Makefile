@@ -1,5 +1,3 @@
-# TODO add make-docs
-
 .PHONY: clean
 clean: clean-python-cache clean-linters-cache clean-tests-cache clean-docs
 
