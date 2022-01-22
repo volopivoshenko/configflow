@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "configflow"
 version = "0.0.1"
-description = "ConfigFlow – is the configuration management library for Python."
+description = "configflow – is the configuration management library for Python."
 license = "MIT"
 authors = [
     "Volodymyr Pivoshenko <volodymyr.pivoshenko@gmail.com>",
@@ -24,7 +24,7 @@ repository = "https://github.com/volodymyrPivoshenko/configflow"
 readme = "README.md"
 classifiers = [
     "Development Status :: 1 - Planning",
-    "License :: OSI Approved :: MIT",
+    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Environment :: Other Environment",
     "Programming Language :: Python",
@@ -32,7 +32,6 @@ classifiers = [
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
-    "Framework :: Pydantic",
     "Intended Audience :: Developers",
     "Intended Audience :: Information Technology",
     "Topic :: Software Development",

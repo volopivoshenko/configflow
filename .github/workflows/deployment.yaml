@@ -33,7 +33,7 @@ jobs:
           python -m pip install requests jmespath
       - name: Check the last master push CI status
         run: |
-          python .github/workflow_status.py.py
+          python .github/status.py
   create_release:
     name: Create release
     needs: check_ci
