@@ -25,7 +25,7 @@ clean-linters-cache:
 	rm -rf .mypy_cache
 
 clean-docs:
-	rm -rf _docs/_build
+	rm -rf docs/_build
 
 .PHONY: format
 format:
@@ -48,8 +48,8 @@ lint-mypy-html:
 	open .mypy/index.html
 
 tests-coverage-badge:
-	mkdir -p _docs/_static/assets
-	coverage-badge -o _docs/_static/assets/tests_coverage.svg
+	mkdir -p docs/_static/assets
+	coverage-badge -o docs/_static/assets/tests_coverage.svg
 
 unittests:
 	pytest --cov=src -vv

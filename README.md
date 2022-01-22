@@ -22,9 +22,6 @@
         <img alt="Language grade: Python" src="https://img.shields.io/lgtm/grade/python/g/volodymyrPivoshenko/configflow.svg?logo=lgtm&logoWidth=18"/>
     </a>
 
-[//]: # (TODO Add CI/CD)
-
-[//]: # (TODO Add code quality)
 
 [//]: # (TODO Add code maintainablitiy)
 
@@ -36,5 +33,5 @@
 
 [//]: # (TODO Add tests coverage)
 
-[//]: # (TODO Add github pages link)
+[//]: # (TODO Add docs link)
 </div>
