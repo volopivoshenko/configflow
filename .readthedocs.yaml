@@ -7,10 +7,3 @@ sphinx:
   configuration: docs/conf.py
 formats:
   - epub
-
-python:
-  install:
-    - method: pip
-      path: .
-      extra_requirements:
-        - docs
