@@ -59,6 +59,7 @@ python-dotenv = "^0.19.2"
 toml = "^0.10.2"
 # utils
 awesome-pattern-matching = "^0.24.2"
+jmespath = "^0.10.0"
 
 [tool.poetry.dev-dependencies]
 # formatters
@@ -108,7 +109,6 @@ exclude = "__init__.py"
 [tool.isort]
 profile = "black"
 line_length = 100
-lines_before_imports = 1
 lines_after_imports = 2
 lines_between_types = 1
 atomic = false

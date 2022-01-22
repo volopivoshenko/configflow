@@ -1,0 +1,85 @@
+# Continuous deployment workflow
+# - Check status of the CI workflow
+# - Create release
+# - Deploy package on PYPI
+#
+# Requires GitHub secrets
+# - GITHUB_TOKEN
+# - PYPI_TOKEN
+
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*.*.*"
+
+jobs:
+  check_ci:
+    name: Check CI status
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+          architecture: x64
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests jmespath
+      - name: Check the last master push CI status
+        run: |
+          python .github/workflow_status.py.py
+  create_release:
+    name: Create release
+    needs: check_ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get version from tag
+        id: tag_name
+        run: |
+          echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
+        shell: bash
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Get changelog entry
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v2
+        with:
+          version: ${{ steps.tag_name.outputs.current_version }}
+          path: CHANGELOG.md
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.changelog_reader.outputs.version }}
+          release_name: v${{ steps.changelog_reader.outputs.version }}
+          body: ${{ steps.changelog_reader.outputs.changes }}
+          prerelease: ${{ steps.changelog_reader.outputs.status == 'prereleased' }}
+          draft: ${{ steps.changelog_reader.outputs.status == 'unreleased' }}
+  deploy:
+    name: Build and publish package
+    needs: [ check_ci, create_release ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+      - name: Build package
+        run: poetry build
+      - name: Publish package
+        run: |
+          poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
+          poetry publish

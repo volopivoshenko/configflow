@@ -1,11 +1,11 @@
-# Continuous integration pipeline
+# Continuous integration workflow
 # - Run linters (flake8, mypy)
 # - Run tests (doctests, unittests)
 #
 # Requires GitHub secrets
 # - CODECOV_TOKEN
 
-name: continuous-integration
+name: CI
 
 on:
   push:
