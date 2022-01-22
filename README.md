@@ -13,6 +13,9 @@
     <br>
     <a><img alt="ci" src=https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml/badge.svg></a>
     <a><img alt="cd" src=https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml/badge.svg></a>
+    <a href='https://configflow.readthedocs.io/en/latest/?badge=latest'>
+        <img src='https://readthedocs.org/projects/configflow/badge/?version=latest' alt='Documentation Status' />
+    </a>
     <br>
     <a><img alt="codecov" src="https://codecov.io/gh/volodymyrPivoshenko/configflow/branch/main/graph/badge.svg?token=yyck08xfTN"/></a>
     <a href="https://lgtm.com/projects/g/volodymyrPivoshenko/configflow/alerts/">
