@@ -1,6 +1,6 @@
 <!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
-    <h1>ConfigFlow</h1>
+    <h1>configflow</h1>
     <br>
     <a><img alt="license" src="https://img.shields.io/badge/License-MIT-red"></a>
     <a><img alt="python" src="https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9-blue"></a>
