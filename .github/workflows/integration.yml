@@ -5,12 +5,12 @@
 # Requires GitHub secrets
 # - CODECOV_TOKEN
 
-name: CI pipeline
+name: continuous-integration
 
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
