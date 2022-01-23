@@ -27,9 +27,9 @@ Welcome to configflow's documentation!
     :alt: wemake
 .. image:: https://img.shields.io/badge/mypy-checked-blue
     :alt: mypy
-.. image:: https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml/badge.svg
+.. image:: https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml/badge.svg?branch=main
     :alt: ci
-.. image:: https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml/badge.svg
+.. image:: https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml/badge.svg?branch=main
     :alt: cd
 .. image:: https://readthedocs.org/projects/configflow/badge/?version=latest
     :alt: docs
