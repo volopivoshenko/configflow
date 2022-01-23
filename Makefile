@@ -10,6 +10,7 @@ tests: unittests
 clean-python-cache:
 	find . -type f -name *.py[co] -path .tox -prune -delete
 	find . -type d -name __pycache__ -path .tox -prune -exec rm -rf {} +
+	rm -rf dist
 
 clean-tests-cache:
 	rm -rf .pytest
