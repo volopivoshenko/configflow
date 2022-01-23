@@ -22,9 +22,9 @@ class ErrorMessage(str):  # noqa: WPS600
     By default, error messages in the exceptions don't support line breaks
     or any formatting, this decorator is solving that problem.
 
-    See Also
-    --------
-    `New line on error message in KeyError - Python 3.3 <https://stackoverflow.com/questions/
+    References
+    ----------
+    1. `New line on error message in KeyError - Python 3.3 <https://stackoverflow.com/questions/
     46892261/new-line-on-error-message-in-keyerror-python-3-3>`_
     """
 
@@ -68,6 +68,8 @@ def parse(value: str) -> Optional[Any]:  # noqa: WPS110
     1.2
     >>> parse("(1, 2, '3')")
     (1, 2, 3)
+    >>> parse("['85', '0.23', 'cleffa', ['10', ['0.123'], 'blipbug']]")
+    [85, 0.23, 'cleffa', [10, [0.123], 'blipbug']]
     """
 
     try:
