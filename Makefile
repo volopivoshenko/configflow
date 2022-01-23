@@ -5,7 +5,7 @@ clean: clean-python-cache clean-linters-cache clean-tests-cache clean-docs
 lint: lint-flake8 lint-mypy
 
 .PHONY: tests
-tests: unittests doctests
+tests: unittests
 
 clean-python-cache:
 	find . -type f -name *.py[co] -path .tox -prune -delete
@@ -45,17 +45,15 @@ lint-mypy-html:
 	- mypy --config-file pyproject.toml --html-report .mypy
 	open .mypy/index.html
 
-tests-coverage-badge:
-	mkdir -p docs/_static/assets
-	coverage-badge -o docs/_static/assets/tests_coverage.svg
-
 unittests:
 	pytest --cov=src -vv
-	tests-coverage-badge
+	mkdir -p docs/_static/assets
+	coverage-badge -o docs/_static/assets/tests_coverage.svg -f
 
 unittests-html:
 	pytest --cov=src --cov-report html -vv
-	tests-coverage-badge
+	mkdir -p docs/_static/assets
+	coverage-badge -o docs/_static/assets/tests_coverage.svg -f
 	open htmlcov/index.html
 
 doctests:
