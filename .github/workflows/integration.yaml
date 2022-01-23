@@ -6,13 +6,11 @@
 # - CODECOV_TOKEN
 
 name: CI
-
 on:
   push:
     branches:
       - main
   pull_request:
-
 jobs:
   linters:
     name: Run linters
@@ -35,7 +33,6 @@ jobs:
       - name: Run mypy
         run: |
           python -m poetry run mypy --config-file pyproject.toml
-
   tests:
     name: Run tests
     needs: linters

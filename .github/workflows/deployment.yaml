@@ -13,8 +13,6 @@ on:
   push:
     branches:
       - main
-    tags:
-      - "v*.*.*"
 
 jobs:
   check_ci:
@@ -39,30 +37,20 @@ jobs:
     needs: check_ci
     runs-on: ubuntu-latest
     steps:
-      - name: Get version from tag
-        id: tag_name
+      - name: Set up Python3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+          architecture: x64
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Python semantic release
         run: |
-          echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
-        shell: bash
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Get changelog entry
-        id: changelog_reader
-        uses: mindsers/changelog-reader-action@v2
-        with:
-          version: ${{ steps.tag_name.outputs.current_version }}
-          path: CHANGELOG.md
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ steps.changelog_reader.outputs.version }}
-          release_name: v${{ steps.changelog_reader.outputs.version }}
-          body: ${{ steps.changelog_reader.outputs.changes }}
-          prerelease: ${{ steps.changelog_reader.outputs.status == 'prereleased' }}
-          draft: ${{ steps.changelog_reader.outputs.status == 'unreleased' }}
+          pip install python-semantic-release
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          semantic-release publish
   deploy:
     name: Build and publish package
     needs: [ check_ci, create_release ]
