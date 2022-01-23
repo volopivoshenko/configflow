@@ -50,29 +50,34 @@ Welcome to configflow's documentation!
 .. image:: https://img.shields.io/github/last-commit/volodymyrPivoshenko/configflow.svg
     :alt: commits
 
+Overview
+========
+
+``configflow`` – is the configuration management library for Python. It easily allows you to:
+
+- Load your configuration from config files, environment variables, command-line arguments and more sources.
+- Transform the loaded data into the desired format and validate it.
+- Access the results as ``Python dataclass-like objects`` with full IDE support.
+- Make your codebase very flexible by the usage of:
+
+  - Multiple environments.
+  - Singletons with lazy loading.
+  - Config changes for the unit tests.
+  - Custom config sources.
+
+Examples
+========
+
+.. TODO add examples
+
+See Also
+========
+
+.. TODO add references
+
 .. toctree::
     :maxdepth: 1
     :caption: Table of Contents
 
-    installation.rst
+    modules/installation.rst
     api/misc.string.rst
-
-=============================
-Installation and requirements
-=============================
-
-Base requirements
------------------
-
-.. literalinclude:: ../pyproject.toml
-    :language: toml
-    :lines: 53-60
-    :linenos:
-
-Installation
-------------
-
-.. code-block:: bash
-
-    pip install -U configflow --no-cache-dir
-    poetry add configflow
