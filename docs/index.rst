@@ -6,8 +6,7 @@ Welcome to configflow's documentation!
     :scale: 20 %
     :align: center
 
-.. raw:: html
-    <hr>
+|
 
 .. image:: https://img.shields.io/badge/License-MIT-red
 .. image:: https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9-blue
