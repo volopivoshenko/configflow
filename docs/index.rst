@@ -80,4 +80,4 @@ See Also
     :caption: Table of Contents
 
     modules/installation.rst
-    api/misc.string.rst
+    api/misc.rst

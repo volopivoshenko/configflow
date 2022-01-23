@@ -16,7 +16,6 @@ on:
 jobs:
   semantic_release:
     name: Create semantic release
-    needs: check_ci
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v2
