@@ -4,7 +4,7 @@ __title__ = "configflow"
 __summary__ = "configflow – is the configuration management library for Python."
 __uri__ = "https://configflow.readthedocs.io/en/latest"
 
-__version__ = "0.1.1"
+__version__ = "0.0.2"
 
 __author__ = "Volodymyr Pivoshenko"
 __email__ = "volodymyr.pivoshenko@gmail.com"

@@ -105,7 +105,7 @@ python-semantic-release = "^7.23.0"
 version_variable = [
     "pyproject.toml:tool.poetry.version",
     "src/configflow/__init__.py:__version__",
-    "docs/conf.py:version"
+    "docs/conf.py:release"
 ]
 
 [tool.pycln]
