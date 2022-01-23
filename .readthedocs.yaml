@@ -5,5 +5,8 @@ build:
     python: "3.8"
 sphinx:
   configuration: docs/conf.py
-formats:
-  - epub
+python:
+  install:
+    - method: pip
+      path: .
+    - requirements: docs/requirements.txt

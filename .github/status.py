@@ -18,7 +18,7 @@ QUERY: str = "".join(
     (
         "workflow_runs[?name=='{name!s}' && event=='push' && head_branch == 'main' ",
         "&& repository.fork == `false` && status=='completed' && conclusion=='success']",
-    )
+    ),
 )
 
 
@@ -32,16 +32,16 @@ class StatusCode(enum.Enum):
 def get_workflow_runs_info() -> Dict[str, Any]:
     """Get information about all workflow runs."""
 
-    try:
+    try:  # noqa: WPS229
         response = requests.get(WORKFLOW_RUNS_URL, timeout=5)
         response.raise_for_status()
-        content = response.json()
+        response_content = response.json()
 
     except (requests.ConnectionError, requests.Timeout, requests.HTTPError) as exception:
-        print(exception, file=sys.stderr)
-        content = {}
+        print(exception, file=sys.stderr)  # noqa: WPS421
+        response_content = {}
 
-    return content
+    return response_content
 
 
 def get_workflow_status_code() -> StatusCode:
@@ -62,4 +62,4 @@ if __name__ == "__main__":
     )
 
     status_code = get_workflow_status_code()
-    exit(status_code.value)
+    exit(status_code.value)  # noqa: WPS421

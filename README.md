@@ -40,3 +40,52 @@
 </p>
 
 <hr class="solid">
+
+# Overview
+
+`configflow` – is the configuration management library for Python. It easily allows you to:
+
+- Load your configuration from config files, environment variables, command-line arguments and more
+  sources.
+- Transform the loaded data into the desired format and validate it.
+- Access the results as `Python dataclass-like objects` with full IDE support.
+- Make your codebase very flexible by the usage of:
+
+    - Multiple environments.
+    - Singletons with lazy loading.
+    - Config changes for the unit tests.
+    - Custom config sources.
+
+# Installation
+
+Installation is as simple as:
+
+```bash
+pip install -U configflow
+poetry add configflow
+```
+
+`configflow` is also available on conda under the `conda-forge` channel:
+
+```bash
+conda install configflow -c conda-forge
+```
+
+### Optional dependencies
+
+`configflow` has next optional dependencies:
+
+- If you are using [`Vault by HashiCorp`](https://www.vaultproject.io/) as a config source you can add [`hvac`](https://pypi.org/project/hvac/).
+
+To install these along with `configflow`:
+
+```bash
+
+pip install -U "configflow[hvac]"
+poetry add "configflow[hvac]"
+```
+
+Of course, you can also install these requirements manually with `pip install ...`.
+
+# See Also
+
