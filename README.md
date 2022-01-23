@@ -20,8 +20,8 @@
 </p>
 
 <p align="center">
-    <a><img alt="ci" src=https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml/badge.svg></a>
-    <a><img alt="cd" src=https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml/badge.svg></a>
+    <a><img alt="ci" src=https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml/badge.svg?branch=main></a>
+    <a><img alt="cd" src=https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml/badge.svg?branch=main></a>
     <a href="https://configflow.readthedocs.io/en/latest/?badge=latest"><img alt="documentation" src="https://readthedocs.org/projects/configflow/badge/?version=latest"/></a>
     <a href="https://badge.fury.io/py/configflow"><img alt="pypi" src="https://badge.fury.io/py/configflow.svg"></a>
 </p>
