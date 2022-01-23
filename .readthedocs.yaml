@@ -7,6 +7,7 @@ sphinx:
   configuration: docs/conf.py
 python:
   install:
-    - requirements: docs/requirements.txt
-formats:
-  - epub
+    - method: pip
+      path: .
+    - method: pip
+      path: docs/requirements.txt
