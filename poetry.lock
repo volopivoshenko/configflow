@@ -45,6 +45,17 @@ tests = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)"
 tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "mypy", "pytest-mypy-plugins", "cloudpickle"]
 
 [[package]]
+name = "autodocsumm"
+version = "0.2.7"
+description = "Extended sphinx autodoc including automatic autosummaries"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Sphinx = ">=2.2,<5.0"
+
+[[package]]
 name = "awesome-pattern-matching"
 version = "0.24.2"
 description = "Awesome Pattern Matching"
@@ -1510,7 +1521,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<3.10"
-content-hash = "8741a519ffc722cb1792ba885a69ee928e09fe56d871926f00d6e2b51020fec4"
+content-hash = "a9ff719a1a671ea7a37388b13a430b47dae0f660a96003009d903d5ab55ccd71"
 
 [metadata.files]
 alabaster = [
@@ -1532,6 +1543,9 @@ atomicwrites = [
 attrs = [
     {file = "attrs-21.4.0-py2.py3-none-any.whl", hash = "sha256:2d27e3784d7a565d36ab851fe94887c5eccd6a463168875832a1be79c82828b4"},
     {file = "attrs-21.4.0.tar.gz", hash = "sha256:626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd"},
+]
+autodocsumm = [
+    {file = "autodocsumm-0.2.7.tar.gz", hash = "sha256:cea7e2f900e5ac10baa6e831683e9241b0892226210609c087b94f109e0f6ab6"},
 ]
 awesome-pattern-matching = [
     {file = "awesome-pattern-matching-0.24.2.tar.gz", hash = "sha256:c947baa12e15a617311ed829fd91936362e5f417c7aff04890842b73e1091a5a"},

@@ -24,8 +24,8 @@ class ErrorMessage(str):  # noqa: WPS600
 
     See Also
     --------
-    1. `New line on error message <https://stackoverflow.com/questions/46892261/
-    new-line-on-error-message-in-keyerror-python-3-3>`_
+    `New line on error message in KeyError - Python 3.3 <https://stackoverflow.com/questions/
+    46892261/new-line-on-error-message-in-keyerror-python-3-3>`_
     """
 
     def __repr__(self) -> str:

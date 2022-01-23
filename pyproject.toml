@@ -93,6 +93,8 @@ Faker = "^11.1.0"
 # documentation
 Sphinx = "^4.3.2"
 sphinx-rtd-theme = "^1.0.0"
+# sphinx extensions
+autodocsumm = "^0.2.7"
 # file types
 lxml = "^4.7.1"
 # utils
