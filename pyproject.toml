@@ -18,8 +18,8 @@ keywords = [
     "management",
     "pydantic",
 ]
-homepage = "https://configflow.readthedocs.io/en/latest/"
-documentation = "https://configflow.readthedocs.io/en/latest/"
+homepage = "https://configflow.readthedocs.io/en/latest"
+documentation = "https://configflow.readthedocs.io/en/latest"
 repository = "https://github.com/volodymyrPivoshenko/configflow"
 readme = "README.md"
 classifiers = [
@@ -45,10 +45,6 @@ include = [
     "README.md",
     "CHANGELOG.md",
 ]
-
-# TODO add vault plugin
-#[tool.poetry.plugins]
-#"vault" = "configflow.sources.vault:VaultSourceLoader"
 
 [tool.poetry.dependencies]
 python = ">=3.7,<3.10"
@@ -106,7 +102,11 @@ pre-commit = "^2.16.0"
 python-semantic-release = "^7.23.0"
 
 [tool.semantic_release]
-version_variable = "pyproject.toml:version"
+version_variable = [
+    "pyproject.toml:tool.poetry.version",
+    "src/configflow/__init__.py:__version__",
+    "docs/conf.py:version"
+]
 
 [tool.pycln]
 all = true
