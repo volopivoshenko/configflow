@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "configflow"
-version = "0.0.1"
+version = "0.0.2"
 description = "configflow – is the configuration management library for Python."
 license = "MIT"
 authors = [
@@ -102,8 +102,8 @@ pre-commit = "^2.16.0"
 python-semantic-release = "^7.23.0"
 
 [tool.semantic_release]
+version_toml = "pyproject.toml:tool.poetry.version"
 version_variable = [
-    "pyproject.toml:tool.poetry.version",
     "src/configflow/__init__.py:__version__",
     "docs/conf.py:release"
 ]
