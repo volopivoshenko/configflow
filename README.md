@@ -1,4 +1,9 @@
 <!--suppress HtmlDeprecatedAttribute -->
+
+<div align="center">
+    <a><img alt="logo" src="docs/_static/assets/logo.png" height=400></a>
+</div>
+
 <p align="center">
     <a><img alt="license" src="https://img.shields.io/badge/License-MIT-red"></a>
     <a><img alt="python" src="https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9-blue"></a>
@@ -34,6 +39,4 @@
     <a href="https://github.com/volodymyrPivoshenko/configflow/commits/master"><img alt="commit" src="https://img.shields.io/github/last-commit/volodymyrPivoshenko/configflow.svg"></a>
 </p>
 
-
-
-
+<hr class="solid">
