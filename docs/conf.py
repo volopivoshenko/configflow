@@ -17,7 +17,7 @@ copyright = "2022, Volodymyr Pivoshenko"
 author = "Volodymyr Pivoshenko"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.3"
+release = "0.0.4"
 
 # -- General configuration ---------------------------------------------------
 
