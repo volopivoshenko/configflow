@@ -8,8 +8,8 @@ lint: lint-flake8 lint-mypy
 tests: unittests
 
 clean-python-cache:
-	find . -type f -name *.py[co] -path .tox -prune -delete
-	find . -type d -name __pycache__ -path .tox -prune -exec rm -rf {} +
+	find . -type f -name *.py[co] -delete
+	find . -type d -name __pycache__ -exec rm -rf {} +
 	rm -rf dist
 
 clean-tests-cache:
