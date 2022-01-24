@@ -57,7 +57,7 @@ jobs:
           python -m poetry install
       - name: Run pytest | xdoctest
         run: |
-          python -m poetry run pytest --cov=src --cov-report=xml -vv
+          python -m poetry run pytest --xdoc --cov=src --cov-report=xml -vv
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1.0.13
         with:

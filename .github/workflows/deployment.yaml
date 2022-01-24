@@ -29,11 +29,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install poetry python-semantic-release
+          python -m poetry install
       - name: Semantic release
+        env:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          semantic-release publish
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          python -m semantic-release publish -D commit_author="github-actions <github-actions@github.com>"
   deploy_pypi:
     name: Build and publish package
     needs: [ semantic_release ]
@@ -48,8 +51,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
       - name: Build package
-        run: poetry build
+        run: python -m poetry build
       - name: Publish package
         run: |
-          poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
-          poetry publish
+          python -m poetry config pypi-token.pypi ${{ secrets.PYPI_TOKEN }}
+          python -m poetry publish
