@@ -18,7 +18,7 @@ from configflow import misc
         ("[:]", None),
         ("[10, 'sneasel']", [10, "sneasel"]),
         ("(10, 'naganadel')", (10, "naganadel")),
-        ("{10, 'snivy'}", {10, "snivy"}),
+        ("{0, 'snivy'}", {0, "snivy"}),
         ("{'pokemon': 'pidove', 'rank': '1'}", {"pokemon": "pidove", "rank": "1"}),
         (
             "['85', '0.23', 'cleffa', ['10', ['0.123'], 'blipbug']]",
