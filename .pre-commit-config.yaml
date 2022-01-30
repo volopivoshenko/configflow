@@ -11,26 +11,14 @@ repos:
       - id: check-yaml
       - id: check-toml
       - id: detect-private-key
-  - repo: https://github.com/hadialqattan/pycln
-    rev: v1.1.0
-    hooks:
-      - id: pycln
-        name: pycln
-        args: [ --config=pyproject.toml ]
-  - repo: https://github.com/pycqa/isort
-    rev: 5.10.1
-    hooks:
-      - id: isort
-        name: isort
-        args: [ --settings-path pyproject.toml ]
-  - repo: https://github.com/ambv/black
-    rev: 22.1.0
-    hooks:
-      - id: black
-        name: black
-        args: [ --config=pyproject.toml ]
   - repo: local
     hooks:
+      - id: format
+        name: format
+        entry: make
+        args: [ "format" ]
+        language: system
+        pass_filenames: false
       - id: lint
         name: lint
         entry: make
