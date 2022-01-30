@@ -42,4 +42,4 @@ jobs:
         run: python -m poetry build
       - name: Publish package
         run: |
-          python -m twine upload dist/* -u __token__ -p ${{ secrets.PYPI_TOKEN }} -s --skip-existing
+          python -m twine upload dist/* -u __token__ -p ${{ secrets.PYPI_TOKEN }} --skip-existing
