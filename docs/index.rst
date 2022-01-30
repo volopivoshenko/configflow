@@ -66,11 +66,17 @@ Welcome to configflow's documentation!
 .. image:: https://img.shields.io/github/last-commit/volodymyrPivoshenko/configflow.svg
     :target: https://github.com/volodymyrPivoshenko/configflow/commits/main
     :alt: commits
+.. image:: https://cdn.buymeacoffee.com/buttons/v2/default-blue.png
+    :target: https://www.buymeacoffee.com/volo.pivoshenko
+    :alt: buymeacoffee
+    :width: 170
+    :height: 60
+    :align: center
 
 Overview
 ========
 
-``configflow`` – is the configuration management library for Python. It easily allows you to:
+``configflow`` - is the configuration management library for Python. It easily allows you to:
 
 - Load your configuration from config files, environment variables, command-line arguments and more sources.
 - Transform the loaded data into the desired format and validate it.
