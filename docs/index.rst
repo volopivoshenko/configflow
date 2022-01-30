@@ -18,7 +18,7 @@ Welcome to configflow's documentation!
 .. image:: https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg
     :target: https://www.sphinx-doc.org/en/master
     :alt: sphinx
-.. image:: https://img.shields.io/badge/docstrings-reStructuredText-gree.svg
+.. image:: https://img.shields.io/badge/docstrings-numpy-gree.svg
     :target: https://numpydoc.readthedocs.io/en/latest/format.html
     :alt: docstrings
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -69,7 +69,7 @@ Welcome to configflow's documentation!
 .. image:: https://cdn.buymeacoffee.com/buttons/v2/default-blue.png
     :target: https://www.buymeacoffee.com/volo.pivoshenko
     :alt: buymeacoffee
-    :width: 170
+    :width: 180
     :height: 60
     :align: center
 
