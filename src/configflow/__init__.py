@@ -1,7 +1,7 @@
-"""configflow – is the configuration management library for Python."""
+"""configflow - is the configuration management library for Python."""
 
 __title__ = "configflow"
-__summary__ = "configflow – is the configuration management library for Python."
+__summary__ = "configflow - is the configuration management library for Python."
 __uri__ = "https://configflow.readthedocs.io/en/latest"
 
 __version__ = "0.0.5"

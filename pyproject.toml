@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "configflow"
 version = "0.0.5"
-description = "configflow – is the configuration management library for Python."
+description = "configflow - is the configuration management library for Python."
 license = "MIT"
 authors = [
     "Volodymyr Pivoshenko <volodymyr.pivoshenko@gmail.com>",
@@ -17,6 +17,7 @@ keywords = [
     "environment",
     "management",
     "pydantic",
+    "python"
 ]
 homepage = "https://configflow.readthedocs.io/en/latest"
 documentation = "https://configflow.readthedocs.io/en/latest"
@@ -40,7 +41,9 @@ classifiers = [
     "Topic :: Scientific/Engineering",
     "Natural Language :: English",
 ]
-packages = [{ include = "configflow", from = "src" }]
+packages = [
+    { include = "configflow", from = "src" }
+]
 include = [
     "README.md",
     "CHANGELOG.md",
@@ -60,8 +63,10 @@ awesome-pattern-matching = "^0.24.2"
 pycln = "^1.1.0"
 isort = "^5.10.1"
 black = "^21.12b0"
+mdformat = "^0.7.13"
 # linters
 wemake-python-styleguide = "^0.16.0"
+safety = "^1.10.3"
 mypy = "^0.931"
 # flake8 extensions
 pyproject-flake8 = "^0.0.1-alpha.2"
@@ -79,6 +84,7 @@ tox-conda = "^0.9.1"
 pytest-datafiles = "^2.0"
 pytest-lazy-fixture = "^0.6.3"
 pytest-mock = "^3.6.1"
+pytest-randomly = "^3.11.0"
 pytest-cov = "^3.0.0"
 pytest-sugar = "^0.9.4"
 pytest-html = "^3.1.1"
@@ -93,20 +99,26 @@ sphinx-rtd-theme = "^1.0.0"
 autodocsumm = "^0.2.7"
 # file types
 lxml = "^4.7.1"
+# github
+pre-commit = "^2.16.0"
+# versioning
+commitizen = "^2.20.4"
+python-semantic-release = "^7.23.0"
 # utils
+cryptography = "^36.0.1"
+cffi = "^1.15.0"
+keyring = "21.8.0"
+packaging = "20.9"
 ipython = "^7.30.1"
 deepdiff = "^5.7.0"
-jmespath = "^0.10.0"
-# github and versioning
-pre-commit = "^2.16.0"
-python-semantic-release = "^7.23.0"
 
 [tool.semantic_release]
 branch = "main"
 changelog_file = "CHANGELOG.md"
 build_command = "poetry build"
-dist_path = "dist/"
-upload_to_pypi = false
+dist_path = "dist"
+upload_to_repository = false
+upload_to_release = true
 remove_dist = false
 version_toml = "pyproject.toml:tool.poetry.version"
 version_variable = [
@@ -186,7 +198,7 @@ ignore_errors = true
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--xdoc -vv --cov=src"
+addopts = "-vv --xdoc --cov=src"
 testpaths = [
     "src",
     "tests",
