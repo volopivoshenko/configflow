@@ -2,7 +2,7 @@
 clean: clean-python-cache clean-linters-cache clean-tests-cache clean-docs
 
 .PHONY: lint
-lint: lint-flake8 lint-mypy
+lint: lint-flake8 lint-mypy lint-packages
 
 .PHONY: tests
 tests: unittests
@@ -28,34 +28,40 @@ clean-docs:
 
 .PHONY: format
 format:
-	pycln --config pyproject.toml .
-	isort --settings-path pyproject.toml .
-	black --config pyproject.toml .
+	poetry run pycln --config pyproject.toml .
+	poetry run isort --settings-path pyproject.toml .
+	poetry run black --config pyproject.toml .
+	poetry run mdformat README.md CHANGELOG.md CONTRIBUTING.md SECURITY.md
 
 lint-flake8:
-	pflake8
+	poetry run pflake8
 
 lint-flake8-html:
-	- pflake8 --format=html --htmldir=.flake8
+	- poetry run pflake8 --format=html --htmldir=.flake8
 	open .flake8/index.html
 
 lint-mypy:
-	mypy --config-file pyproject.toml
+	poetry run mypy --config-file pyproject.toml
 
 lint-mypy-html:
-	- mypy --config-file pyproject.toml --html-report .mypy
+	- poetry run mypy --config-file pyproject.toml --html-report .mypy
 	open .mypy/index.html
 
+lint-packages:
+	poetry check
+	poetry run pip check
+	poetry run safety check --full-report
+
 unittests:
-	pytest --cov=src -vv
+	poetry run pytest
 	mkdir -p docs/_static/assets
-	coverage-badge -o docs/_static/assets/tests_coverage.svg -f
+	poetry run coverage-badge -o docs/_static/assets/tests_coverage.svg -f
 
 unittests-html:
-	pytest --cov=src --cov-report html -vv
+	poetry run pytest --cov-report html
 	mkdir -p docs/_static/assets
-	coverage-badge -o docs/_static/assets/tests_coverage.svg -f
+	poetry run coverage-badge -o docs/_static/assets/tests_coverage.svg -f
 	open htmlcov/index.html
 
 doctests:
-	xdoctest -m src/configflow
+	poetry run xdoctest -m src/configflow
