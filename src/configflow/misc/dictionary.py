@@ -7,6 +7,7 @@ import copy
 from typing import Any
 from typing import Callable
 from typing import Dict
+from typing import Optional
 
 import apm
 
@@ -95,3 +96,48 @@ def update(to_dictionary: Dict[str, Any], from_dictionary: Dict[str, Any]) -> Di
         )
 
     return upd_dictionary
+
+
+def make_flat(
+    dictionary: Dict[str, Any],
+    separator: str,
+    parent_key: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Make a nested dictionary flat.
+
+    Notes
+    -----
+    If a value is a sequence ``list | tuple | set`` then ``make_flat``
+    will use numerical indices as key identifiers.
+
+    Examples
+    --------
+    >>> nested_dict = {
+    ... "db": {"host": "localhost", "ports": {"v1": 8080, "v2": 5000}},
+    ... "hub": {"env": "prod", "auth": "basic", "ports": [80, 50]},
+    ... "timeout": 10,
+    ... }
+    >>> make_flat(nested_dict, separator="_")
+    {'db_host': 'localhost', 'db_ports_v1': 8080, 'db_ports_v2': 5000, 'hub_env': 'prod',
+     'hub_auth': 'basic', 'hub_ports_0': 80, 'hub_ports_1': 50, 'timeout': 10}
+    """
+
+    flatten_pairs = []  # type: ignore
+
+    # WPS110 - in this context value is a dummy and abstract name
+    for key, value in dictionary.items():  # noqa: WPS110
+        new_key = "".join((parent_key, separator, key)) if parent_key else key
+
+        if isinstance(value, dict):
+            pairs = make_flat(value, separator, new_key).items()
+            flatten_pairs.extend(pairs)  # type: ignore
+
+        elif isinstance(value, (list, tuple, set)):
+            for index, list_value in enumerate(value):
+                inner_pair = {str(index): list_value}
+                pairs = make_flat(inner_pair, separator, new_key).items()
+                flatten_pairs.extend(pairs)  # type: ignore
+        else:
+            flatten_pairs.append((new_key, value))
+
+    return dict(flatten_pairs)

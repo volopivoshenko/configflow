@@ -102,3 +102,58 @@ def test_update(
 
     out_dict = misc.dictionary.update(to_dict, from_dict)
     assert bool(deepdiff.DeepDiff(out_dict, expected_dict)) is False
+
+
+@pytest.mark.parametrize(
+    "separator,input_dict,expected_dict",
+    [
+        (
+            "_",
+            {
+                "db": {"host": "localhost", "ports": {"v1": 8080, "v2": 5000}},
+                "hub": {"env": "prod", "auth": "basic", "ports": [80, 50]},
+                "timeout": 10,
+            },
+            {
+                "db_host": "localhost",
+                "db_ports_v1": 8080,
+                "db_ports_v2": 5000,
+                "hub_env": "prod",
+                "hub_auth": "basic",
+                "hub_ports_0": 80,
+                "hub_ports_1": 50,
+                "timeout": 10,
+            },
+        ),
+        (
+            ".",
+            {
+                "db": {"host": "localhost", "ports": {"v1": 8080, "v2": 5000}},
+                "hub": {"env": "prod", "auth": "basic", "ports": [80, 50]},
+                "timeout": 10,
+            },
+            {
+                "db.host": "localhost",
+                "db.ports.v1": 8080,
+                "db.ports.v2": 5000,
+                "hub.env": "prod",
+                "hub.auth": "basic",
+                "hub.ports.0": 80,
+                "hub.ports.1": 50,
+                "timeout": 10,
+            },
+        ),
+    ],
+)
+def test_make_flat(
+    separator: str,
+    input_dict: Dict[str, Any],
+    expected_dict: Dict[str, Any],
+) -> None:
+    """Test ``make_flat`` function."""
+
+    out_dict = misc.dictionary.make_flat(input_dict, separator)
+    assert bool(deepdiff.DeepDiff(out_dict, expected_dict)) is False
+
+    ex_out_dict = misc.dictionary.make_flat(expected_dict, separator)
+    assert bool(deepdiff.DeepDiff(ex_out_dict, expected_dict)) is False
