@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import copy
+
 from typing import Any
 from typing import Callable
 from typing import Dict
@@ -59,3 +61,37 @@ def deep_map(
         .of(apm.InstanceOf(list, set, tuple), lambda _: original_type(map(function, dictionary)))
         .otherwise(lambda _: function(dictionary))
     )
+
+
+def update(to_dictionary: Dict[str, Any], from_dictionary: Dict[str, Any]) -> Dict[str, Any]:
+    """Update values of a dictionary based on another dictionary.
+
+    Examples
+    --------
+    >>> to_dict = {
+    ... "db": {"host": "localhost", "ports": {"v1": 8080, "v2": 5000}},
+    ... "hub": {"env": "prod", "auth": "basic"},
+    ... "timeout": 10,
+    ... }
+    >>> from_dict = {
+    ... "db": {"host": "localhost", "ports": {"v1": 8000, "v2": 5000, "v3": 80}},
+    ... "hub": {"env": "dev"},
+    ... "warnings": "suppress",
+    ... "timeout": 10,
+    ... }
+    >>> update(to_dict, from_dict)
+    {'db': {'host': 'localhost', 'ports': {'v1': 8000, 'v2': 5000, 'v3': 80}},
+     'hub': {'env': 'dev', 'auth': 'basic'}, 'timeout': 10, 'warnings': 'suppress'}
+    """
+
+    upd_dictionary = copy.deepcopy(to_dictionary)
+
+    # WPS110 - in this context value is a dummy and abstract name
+    for key, value in from_dictionary.items():  # noqa: WPS110
+        upd_dictionary[key] = (
+            update(to_dictionary.get(key, {}), value)
+            if isinstance(value, dict)
+            else from_dictionary[key]
+        )
+
+    return upd_dictionary

@@ -49,3 +49,56 @@ def test_deep_map(
 
     out_dict = misc.dictionary.deep_map(func, input_dict)
     assert bool(deepdiff.DeepDiff(out_dict, expected_dict)) is False
+
+
+@pytest.mark.parametrize(
+    "to_dict,from_dict,expected_dict",
+    [
+        (
+            {
+                "db": {"host": "localhost", "ports": {"v1": 8080, "v2": 5000}},
+                "hub": {"env": "prod", "auth": "basic"},
+                "timeout": 10,
+            },
+            {
+                "db": {"host": "localhost", "ports": {"v1": 8000, "v2": 5000, "v3": 80}},
+                "hub": {"env": "dev"},
+                "warnings": "suppress",
+                "timeout": 10,
+            },
+            {
+                "db": {"host": "localhost", "ports": {"v1": 8000, "v2": 5000, "v3": 80}},
+                "hub": {"env": "dev", "auth": "basic"},
+                "timeout": 10,
+                "warnings": "suppress",
+            },
+        ),
+        (
+            {
+                "db": {"host": "localhost", "ports": {"v1": 8080, "v2": 5000}},
+                "hub": {"env": "prod", "auth": "basic"},
+                "timeout": 10,
+            },
+            {
+                "hub": {"env": "dev"},
+                "warnings": "suppress",
+                "timeout": 10,
+            },
+            {
+                "db": {"host": "localhost", "ports": {"v1": 8080, "v2": 5000}},
+                "hub": {"env": "dev", "auth": "basic"},
+                "timeout": 10,
+                "warnings": "suppress",
+            },
+        ),
+    ],
+)
+def test_update(
+    to_dict: Dict[str, Any],
+    from_dict: Dict[str, Any],
+    expected_dict: Dict[str, Any],
+) -> None:
+    """Test ``update`` function."""
+
+    out_dict = misc.dictionary.update(to_dict, from_dict)
+    assert bool(deepdiff.DeepDiff(out_dict, expected_dict)) is False
