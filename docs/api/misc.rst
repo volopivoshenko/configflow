@@ -11,3 +11,6 @@ String helper functions
     :autosummary:
     :members:
     :show-inheritance:
+
+Dictionary helper functions
+---------------------------
