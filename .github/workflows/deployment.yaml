@@ -15,7 +15,7 @@ on:
 
 jobs:
   release:
-    name: Create semantic release
+    name: Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v2
@@ -32,12 +32,22 @@ jobs:
           python -m poetry install
       - name: Semantic release
         env:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_TOKEN }}
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           semantic-release publish -D commit_author="github-actions <github-actions@github.com>" -v DEBUG
           poetry run mdformat CHANGELOG.md
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: EndBug/add-and-commit@v8
+        with:
+          add: 'CHANGELOG.md'
+          author_name: github-actions
+          author_email: github-actions@github.com
+          message: 'refactor: apply MD formatter'
+          push: true
       - name: Build package
         run: python -m poetry build
       - name: Publish package
