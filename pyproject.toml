@@ -63,7 +63,6 @@ awesome-pattern-matching = "^0.24.2"
 pycln = "^1.1.0"
 isort = "^5.10.1"
 black = "^21.12b0"
-mdformat = "^0.7.13"
 # linters
 wemake-python-styleguide = "^0.16.0"
 safety = "^1.10.3"
