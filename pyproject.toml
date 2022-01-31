@@ -157,13 +157,14 @@ max-cognitive-score = 25
 max-line-complexity = 20
 max-imports = 15
 max-local-variables = 10
-max-string-usages = 10
 max-annotation-complexity = 5
 inline-quotes = '"'
 docstring_style = "numpy"
 exclude = [
     "__init__.py",
-    "conftest.py",
+]
+per-file-ignores = [
+    "tests/modules/misc/test_dictionary.py:WPS226"
 ]
 extend-ignore = [
     "S101",
