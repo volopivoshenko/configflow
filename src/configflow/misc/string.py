@@ -8,8 +8,7 @@ from ast import literal_eval
 from typing import Any
 from typing import Optional
 
-from apm import case
-from apm import InstanceOf
+import apm
 
 
 # WPS600 - inheritance from the str is the only way to implement correct
@@ -78,8 +77,8 @@ def parse(value: str) -> Optional[Any]:  # noqa: WPS110
     except ValueError:
         original_type = type(value)
         return (
-            case(value)
-            .of(InstanceOf(list, set, tuple), lambda _: original_type(map(parse, value)))
+            apm.case(value)
+            .of(apm.InstanceOf(list, set, tuple), lambda _: original_type(map(parse, value)))
             .otherwise(lambda _: value)
         )
 
@@ -95,8 +94,8 @@ def parse(value: str) -> Optional[Any]:  # noqa: WPS110
 
     original_type = type(literal)
     return (
-        case(literal)
-        .of(InstanceOf(float), lambda _: int(literal) if literal.is_integer() else literal)
-        .of(InstanceOf(list, set, tuple), lambda _: original_type(map(parse, literal)))
+        apm.case(literal)
+        .of(apm.InstanceOf(float), lambda _: int(literal) if literal.is_integer() else literal)
+        .of(apm.InstanceOf(list, set, tuple), lambda _: original_type(map(parse, literal)))
         .otherwise(lambda _: literal)
     )
