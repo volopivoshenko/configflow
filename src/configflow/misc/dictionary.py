@@ -11,6 +11,8 @@ from typing import Optional
 
 import apm
 
+from configflow import exceptions
+
 
 def deep_map(
     function: Callable[[Any], Any],
@@ -85,17 +87,17 @@ def update(to_dictionary: Dict[str, Any], from_dictionary: Dict[str, Any]) -> Di
      'hub': {'env': 'dev', 'auth': 'basic'}, 'timeout': 10, 'warnings': 'suppress'}
     """
 
-    upd_dictionary = copy.deepcopy(to_dictionary)
+    updated_dictionary = copy.deepcopy(to_dictionary)
 
     # WPS110 - in this context value is a dummy and abstract name
     for key, value in from_dictionary.items():  # noqa: WPS110
-        upd_dictionary[key] = (
+        updated_dictionary[key] = (
             update(to_dictionary.get(key, {}), value)
             if isinstance(value, dict)
             else from_dictionary[key]
         )
 
-    return upd_dictionary
+    return updated_dictionary
 
 
 def make_flat(
@@ -141,3 +143,66 @@ def make_flat(
             flatten_pairs.append((new_key, value))
 
     return dict(flatten_pairs)
+
+
+def make_nested(dictionary: Dict[str, Any], separator: str) -> Dict[str, Any]:  # noqa: WPS231
+    """Make a flat dictionary nested.
+
+    Raises
+    ------
+    EmptyKeyError
+        If a dictionary contains an empty key.
+
+    DuplicatedKeyError
+        If a dictionary contains a duplicated key.
+
+    Examples
+    --------
+    >>> flat_dict = {
+    ... "db_host": "localhost",
+    ... "db_ports_v1": 8080,
+    ... "db_ports_v2": 5000,
+    ... "hub_env": "prod",
+    ... "hub_auth": "basic",
+    ... "hub_ports_0": 80,
+    ... "hub_ports_1": 50,
+    ... "timeout": 10,
+    ... }
+    >>> make_nested(flat_dict, separator="_")
+    {'db': {'host': 'localhost', 'ports': {'v1': 8080, 'v2': 5000}}, 'hub':
+     {'env': 'prod', 'auth': 'basic', 'ports': {'0': 80, '1': 50}}, 'timeout': 10}
+    """
+
+    nested_dictionary: Dict[str, Any] = {}
+
+    # WPS110 - in this context value is a dummy and abstract name
+    for key, value in dictionary.items():  # noqa: WPS110
+        if separator in key:
+            inner_keys = key.split(separator)
+            inner_dictionary = nested_dictionary
+
+            for index, inner_key in enumerate(inner_keys):
+                if inner_key == "":
+                    raise exceptions.misc.EmptyKeyError(dictionary)
+
+                elif index == len(inner_keys) - 1 and inner_key in inner_dictionary.keys():
+                    raise exceptions.misc.DuplicatedKeyError(inner_key, dictionary)
+
+                elif index == len(inner_keys) - 1:
+                    inner_dictionary[inner_key] = value
+
+                else:
+                    if inner_key not in inner_dictionary.keys():
+                        inner_dictionary[inner_key] = {}  # noqa: WPS220
+
+                    elif not isinstance(inner_dictionary[inner_key], dict):
+                        raise exceptions.misc.DuplicatedKeyError(  # noqa: WPS220
+                            inner_key,
+                            dictionary,
+                        )
+
+                    inner_dictionary = inner_dictionary[inner_key]
+        else:
+            nested_dictionary[key] = value
+
+    return nested_dictionary
