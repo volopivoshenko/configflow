@@ -33,10 +33,10 @@ format:
 	poetry run black --config pyproject.toml .
 
 lint-flake8:
-	poetry run pflake8
+	poetry run pflake8 --config pyproject.toml
 
 lint-flake8-html:
-	- poetry run pflake8 --format=html --htmldir=.flake8
+	- poetry run pflake8 --config pyproject.toml --format=html --htmldir=.flake8
 	open .flake8/index.html
 
 lint-mypy:

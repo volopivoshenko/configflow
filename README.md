@@ -107,13 +107,8 @@ Installation is as simple as:
 
 ```bash
 pip install -U configflow
+
 poetry add configflow
-```
-
-`configflow` is also available on conda under the `conda-forge` channel:
-
-```bash
-conda install configflow -c conda-forge
 ```
 
 ### Optional dependencies

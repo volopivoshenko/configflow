@@ -32,7 +32,7 @@ jobs:
           python -m poetry install
       - name: Run flake8
         run: |
-          python -m poetry run pflake8
+          python -m poetry run pflake8 --config pyproject.toml
       - name: Run mypy
         run: |
           python -m poetry run mypy --config-file pyproject.toml

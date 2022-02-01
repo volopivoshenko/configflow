@@ -162,7 +162,9 @@ inline-quotes = '"'
 docstring_style = "numpy"
 exclude = [
     "__init__.py",
-    "conftest.py",
+]
+per-file-ignores = [
+    "tests/modules/misc/test_dictionary.py:WPS226"
 ]
 extend-ignore = [
     "S101",
