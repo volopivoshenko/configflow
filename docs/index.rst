@@ -83,10 +83,10 @@ Overview
 - Access the results as ``Python dataclass-like objects`` with full IDE support.
 - Make your codebase very flexible by the usage of:
 
-  - Multiple environments.
-  - Singletons with lazy loading.
-  - Config changes for the unit tests.
-  - Custom config sources.
+    - Multiple environments.
+    - Singletons with lazy loading.
+    - Config changes for the unit tests.
+    - Custom config sources.
 
 Examples
 ========
