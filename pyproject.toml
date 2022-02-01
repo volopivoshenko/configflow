@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "configflow"
-version = "0.0.6"
+version = "0.1.0"
 description = "configflow - is the configuration management library for Python."
 license = "MIT"
 authors = [
