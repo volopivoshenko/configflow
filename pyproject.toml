@@ -51,6 +51,7 @@ include = [
 
 [tool.poetry.dependencies]
 python = ">=3.7,<3.10"
+pydantic = "^1.9.0"
 # file types
 PyYAML = ">=5.3.1"
 python-dotenv = "^0.19.2"
@@ -155,25 +156,20 @@ max-line-length = 100
 max-cognitive-average = 25
 max-cognitive-score = 25
 max-line-complexity = 20
-max-imports = 15
 max-local-variables = 10
-max-annotation-complexity = 5
 inline-quotes = '"'
 docstring_style = "numpy"
 exclude = [
     "__init__.py",
 ]
 per-file-ignores = [
-    "tests/modules/misc/test_dictionary.py:WPS226"
+    "tests/*:S101,WPS226",
 ]
 extend-ignore = [
-    "S101",
     "D202", "DAR101", "DAR201", "DAR401", "DAR402",
-    "WPS218",
     "WPS348",
     "WPS437",
 ]
-# S101,WPS218 - asserts are used only in tests
 # D202 - code is hard to read without a blank line after docstrings
 # DAR101, DAR201, DAR401, DAR402 - there's no sense to put all sections in docstrings
 # WPS348 - chaining is a good option for multiline methods calls
