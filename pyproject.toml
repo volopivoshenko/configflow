@@ -189,10 +189,6 @@ files = [
 ]
 
 [[tool.mypy.overrides]]
-module = "*.file.*"
-ignore_errors = true
-
-[[tool.mypy.overrides]]
 module = "*.conftest.*"
 ignore_errors = true
 
