@@ -103,4 +103,5 @@ See Also
     :caption: Table of Contents
 
     modules/installation.rst
+    api/io.rst
     api/misc.rst

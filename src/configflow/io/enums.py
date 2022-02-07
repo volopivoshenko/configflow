@@ -8,7 +8,16 @@ from typing import Iterator
 
 
 class FileType(enum.Enum):
-    """Supported file types."""
+    """Supported file types.
+
+    - ``YAML | .yaml``
+    - ``YML | .yml``
+    - ``INI | .ini``
+    - ``CFG | .cfg``
+    - ``JSON | .json``
+    - ``TOML | .toml``
+    - ``ENV | .env``
+    """
 
     yaml: int = enum.auto()
     yml: int = enum.auto()

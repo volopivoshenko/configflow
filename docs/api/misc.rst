@@ -14,3 +14,8 @@ String helper functions
 
 Dictionary helper functions
 ---------------------------
+
+.. automodule:: configflow.misc.dictionary
+    :autosummary:
+    :members:
+    :show-inheritance:
