@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-import warnings
+import ast
 
-from ast import literal_eval
 from typing import Any
 from typing import Optional
 
@@ -57,9 +56,11 @@ def parse(value: str) -> Optional[Any]:  # noqa: WPS110
 
     Warnings
     --------
-    Currently ``parse`` function supports only primitive data types ``int | str | float``
-    and sequences ``list | tuple | set``. Sequences such as ``dict`` will be returned as they are
-    without parsing their inner values.
+    - Currently ``parse`` function supports only primitive data types ``int | str | float``
+      and sequences ``list | tuple | set``. Sequences such as ``dict`` will be returned as they are
+      without parsing their inner values.
+
+    - If a value can't be parsed it will be returned as it is.
 
     Examples
     --------
@@ -72,7 +73,7 @@ def parse(value: str) -> Optional[Any]:  # noqa: WPS110
     """
 
     try:
-        literal = literal_eval(value)
+        literal = ast.literal_eval(value)
 
     except ValueError:
         original_type = type(value)
@@ -82,15 +83,8 @@ def parse(value: str) -> Optional[Any]:  # noqa: WPS110
             .otherwise(lambda _: value)
         )
 
-    except SyntaxError as exception:
-        warnings.warn(
-            message="Error during object parsing {0!r}. Suppressed exception {1!s}.".format(
-                value,
-                exception,
-            ),
-            category=UserWarning,
-        )
-        return None
+    except SyntaxError:
+        return value
 
     original_type = type(literal)
     return (

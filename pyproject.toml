@@ -163,8 +163,11 @@ exclude = [
     "__init__.py",
 ]
 per-file-ignores = [
-    "tests/*:S101,WPS226",
+    "tests/*:S101,WPS226,WPS323",
 ]
+# S101 - asserts are the only way of checking conditions in tests
+# WPS226 - duplicate strings are fine for literals in tests
+# WPS323 - % string is used in the logger default configuration
 extend-ignore = [
     "D202", "DAR101", "DAR201", "DAR401", "DAR402",
     "WPS348",
