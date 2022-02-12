@@ -27,6 +27,7 @@ repos:
         pass_filenames: false
       - id: tests
         name: tests
-        entry: pytest
+        entry: make
+        args: [ "tests" ]
         language: system
         pass_filenames: false
