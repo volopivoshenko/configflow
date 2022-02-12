@@ -1,11 +1,14 @@
-"""Module for the factory that returns the IO module based on a file type."""
+"""Module for the factory that returns a load functions on a file type."""
 
 from __future__ import annotations
 
 import json
 
 from pathlib import Path
-from types import ModuleType
+from typing import Any
+from typing import Callable
+from typing import Dict
+from typing import TextIO
 
 import apm
 import toml
@@ -15,8 +18,8 @@ from configflow import exceptions
 from configflow import io
 
 
-def get_io_module(filename: Path) -> ModuleType:
-    """Get IO module based on a file type.
+def get_loader(filename: Path) -> Callable[[TextIO], Dict[str, Any]]:
+    """Get a load function based on a file type.
 
     Raises
     ------
@@ -25,8 +28,8 @@ def get_io_module(filename: Path) -> ModuleType:
 
     Examples
     --------
-    >>> get_io_module(Path(".env"))
-    <module 'configflow.io.dotenv' from ...>
+    >>> get_loader(Path(".env"))
+    <function load at ...>
     """
 
     # WPS472 - in this case is prettier than direct indexing
@@ -40,10 +43,10 @@ def get_io_module(filename: Path) -> ModuleType:
 
     return (
         apm.case(file_type)
-        .of(apm.OneOf(io.enums.FileType.yaml, io.enums.FileType.yml), lambda _: yaml)
-        .of(apm.OneOf(io.enums.FileType.ini, io.enums.FileType.cfg), lambda _: io.ini)
-        .of(io.enums.FileType.json, lambda _: json)
-        .of(io.enums.FileType.toml, lambda _: toml)
-        .of(io.enums.FileType.env, lambda _: io.dotenv)
-        .otherwise(lambda _: yaml)
+        .of(apm.OneOf(io.enums.FileType.yaml, io.enums.FileType.yml), lambda _: yaml.safe_load)
+        .of(apm.OneOf(io.enums.FileType.ini, io.enums.FileType.cfg), lambda _: io.ini.load)
+        .of(io.enums.FileType.json, lambda _: json.load)
+        .of(io.enums.FileType.toml, lambda _: toml.load)
+        .of(io.enums.FileType.env, lambda _: io.dotenv.load)
+        .otherwise(lambda _: yaml.load)
     )

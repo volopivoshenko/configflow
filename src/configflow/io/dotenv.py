@@ -27,6 +27,7 @@ def loads(stream: str) -> Dict[str, Any]:
     """
 
     parsed_values = dict(dotenv_values(stream=StringIO(stream)))
+    # TODO Remove parsing of the values as it will be handle by pydantic
     return misc.dictionary.deep_map(misc.string.parse, parsed_values)
 
 

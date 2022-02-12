@@ -1,4 +1,4 @@
-"""Module for the file configuration source and its loader."""
+"""Module for the file configuration source."""
 
 from __future__ import annotations
 
@@ -6,10 +6,14 @@ import os
 import sys
 
 from pathlib import Path
+from typing import Any
+from typing import Dict
 from typing import Literal
 from typing import Optional
 
 from configflow import exceptions
+from configflow import io
+from configflow import misc
 from configflow import sources
 
 
@@ -30,13 +34,13 @@ class FileSource(sources.abstract.Source):
         e.g. ``-c | --config``. It's alternative of the ``path`` attribute, by default ``None``.
 
     separator : Literal[".", "_"]
-        A character will be used as a level hint during the dictionary parsing, by default ``_``.
+        A character will be used as a level hint during the dictionary parsing, by default ``.``.
     """
 
     path: Optional[Path] = None
     environment_variable: Optional[str] = None
     command_line_argument: Optional[str] = None
-    separator: Literal[".", "_"] = "_"
+    separator: Literal[".", "_"] = "."
 
     @property
     def filepath(self) -> Path:
@@ -81,3 +85,22 @@ class FileSource(sources.abstract.Source):
             )
 
         return filepath
+
+    @property
+    def content(self) -> Dict[str, Any]:
+        """Get content of a source.
+
+        Examples
+        --------
+        >>> source = FileSource(path=Path("tests/fixtures/example.yaml"))
+        >>> source.content
+        {'databases': ...}
+        """
+
+        loader = io.loader.get_loader(self.filepath)
+
+        with open(self.filepath, "r") as file_fp:
+            file_content = loader(file_fp)
+
+        file_content = misc.dictionary.make_flat(file_content, separator=self.separator)
+        return misc.dictionary.make_nested(file_content, separator=self.separator)

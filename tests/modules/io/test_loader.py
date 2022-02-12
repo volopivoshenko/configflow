@@ -19,53 +19,52 @@ from configflow import io
 
 
 @pytest.mark.parametrize(
-    "filepath,expected_io_module,expected_dict",
+    "filepath,expected_loader,expected_dict",
     [
         (
             "tests/fixtures/example.ini",
-            io.ini,
+            io.ini.load,
             pytest.lazy_fixture("expected_ini_dict"),  # type: ignore[attr-defined]
         ),
         (
             "tests/fixtures/example.env",
-            io.dotenv,
+            io.dotenv.load,
             pytest.lazy_fixture("expected_dotenv_dict"),  # type: ignore[attr-defined]
         ),
         (
             "tests/fixtures/example.yaml",
-            yaml,
+            yaml.safe_load,
             pytest.lazy_fixture("expected_yaml_dict"),  # type: ignore[attr-defined]
         ),
         (
             "tests/fixtures/example.json",
-            json,
+            json.load,
             pytest.lazy_fixture("expected_yaml_dict"),  # type: ignore[attr-defined]
         ),
         (
             "tests/fixtures/example.toml",
-            toml,
+            toml.load,
             pytest.lazy_fixture("expected_yaml_dict"),  # type: ignore[attr-defined]
         ),
         pytest.param(
             "tests/fixtures/example.config",
-            toml,
+            toml.load,
             pytest.lazy_fixture("expected_yaml_dict"),  # type: ignore[attr-defined]
             marks=pytest.mark.xfail(raises=exceptions.io.InvalidFileTypeError),
         ),
     ],
 )
-def test_get_io_module_load(
+def test_get_loader(
     filepath: str,
-    expected_io_module: ModuleType,
+    expected_loader: ModuleType,
     expected_dict: Dict[str, Any],
 ) -> None:
-    """Test ``get_io_module | load`` functions."""
+    """Test ``get_loader | load`` functions."""
 
-    io_module = io.loader.get_io_module(Path(filepath))
+    loader = io.loader.get_loader(Path(filepath))
 
     with open(filepath, "r") as fixture_file:
-        # noinspection PyUnresolvedReferences
-        out_dict = io_module.load(fixture_file)
+        out_dict = loader(fixture_file)
 
-    assert io_module.__name__ == expected_io_module.__name__
+    assert loader == expected_loader
     assert bool(deepdiff.DeepDiff(out_dict, expected_dict)) is False
