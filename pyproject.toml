@@ -58,6 +58,7 @@ python-dotenv = "^0.19.2"
 toml = "^0.10.2"
 # utils
 awesome-pattern-matching = "^0.24.2"
+decorator = "^5.1.1"
 
 [tool.poetry.dev-dependencies]
 # formatters
@@ -74,6 +75,7 @@ flake8-html = "^0.4.1"
 # mypy stubs
 types-toml = "^0.10.3"
 types-PyYAML = "^6.0.3"
+types-decorator = "^5.1.4"
 # tests
 tox = "^3.24.5"
 pytest = "^6.2.5"
@@ -90,11 +92,10 @@ pytest-sugar = "^0.9.4"
 pytest-html = "^3.1.1"
 coverage = { extras = ["toml"], version = "^6.2" }
 coverage-badge = "^1.1.0"
-# fakers
-Faker = "^11.1.0"
 # documentation
 Sphinx = "^4.3.2"
 sphinx-rtd-theme = "^1.0.0"
+sphinx-book-theme = "^0.2.0"
 # sphinx extensions
 autodocsumm = "^0.2.7"
 # file types
@@ -170,9 +171,11 @@ per-file-ignores = [
 # WPS323 - % string is used in the logger default configuration
 extend-ignore = [
     "D202", "DAR101", "DAR201", "DAR401", "DAR402",
+    "WPS110",
     "WPS348",
     "WPS437",
 ]
+# WPS110 - most of the wrong names are used in the abstract context
 # D202 - code is hard to read without a blank line after docstrings
 # DAR101, DAR201, DAR401, DAR402 - there's no sense to put all sections in docstrings
 # WPS348 - chaining is a good option for multiline methods calls
