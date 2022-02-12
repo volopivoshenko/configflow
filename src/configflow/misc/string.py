@@ -45,8 +45,7 @@ class ErrorMessage(str):  # noqa: WPS600
         return self.__str__()
 
 
-# WPS110 - in this context value is an abstract name
-def parse(value: str) -> Optional[Any]:  # noqa: WPS110
+def parse(value: str) -> Optional[Any]:
     """Parse a string value to the appropriate Python object.
 
     Notes
