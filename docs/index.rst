@@ -66,12 +66,6 @@ Welcome to configflow's documentation!
 .. image:: https://img.shields.io/github/last-commit/volodymyrPivoshenko/configflow.svg
     :target: https://github.com/volodymyrPivoshenko/configflow/commits/main
     :alt: commits
-.. image:: https://cdn.buymeacoffee.com/buttons/v2/default-blue.png
-    :target: https://www.buymeacoffee.com/volo.pivoshenko
-    :alt: buymeacoffee
-    :width: 180
-    :height: 60
-    :align: center
 
 Overview
 ========
@@ -83,10 +77,10 @@ Overview
 - Access the results as ``Python dataclass-like objects`` with full IDE support.
 - Make your codebase very flexible by the usage of:
 
-    - Multiple environments.
-    - Singletons with lazy loading.
-    - Config changes for the unit tests.
-    - Custom config sources.
+  - Multiple environments.
+  - Singletons with lazy loading.
+  - Config changes for the unit tests.
+  - Custom config sources.
 
 Examples
 ========
