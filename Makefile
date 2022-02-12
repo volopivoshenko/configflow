@@ -35,16 +35,8 @@ format:
 lint-flake8:
 	poetry run pflake8 --config pyproject.toml
 
-lint-flake8-html:
-	- poetry run pflake8 --config pyproject.toml --format=html --htmldir=.flake8
-	open .flake8/index.html
-
 lint-mypy:
 	poetry run mypy --config-file pyproject.toml
-
-lint-mypy-html:
-	- poetry run mypy --config-file pyproject.toml --html-report .mypy
-	open .mypy/index.html
 
 lint-packages:
 	poetry check
@@ -55,12 +47,6 @@ unittests:
 	poetry run pytest
 	mkdir -p docs/_static/assets
 	poetry run coverage-badge -o docs/_static/assets/tests_coverage.svg -f
-
-unittests-html:
-	poetry run pytest --cov-report html
-	mkdir -p docs/_static/assets
-	poetry run coverage-badge -o docs/_static/assets/tests_coverage.svg -f
-	open htmlcov/index.html
 
 doctests:
 	poetry run xdoctest -m src/configflow
