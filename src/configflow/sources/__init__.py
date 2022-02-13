@@ -1,4 +1,4 @@
 """Package for the configuration sources."""
 
-from configflow.sources import abstract
-from configflow.sources import file
+from configflow.sources.abstract import Source
+from configflow.sources.file import FileSource

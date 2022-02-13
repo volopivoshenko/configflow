@@ -25,26 +25,24 @@ SourceType = Union[sources.abstract.Source, List[sources.abstract.Source]]
 class ConfigurationMetaclass(pydantic.main.ModelMetaclass):
     """Metaclass of the base configuration model."""
 
-    @classmethod
-    def __call__(cls, source: Optional[SourceType] = None, **kwargs) -> None:  # type: ignore
+    def __call__(self, source: Optional[SourceType] = None, **kwargs) -> None:  # type: ignore
         """Implement singleton mechanism and populate attributes."""
 
         if source is not None:
             kwargs_cp = copy.deepcopy(kwargs)
             kwargs_cp = misc.dictionary.update(kwargs_cp, source)  # type: ignore
-
             return super().__call__(**kwargs_cp)
 
-        if cls.Config.source is not None:  # type: ignore
+        if self.Config.source is not None:  # type: ignore
             if kwargs:
                 raise exceptions.metaclass.AttributesError()
 
-            if cls._instance is None:  # type: ignore
-                cls._instance = super().__call__(  # type: ignore
-                    **cls._get_content(kwargs, cls.Config.source),  # type: ignore
+            if self._instance is None:  # type: ignore
+                self._instance = super().__call__(  # type: ignore
+                    **self._get_content(kwargs, self.Config.source),  # type: ignore
                 )
 
-            return cls._instance  # type: ignore
+            return self._instance  # type: ignore
 
         return super().__call__(**kwargs)
 
@@ -71,9 +69,12 @@ class Configuration(pydantic.BaseModel, metaclass=ConfigurationMetaclass):
     --------
     In case when ``source`` was defined in ``Config`` it implements a singleton mechanism,
     which means returning the class instance every time the constructor is called.
+
+    Examples
+    --------
     """
 
-    _instance: ClassVar[Optional[Any]] = None
+    _instance: ClassVar[Optional[Configuration]] = None
 
     # WPS431 - pydantic interface requires config class
     class Config(object):  # noqa: WPS431
