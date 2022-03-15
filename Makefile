@@ -7,6 +7,8 @@ lint: lint-flake8 lint-mypy lint-packages
 .PHONY: tests
 tests: unittests
 
+.PHONY: format
+
 clean-python-cache:
 	find . -type f -name *.py[co] -delete
 	find . -type d -name __pycache__ -exec rm -rf {} +
@@ -26,7 +28,6 @@ clean-linters-cache:
 clean-docs:
 	rm -rf docs/_build
 
-.PHONY: format
 format:
 	poetry run pycln --config pyproject.toml .
 	poetry run isort --settings-path pyproject.toml .
@@ -35,16 +36,8 @@ format:
 lint-flake8:
 	poetry run pflake8 --config pyproject.toml
 
-lint-flake8-html:
-	- poetry run pflake8 --config pyproject.toml --format=html --htmldir=.flake8
-	open .flake8/index.html
-
 lint-mypy:
 	poetry run mypy --config-file pyproject.toml
-
-lint-mypy-html:
-	- poetry run mypy --config-file pyproject.toml --html-report .mypy
-	open .mypy/index.html
 
 lint-packages:
 	poetry check
@@ -53,14 +46,6 @@ lint-packages:
 
 unittests:
 	poetry run pytest
-	mkdir -p docs/_static/assets
-	poetry run coverage-badge -o docs/_static/assets/tests_coverage.svg -f
-
-unittests-html:
-	poetry run pytest --cov-report html
-	mkdir -p docs/_static/assets
-	poetry run coverage-badge -o docs/_static/assets/tests_coverage.svg -f
-	open htmlcov/index.html
 
 doctests:
 	poetry run xdoctest -m src/configflow

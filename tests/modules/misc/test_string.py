@@ -15,7 +15,7 @@ from configflow import misc
         ("yamper", "yamper"),
         ("1418", 1418),
         ("0.485", 0.485),
-        ("[:]", None),
+        ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M:%S"),
         ("[10, 'sneasel']", [10, "sneasel"]),
         ("(10, 'naganadel')", (10, "naganadel")),
         ("{0, 'snivy'}", {0, "snivy"}),

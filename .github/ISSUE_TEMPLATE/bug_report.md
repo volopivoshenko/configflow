@@ -6,6 +6,11 @@ labels: ''
 assignees: ''
 ---
 
+- [ ] I am on the [latest](https://github.com/volodymyrPivoshenko/configflow/releases/latest)
+  version.
+- [ ] I have searched the [issues](https://github.com/volodymyrPivoshenko/configflow/issues) of this
+  repo and believe that this is not a duplicate.
+
 **Describe the bug**
 
 A clear and concise description of what the bug is.
@@ -14,10 +19,7 @@ A clear and concise description of what the bug is.
 
 Steps to reproduce the behavior:
 
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+...
 
 **Expected behavior**
 
@@ -27,11 +29,12 @@ A clear and concise description of what you expected to happen.
 
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
+**System (please complete the following information):**
 
 - OS: \[e.g. MacOS BigSur 11.6.1\]
-- Python \[e.g. 3.8.12\]
-- Python packages \[e.g. pydantic 1.9.0\]
+- Python version \[e.g. 3.8.12\]
+- `configflow` version \[e.g. 1.0.0\]
+- Link of a [gist](https://gist.github.com/) with the contents of your pyproject.toml file
 
 **Additional context**
 

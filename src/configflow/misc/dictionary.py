@@ -52,14 +52,11 @@ def deep_map(
 
     original_type = type(dictionary)
 
-    # WPS110 - in this context value is a dummy and abstract name
     return (
         apm.case(dictionary)
         .of(
             apm.InstanceOf(dict),
-            lambda _: {
-                key: deep_map(function, value) for key, value in dictionary.items()  # noqa: WPS110
-            },
+            lambda _: {key: deep_map(function, value) for key, value in dictionary.items()},
         )
         .of(apm.InstanceOf(list, set, tuple), lambda _: original_type(map(function, dictionary)))
         .otherwise(lambda _: function(dictionary))
@@ -89,8 +86,7 @@ def update(to_dictionary: Dict[str, Any], from_dictionary: Dict[str, Any]) -> Di
 
     updated_dictionary = copy.deepcopy(to_dictionary)
 
-    # WPS110 - in this context value is a dummy and abstract name
-    for key, value in from_dictionary.items():  # noqa: WPS110
+    for key, value in from_dictionary.items():
         updated_dictionary[key] = (
             update(to_dictionary.get(key, {}), value)
             if isinstance(value, dict)
@@ -121,7 +117,7 @@ def make_flat(
     ... }
     >>> make_flat(nested_dict, separator="_")
     {'db_host': 'localhost', 'db_ports_v1': 8080, 'db_ports_v2': 5000, 'hub_env': 'prod',
-     'hub_auth': 'basic', 'hub_ports_0': 80, 'hub_ports_1': 50, 'timeout': 10}
+     'hub_auth': 'basic', 'hub_ports': [80, 50], 'timeout': 10}
     """
 
     flatten_pairs = []  # type: ignore
@@ -134,11 +130,6 @@ def make_flat(
             pairs = make_flat(value, separator, new_key).items()
             flatten_pairs.extend(pairs)  # type: ignore
 
-        elif isinstance(value, (list, tuple, set)):
-            for index, list_value in enumerate(value):
-                inner_pair = {str(index): list_value}
-                pairs = make_flat(inner_pair, separator, new_key).items()
-                flatten_pairs.extend(pairs)  # type: ignore
         else:
             flatten_pairs.append((new_key, value))
 
