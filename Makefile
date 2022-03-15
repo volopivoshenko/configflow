@@ -7,6 +7,8 @@ lint: lint-flake8 lint-mypy lint-packages
 .PHONY: tests
 tests: unittests
 
+.PHONY: format
+
 clean-python-cache:
 	find . -type f -name *.py[co] -delete
 	find . -type d -name __pycache__ -exec rm -rf {} +
@@ -26,7 +28,6 @@ clean-linters-cache:
 clean-docs:
 	rm -rf docs/_build
 
-.PHONY: format
 format:
 	poetry run pycln --config pyproject.toml .
 	poetry run isort --settings-path pyproject.toml .
@@ -45,8 +46,6 @@ lint-packages:
 
 unittests:
 	poetry run pytest
-	mkdir -p docs/_static/assets
-	poetry run coverage-badge -o docs/_static/assets/tests_coverage.svg -f
 
 doctests:
 	poetry run xdoctest -m src/configflow
