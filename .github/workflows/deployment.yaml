@@ -18,17 +18,19 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v2
+      - name: Install Python
+        uses: actions/setup-python@v2
         with:
           python-version: 3.9
           architecture: x64
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install poetry python-semantic-release
           python -m poetry install
-      - name: Semantic release
+      - name: Run semantic release
         env:
           github_token: ${{ secrets.GH_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

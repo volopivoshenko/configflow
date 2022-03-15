@@ -13,9 +13,11 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   analyze:
@@ -28,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'python' ]
+        language: ["python"]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -37,5 +39,6 @@ jobs:
       with:
         languages: ${{ matrix.language }}
     - name: Autobuild
+      uses: github/codeql-action/autobuild@v1
     - name: Perform CodeQL analysis
       uses: github/codeql-action/analyze@v1
