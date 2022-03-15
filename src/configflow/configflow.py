@@ -1,4 +1,4 @@
-"""Module for the base configuration model."""
+"""Module for the base configuration class."""
 
 from __future__ import annotations
 
