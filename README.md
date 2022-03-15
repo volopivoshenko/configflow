@@ -46,7 +46,7 @@
 
 <p align="center">
   <a href="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml">
-    <img alt="integration" src="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml">
+    <img alt="integration" src="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml/badge.svg">
   </a>
   <a href="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml/badge.svg">
     <img alt="deployment" src="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml/badge.svg">
