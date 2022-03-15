@@ -48,8 +48,11 @@
   <a href="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml">
     <img alt="integration" src="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml/badge.svg">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml/badge.svg">
+  <a href="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml">
     <img alt="deployment" src="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml/badge.svg">
+  </a>
+  <a href="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/codeql.yaml">
+    <img alt="codeql" src="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/codeql.yaml/badge.svg">
   </a>
   <a href="https://configflow.readthedocs.io/en/latest">
     <img alt="docs" src="https://readthedocs.org/projects/configflow/badge/?version=latest">
