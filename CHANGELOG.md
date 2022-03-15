@@ -7,6 +7,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 <!--next-version-placeholder-->
 
+## v0.1.1 (2022-03-15)
+### Fix
+* Update base class ([`333c605`](https://github.com/volodymyrPivoshenko/configflow/commit/333c605a6329825a5f6c7da96d63e73eae7df61a))
+
 ## v0.1.0 (2022-02-01)
 
 ### Feature
