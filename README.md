@@ -97,6 +97,8 @@
 
 # Overview
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a65a343f3f084804a891a85714f5a3bd)](https://app.codacy.com/gh/volodymyrPivoshenko/configflow?utm_source=github.com&utm_medium=referral&utm_content=volodymyrPivoshenko/configflow&utm_campaign=Badge_Grade_Settings)
+
 `configflow` – is the configuration management package. It easily allows you to:
 
 - Load your configuration from files, environment variables, command-line arguments and more
