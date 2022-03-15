@@ -89,7 +89,7 @@
   </a>
 </p>
 
-<p align="center"> 
+<p align="center">
   <a href="https://www.buymeacoffee.com/volo.pivoshenko" target="_blank">
     <img alt="buymeacoffee" src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" height="25" width="100">
   </a>
