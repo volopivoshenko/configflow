@@ -5,6 +5,7 @@
 # Requires GitHub secrets
 # - GH_TOKEN
 # - PYPI_TOKEN
+# - SLACK_WEBHOOK_URL
 
 name: Deployment
 
@@ -17,29 +18,45 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
       - name: Install Python
+        id: install-python
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
           architecture: x64
       - name: Checkout repository
+        id: checkout-repository
         uses: actions/checkout@v2
       - name: Install dependencies
+        id: install-dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install poetry python-semantic-release
           python -m poetry install --no-dev
-      - name: Run semantic release
-        env:
-          github_token: ${{ secrets.GH_TOKEN }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Semantic release
+        id: semantic-release
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           semantic-release publish -D commit_author="github-actions <github-actions@github.com>" -v DEBUG
       - name: Build package
+        id: build-package
         run: python -m poetry build
       - name: Publish package
+        id: publish-package
         run: |
           python -m twine upload dist/* -u __token__ -p ${{ secrets.PYPI_TOKEN }} --skip-existing --verbose
+      - name: Send Slack notification
+        id: send-slack-notification
+        uses: act10ns/slack@v1
+        with:
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: "#configflow-releases"
+          config: .github/config/slack.yaml
+        if: always()
