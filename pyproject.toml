@@ -55,7 +55,6 @@ python-dotenv = "^0.19.2"
 toml = "^0.10.2"
 # utils
 awesome-pattern-matching = "^0.24.2"
-decorator = "^5.1.1"
 
 [tool.poetry.dev-dependencies]
 # formatters
@@ -71,7 +70,6 @@ pyproject-flake8 = "^0.0.1-alpha.2"
 # mypy stubs
 types-toml = "^0.10.4"
 types-PyYAML = "^6.0.4"
-types-decorator = "^5.1.4"
 # tests
 tox = "^3.24.5"
 pytest = "^6.2.5"
