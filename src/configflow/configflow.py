@@ -31,8 +31,7 @@ class ConfigurationMetaclass(pydantic.main.ModelMetaclass):
 
         if source is not None:
             kwargs_cp = copy.deepcopy(kwargs)
-            kwargs_cp = misc.dictionary.update(
-                kwargs_cp, source)  # type: ignore
+            kwargs_cp = misc.dictionary.update(kwargs_cp, source)  # type: ignore
             return super().__call__(**kwargs_cp)
 
         if self.Config.source is not None:  # type: ignore
