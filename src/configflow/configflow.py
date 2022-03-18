@@ -25,12 +25,14 @@ SourceType = Union[sources.abstract.Source, List[sources.abstract.Source]]
 class ConfigurationMetaclass(pydantic.main.ModelMetaclass):
     """Metaclass of the base configuration model."""
 
-    def __call__(self, source: Optional[SourceType] = None, **kwargs) -> None:  # type: ignore
+    # type: ignore
+    def __call__(self, source: Optional[SourceType] = None, **kwargs) -> None:
         """Implement singleton mechanism and populate attributes."""
 
         if source is not None:
             kwargs_cp = copy.deepcopy(kwargs)
-            kwargs_cp = misc.dictionary.update(kwargs_cp, source)  # type: ignore
+            kwargs_cp = misc.dictionary.update(
+                kwargs_cp, source)  # type: ignore
             return super().__call__(**kwargs_cp)
 
         if self.Config.source is not None:  # type: ignore
@@ -39,7 +41,8 @@ class ConfigurationMetaclass(pydantic.main.ModelMetaclass):
 
             if self._instance is None:  # type: ignore
                 self._instance = super().__call__(  # type: ignore
-                    **self._get_content(kwargs, self.Config.source),  # type: ignore
+                    # type: ignore
+                    **self._get_content(kwargs, self.Config.source),
                 )
 
             return self._instance  # type: ignore
