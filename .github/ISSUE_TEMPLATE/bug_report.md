@@ -6,10 +6,8 @@ labels: ''
 assignees: ''
 ---
 
-- [ ] I am on the [latest](https://github.com/volodymyrPivoshenko/configflow/releases/latest)
-  version.
-- [ ] I have searched the [issues](https://github.com/volodymyrPivoshenko/configflow/issues) of this
-  repo and believe that this is not a duplicate.
+- [ ] I am on the [latest](https://github.com/volodymyrPivoshenko/configflow/releases/latest) version.
+- [ ] I have searched the [issues](https://github.com/volodymyrPivoshenko/configflow/issues) of this repository and believe that this is not a duplicate.
 
 **Describe the bug**
 
@@ -31,10 +29,10 @@ If applicable, add screenshots to help explain your problem.
 
 **System (please complete the following information):**
 
-- OS: \[e.g. MacOS BigSur 11.6.1\]
-- Python version \[e.g. 3.8.12\]
-- `configflow` version \[e.g. 1.0.0\]
-- Link of a [gist](https://gist.github.com/) with the contents of your pyproject.toml file
+- OS: e.g. `MacOS BigSur 11.6.1`.
+- Python version: e.g. `3.8.12`.
+- `configflow` version: e.g.` 1.0.0`.
+- Link of a [gist](https://gist.github.com/) with the contents of your `pyproject.toml` file.
 
 **Additional context**
 
