@@ -1,9 +1,7 @@
 """Module for the base configuration class."""
-
 from __future__ import annotations
 
 import copy
-
 from typing import Any
 from typing import ClassVar
 from typing import Dict
@@ -12,7 +10,6 @@ from typing import Optional
 from typing import Union
 
 import pydantic
-
 from configflow import exceptions
 from configflow import misc
 from configflow import sources
