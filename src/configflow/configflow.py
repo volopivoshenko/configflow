@@ -69,9 +69,6 @@ class Configuration(pydantic.BaseModel, metaclass=ConfigurationMetaclass):
     --------
     In case when ``source`` was defined in ``Config`` it implements a singleton mechanism,
     which means returning the class instance every time the constructor is called.
-
-    Examples
-    --------
     """
 
     _instance: ClassVar[Optional[Configuration]] = None

@@ -50,7 +50,7 @@ python = ">=3.7,<3.10"
 # data types
 pydantic = "^1.9.0"
 # file types
-PyYAML = "^5.3.1"
+PyYAML = "^6.0.0"
 python-dotenv = "^0.19.2"
 toml = "^0.10.2"
 # utils
@@ -58,7 +58,6 @@ awesome-pattern-matching = "^0.24.2"
 
 [tool.poetry.dev-dependencies]
 # formatters
-pycln = "^1.2.0"
 isort = "^5.10.1"
 black = "^21.12b0"
 # linters
@@ -118,10 +117,6 @@ version_variable = [
     "src/configflow/__init__.py:__version__",
     "docs/conf.py:release"
 ]
-
-[tool.pycln]
-all = true
-exclude = "__init__.py"
 
 [tool.isort]
 profile = "black"
