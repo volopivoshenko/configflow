@@ -31,7 +31,7 @@ If applicable, add screenshots to help explain your problem.
 
 - OS: e.g. `MacOS BigSur 11.6.1`.
 - Python version: e.g. `3.8.12`.
-- `configflow` version: e.g.` 1.0.0`.
+- `configflow` version: e.g.`1.0.0`.
 - Link of a [gist](https://gist.github.com/) with the contents of your `pyproject.toml` file.
 
 **Additional context**
