@@ -29,7 +29,6 @@ clean-docs:
 	rm -rf docs/_build
 
 format:
-	poetry run pycln --config pyproject.toml .
 	poetry run isort --settings-path pyproject.toml .
 	poetry run black --config pyproject.toml .
 

@@ -106,7 +106,6 @@ poetry shell
 
 ### Code Formatters
 
-- [`pycln`](https://github.com/hadialqattan/pycln)
 - [`isort`](https://github.com/PyCQA/isort)
 - [`black`](https://github.com/psf/black)
 
