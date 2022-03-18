@@ -1,7 +1,6 @@
 """configflow - is the configuration management library for Python."""
 
 from configflow import sources
-from configflow.configflow import Configuration
 
 
 __title__ = "configflow"
@@ -16,4 +15,4 @@ __email__ = "volodymyr.pivoshenko@gmail.com"
 __license__ = "MIT"
 __copyright__ = "Copyright 2022, Volodymyr Pivoshenko"
 
-__all__ = ["sources", "Configuration"]
+__all__ = ["sources"]
