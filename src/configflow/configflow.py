@@ -14,7 +14,6 @@ from configflow import exceptions
 from configflow import misc
 from configflow import sources
 
-
 SourceType = Union[sources.abstract.Source, List[sources.abstract.Source]]
 
 
@@ -28,7 +27,8 @@ class ConfigurationMetaclass(pydantic.main.ModelMetaclass):
 
         if source is not None:
             kwargs_cp = copy.deepcopy(kwargs)
-            kwargs_cp = misc.dictionary.update(kwargs_cp, source)  # type: ignore
+            kwargs_cp = misc.dictionary.update(kwargs_cp,
+                                               source)  # type: ignore
             return super().__call__(**kwargs_cp)
 
         if self.Config.source is not None:  # type: ignore
@@ -38,8 +38,7 @@ class ConfigurationMetaclass(pydantic.main.ModelMetaclass):
             if self._instance is None:  # type: ignore
                 self._instance = super().__call__(  # type: ignore
                     # type: ignore
-                    **self._get_content(kwargs, self.Config.source),
-                )
+                    **self._get_content(kwargs, self.Config.source), )
 
             return self._instance  # type: ignore
 
@@ -47,7 +46,8 @@ class ConfigurationMetaclass(pydantic.main.ModelMetaclass):
 
     # WPS602 - it's better to put this method as part of the metaclass and keep it static
     @staticmethod
-    def _get_content(kwargs: Dict[str, Any], source: SourceType) -> Dict[str, Any]:  # noqa: WPS602
+    def _get_content(kwargs: Dict[str, Any],
+                     source: SourceType) -> Dict[str, Any]:  # noqa: WPS602
         """Get content of each configuration source."""
 
         kwargs_cp = copy.deepcopy(kwargs)
