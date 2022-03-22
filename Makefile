@@ -2,7 +2,7 @@
 clean: clean-python-cache clean-linters-cache clean-tests-cache clean-docs
 
 .PHONY: lint
-lint: lint-flake8 lint-mypy lint-packages
+lint: lint-flake8 lint-mypy
 
 .PHONY: tests
 tests: unittests
