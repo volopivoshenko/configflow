@@ -8,8 +8,10 @@ import sys
 from pathlib import Path
 from typing import Any
 from typing import Dict
-from typing import Literal
 from typing import Optional
+
+# TODO Remove with native typing or with pydantic validator
+from typing_extensions import Literal
 
 from configflow import exceptions
 from configflow import io
@@ -51,8 +53,8 @@ class FileSource(sources.abstract.Source):
         CommandLineArgumentError
             If a command-line argument doesn't have a value.
 
-        InvalidSourceError
-            If a source doesn't have filepath.
+        SourceError
+            If a source doesn't have a filepath.
 
         Examples
         --------
@@ -66,20 +68,30 @@ class FileSource(sources.abstract.Source):
         if self.path:
             filepath = self.path
 
-        elif self.environment_variable and os.getenv(self.environment_variable):
+        elif self.environment_variable:
             filepath = Path(os.getenv(self.environment_variable, ""))
 
-        elif self.command_line_argument and self.command_line_argument in sys.argv:
-            index = sys.argv.index(self.command_line_argument)
+        elif self.command_line_argument:
+            try:
+                index = sys.argv.index(self.command_line_argument)
+
+            except ValueError:
+                raise exceptions.sources.CommandLineArgumentError(
+                    msg="Argument {0!r} doesn't not exist.",
+                    command_line_argument=self.command_line_argument,
+                )
 
             try:
                 filepath = Path(sys.argv[index + 1])
 
             except IndexError:
-                raise exceptions.sources.CommandLineArgumentError(self.command_line_argument)
+                raise exceptions.sources.CommandLineArgumentError(
+                    msg="Argument {0!r} doesn't have value.",
+                    command_line_argument=self.command_line_argument,
+                )
 
         else:
-            raise exceptions.sources.InvalidSourceError(
+            raise exceptions.sources.SourceError(
                 msg="Configuration filepath is not set.",
                 source=self,
             )

@@ -1,4 +1,4 @@
-"""Configuration of the tests."""
+"""Tests configuration."""
 
 from typing import Any
 from typing import Dict
@@ -8,21 +8,21 @@ import pytest
 
 @pytest.fixture(scope="module")
 def expected_ini_dict() -> Dict[str, Any]:
-    """Get the expected dictionary - content of the fixture files."""
+    """Get the expected dictionary - content of the fixture file."""
 
     return {
         "databases.postgres": {
             "user": "admin",
             "password": "admin",
             "host": "localhost",
-            "port": 5432,
+            "port": "5432",
             "schema": "public",
         },
         "databases.mysql": {
             "user": "admin",
             "password": "admin",
             "host": "localhost",
-            "port": 5001,
+            "port": "5001",
             "schema": "PUBLIC",
         },
         "databases.kafka.consumer": {
@@ -50,26 +50,26 @@ def expected_ini_dict() -> Dict[str, Any]:
             "class": "logging.handlers.RotatingFileHandler",
             "formatter": "default",
             "filename": "logconfig.log",
-            "max_bytes": 1024,
-            "backup_count": 3,
+            "max_bytes": "1024",
+            "backup_count": "3",
         },
     }
 
 
 @pytest.fixture(scope="module")
 def expected_dotenv_dict() -> Dict[str, Any]:
-    """Get the expected dictionary - content of the fixture files."""
+    """Get the expected dictionary - content of the fixture file."""
 
     return {
         "DATABASES.POSTGRES.USER": "admin",
         "DATABASES.POSTGRES.PASSWORD": "admin",
         "DATABASES.POSTGRES.HOST": "localhost",
-        "DATABASES.POSTGRES.PORT": 5432,
+        "DATABASES.POSTGRES.PORT": "5432",
         "DATABASES.POSTGRES.SCHEMA": "public",
         "DATABASES.MYSQL.USER": "admin",
         "DATABASES.MYSQL.PASSWORD": "admin",
         "DATABASES.MYSQL.HOST": "localhost",
-        "DATABASES.MYSQL.PORT": 5001,
+        "DATABASES.MYSQL.PORT": "5001",
         "DATABASES.MYSQL.SCHEMA": "public",
         "DATABASES.KAFKA.CONSUMER.BOOTSTRAP_SERVERS": "localhost:9092",
         "DATABASES.KAFKA.CONSUMER.AUTO_OFFSET_RESET": "earliest",
@@ -95,14 +95,14 @@ def expected_dotenv_dict() -> Dict[str, Any]:
         "LOGGER.HANDLERS.FILE.CLASS": "logging.handlers.RotatingFileHandler",
         "LOGGER.HANDLERS.FILE.FORMATTER": "default",
         "LOGGER.HANDLERS.FILE.FILENAME": "logconfig.log",
-        "LOGGER.HANDLERS.FILE.MAX_BYTES": 1024,
-        "LOGGER.HANDLERS.FILE.BACKUP_COUNT": 3,
+        "LOGGER.HANDLERS.FILE.MAX_BYTES": "1024",
+        "LOGGER.HANDLERS.FILE.BACKUP_COUNT": "3",
     }
 
 
 @pytest.fixture(scope="module")
 def expected_yaml_dict() -> Dict[str, Any]:
-    """Get the expected dictionary - content of the fixture files."""
+    """Get the expected dictionary - content of the fixture file."""
 
     return {
         "databases": {

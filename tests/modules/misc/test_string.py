@@ -33,4 +33,4 @@ def test_parse(
     """Test ``parse`` function."""
 
     assert misc.string.parse(input_value) == expected_value
-    assert misc.string.parse(expected_value) == expected_value  # type: ignore
+    assert misc.string.parse(expected_value) == expected_value

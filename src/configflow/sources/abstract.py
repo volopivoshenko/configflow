@@ -13,6 +13,14 @@ class Source(pydantic.BaseModel):
 
     @property
     def content(self) -> Dict[str, Any]:
-        """Get content of a source."""
+        """Get content of a source.
+
+        Examples
+        --------
+        >>> Source().content
+        Traceback (most recent call last):
+        ...
+        NotImplementedError
+        """
 
         raise NotImplementedError

@@ -80,8 +80,7 @@ def update(to_dictionary: Dict[str, Any], from_dictionary: Dict[str, Any]) -> Di
     ... "timeout": 10,
     ... }
     >>> update(to_dict, from_dict)
-    {'db': {'host': 'localhost', 'ports': {'v1': 8000, 'v2': 5000, 'v3': 80}},
-     'hub': {'env': 'dev', 'auth': 'basic'}, 'timeout': 10, 'warnings': 'suppress'}
+    {'db': {'host': 'localhost', 'ports': {'v1': 8000, 'v2': 5000, 'v3': 80}}, ...}
     """
 
     updated_dictionary = copy.deepcopy(to_dictionary)
@@ -116,14 +115,12 @@ def make_flat(
     ... "timeout": 10,
     ... }
     >>> make_flat(nested_dict, separator="_")
-    {'db_host': 'localhost', 'db_ports_v1': 8080, 'db_ports_v2': 5000, 'hub_env': 'prod',
-     'hub_auth': 'basic', 'hub_ports': [80, 50], 'timeout': 10}
+    {'db_host': 'localhost', 'db_ports_v1': 8080, 'db_ports_v2': 5000, 'hub_env': 'prod', ...}
     """
 
     flatten_pairs = []  # type: ignore
 
-    # WPS110 - in this context value is a dummy and abstract name
-    for key, value in dictionary.items():  # noqa: WPS110
+    for key, value in dictionary.items():
         new_key = "".join((parent_key, separator, key)) if parent_key else key
 
         if isinstance(value, dict):
@@ -160,14 +157,12 @@ def make_nested(dictionary: Dict[str, Any], separator: str) -> Dict[str, Any]:  
     ... "timeout": 10,
     ... }
     >>> make_nested(flat_dict, separator="_")
-    {'db': {'host': 'localhost', 'ports': {'v1': 8080, 'v2': 5000}}, 'hub':
-     {'env': 'prod', 'auth': 'basic', 'ports': {'0': 80, '1': 50}}, 'timeout': 10}
+    {'db': {'host': 'localhost', 'ports': {'v1': 8080, 'v2': 5000}}, ...}
     """
 
     nested_dictionary: Dict[str, Any] = {}
 
-    # WPS110 - in this context value is a dummy and abstract name
-    for key, value in dictionary.items():  # noqa: WPS110
+    for key, value in dictionary.items():
         if separator in key:
             inner_keys = key.split(separator)
             inner_dictionary = nested_dictionary

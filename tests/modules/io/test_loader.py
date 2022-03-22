@@ -24,33 +24,33 @@ from configflow import io
         (
             "tests/fixtures/example.ini",
             io.ini.load,
-            pytest.lazy_fixture("expected_ini_dict"),  # type: ignore[attr-defined]
+            pytest.lazy_fixture("expected_ini_dict"),
         ),
         (
             "tests/fixtures/example.env",
             io.dotenv.load,
-            pytest.lazy_fixture("expected_dotenv_dict"),  # type: ignore[attr-defined]
+            pytest.lazy_fixture("expected_dotenv_dict"),
         ),
         (
             "tests/fixtures/example.yaml",
             yaml.safe_load,
-            pytest.lazy_fixture("expected_yaml_dict"),  # type: ignore[attr-defined]
+            pytest.lazy_fixture("expected_yaml_dict"),
         ),
         (
             "tests/fixtures/example.json",
             json.load,
-            pytest.lazy_fixture("expected_yaml_dict"),  # type: ignore[attr-defined]
+            pytest.lazy_fixture("expected_yaml_dict"),
         ),
         (
             "tests/fixtures/example.toml",
             toml.load,
-            pytest.lazy_fixture("expected_yaml_dict"),  # type: ignore[attr-defined]
+            pytest.lazy_fixture("expected_yaml_dict"),
         ),
         pytest.param(
-            "tests/fixtures/example.config",
+            "tests/fixtures/example.conf",
             toml.load,
-            pytest.lazy_fixture("expected_yaml_dict"),  # type: ignore[attr-defined]
-            marks=pytest.mark.xfail(raises=exceptions.io.InvalidFileTypeError),
+            pytest.lazy_fixture("expected_yaml_dict"),
+            marks=pytest.mark.xfail(raises=exceptions.io.FileTypeError),
         ),
     ],
 )
@@ -59,7 +59,7 @@ def test_get_loader(
     expected_loader: ModuleType,
     expected_dict: Dict[str, Any],
 ) -> None:
-    """Test ``get_loader | load`` functions."""
+    """Test ``get_loader & load`` functions."""
 
     loader = io.loader.get_loader(Path(filepath))
 
