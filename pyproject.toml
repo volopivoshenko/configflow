@@ -99,7 +99,7 @@ deepdiff = "^5.7.0"
 # security fix
 cryptography = "^36.0.1"
 cffi = "^1.15.0"
-keyring = "21.8.0"
+keyring = "23.5.0"
 packaging = "20.9"
 # repl
 ipython = "^7.31.1"
