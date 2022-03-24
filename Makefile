@@ -40,7 +40,6 @@ lint-mypy:
 
 lint-packages:
 	poetry check
-	poetry run pip check
 	poetry run safety check --full-report
 
 unittests:
