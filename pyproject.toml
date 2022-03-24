@@ -63,7 +63,7 @@ black = "^21.12b0"
 # linters
 wemake-python-styleguide = "^0.16.0"
 safety = "^1.10.3"
-mypy = "^0.931"
+mypy = "^0.941"
 # flake8 extensions
 pyproject-flake8 = "^0.0.1-alpha.2"
 # mypy stubs
