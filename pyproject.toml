@@ -59,7 +59,7 @@ awesome-pattern-matching = "^0.24.2"
 [tool.poetry.dev-dependencies]
 # formatters
 isort = "^5.10.1"
-black = "^21.12b0"
+black = "^22.1"
 # linters
 wemake-python-styleguide = "^0.16.0"
 safety = "^1.10.3"
