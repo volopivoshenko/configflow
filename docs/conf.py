@@ -35,6 +35,8 @@ extensions = [
     "autodocsumm",
 ]
 
+autosummary_generate = True
+
 napoleon_google_docstring = False
 napoleon_numpy_docstring = True
 napoleon_include_init_with_doc = True
