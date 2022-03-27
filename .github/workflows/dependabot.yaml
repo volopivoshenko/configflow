@@ -7,6 +7,8 @@ name: Dependabot auto merge
 
 on:
   pull_request:
+    branches:
+      - main
 
 jobs:
   auto-merge:
