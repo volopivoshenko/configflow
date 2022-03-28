@@ -147,7 +147,3 @@ Of course, you can also install these requirements manually with `pip install ..
 # Examples
 
 # See Also
-
-1. [dynaconf](https://www.dynaconf.com)
-2. [pydantic](https://pydantic-docs.helpmanual.io/usage/settings/)
-3. [confz](https://github.com/Zuehlke/ConfZ)
