@@ -86,9 +86,8 @@ pytest-sugar = "^0.9.4"
 coverage = { extras = ["toml"], version = "^6.3.1" }
 # documentation
 Sphinx = "^4.4.0"
-sphinx-book-theme = "^0.2.0"
+sphinx-rtd-theme = "^1.0.0"
 # sphinx extensions
-autodocsumm = "^0.2.7"
 # file types
 lxml = "^4.8.0"
 # github

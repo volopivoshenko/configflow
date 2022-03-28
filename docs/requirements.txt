@@ -1,3 +1,2 @@
 sphinx==4.4.0
-sphinx-book-theme>=0.2.0
-autodocsumm==0.2.7
+sphinx-rtd-theme==1.0.0
