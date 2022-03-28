@@ -5,7 +5,6 @@ clean: clean-python-cache clean-linters-cache clean-tests-cache clean-docs
 lint: lint-flake8 lint-mypy
 
 .PHONY: tests
-tests: unittests
 
 .PHONY: format
 
@@ -27,6 +26,7 @@ clean-linters-cache:
 
 clean-docs:
 	rm -rf docs/_build
+	rm -rf docs/_sources
 
 format:
 	poetry run isort --settings-path pyproject.toml .
@@ -42,8 +42,5 @@ lint-packages:
 	poetry check
 	poetry run safety check --full-report
 
-unittests:
+tests:
 	poetry run pytest
-
-doctests:
-	poetry run xdoctest -m src/configflow
