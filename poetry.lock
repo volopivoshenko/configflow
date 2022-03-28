@@ -57,7 +57,7 @@ Sphinx = ">=2.2,<5.0"
 
 [[package]]
 name = "awesome-pattern-matching"
-version = "0.24.2"
+version = "0.24.3"
 description = "Awesome Pattern Matching"
 category = "main"
 optional = false
@@ -1805,8 +1805,8 @@ autodocsumm = [
     {file = "autodocsumm-0.2.7.tar.gz", hash = "sha256:cea7e2f900e5ac10baa6e831683e9241b0892226210609c087b94f109e0f6ab6"},
 ]
 awesome-pattern-matching = [
-    {file = "awesome-pattern-matching-0.24.2.tar.gz", hash = "sha256:c947baa12e15a617311ed829fd91936362e5f417c7aff04890842b73e1091a5a"},
-    {file = "awesome_pattern_matching-0.24.2-py3-none-any.whl", hash = "sha256:e7abc10f0d48feb2e86fb8738a640cc4dae19a6ce06cb63b9942d02dc5ddb35d"},
+    {file = "awesome-pattern-matching-0.24.3.tar.gz", hash = "sha256:8d4e8d154b789ec5faec429f981f74e3db9bb1df09afaf096b257ab06dd187c9"},
+    {file = "awesome_pattern_matching-0.24.3-py3-none-any.whl", hash = "sha256:fbb3eb18caa400e5528e7dd2dffd3e426643725e4e0e0e671047b3a3d3b32dd0"},
 ]
 babel = [
     {file = "Babel-2.9.1-py2.py3-none-any.whl", hash = "sha256:ab49e12b91d937cd11f0b67cb259a57ab4ad2b59ac7a3b41d6c06c0ac5b0def9"},
