@@ -20,8 +20,8 @@ def deep_map(
 ) -> Dict[str, Any]:
     """Apply a function to the values of a dictionary.
 
-    Notes
-    -----
+    Note
+    ----
     If a value is a sequence ``list | set | tuple`` then a function will be applied
     to each element of a sequence.
 
@@ -102,8 +102,8 @@ def make_flat(
 ) -> Dict[str, Any]:
     """Make a nested dictionary flat.
 
-    Notes
-    -----
+    Note
+    ----
     If a value is a sequence ``list | tuple | set`` then ``make_flat``
     will use numerical indices as key identifiers.
 

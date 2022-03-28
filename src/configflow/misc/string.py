@@ -15,8 +15,8 @@ import apm
 class ErrorMessage(str):  # noqa: WPS600
     """Implementation of the error message.
 
-    Notes
-    -----
+    Note
+    ----
     By default, error messages in the exceptions don't support line breaks
     or any formatting, this decorator is solving that problem.
 
@@ -48,8 +48,8 @@ class ErrorMessage(str):  # noqa: WPS600
 def parse(value: str) -> Optional[Any]:
     """Parse a string value to the appropriate Python object.
 
-    Notes
-    -----
+    Note
+    ----
     If a value is a sequence ``list | tuple | set`` then ``parse`` function will be applied
     to each element of a sequence.
 
