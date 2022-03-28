@@ -2,11 +2,6 @@
 Welcome to configflow's documentation!
 ======================================
 
-.. autosummary::
-    :toctree: core
-    :recursive:
-
-    configflow.exceptions
 Overview
 ========
 
