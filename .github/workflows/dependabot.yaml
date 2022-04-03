@@ -3,7 +3,7 @@
 # Requires GitHub secrets
 # - GH_TOKEN
 
-name: Dependabot auto merge
+name: Dependabot
 
 on:
   pull_request:
