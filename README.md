@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://choosealicense.com/licenses/mit">
-    <img alt="license" src="https://img.shields.io/badge/License-MIT-red">
+    <img alt="license" src="https://img.shields.io/badge/License-BSD_3--Clause-red.svg">
   </a>
   <a href="https://pypi.org/project/configflow">
     <img alt="python" src="https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9-blue">
