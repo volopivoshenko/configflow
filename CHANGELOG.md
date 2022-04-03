@@ -7,6 +7,28 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 <!--next-version-placeholder-->
 
+## v0.2.0 (2022-04-03)
+### Feature
+* Update LICENSE ([`04dde3f`](https://github.com/volodymyrPivoshenko/configflow/commit/04dde3f5b9981a6111900f7f544984a81ca25269))
+* Add `FileSource` ([`dc6b3ae`](https://github.com/volodymyrPivoshenko/configflow/commit/dc6b3ae7b1aaca079a357260cca65199d01b986a))
+
+### Documentation
+* Update LICENSE ([`5e2146e`](https://github.com/volodymyrPivoshenko/configflow/commit/5e2146e458ae5ae5eaa6854bc145ded761e0f9c1))
+* Update LICENSE ([`a856932`](https://github.com/volodymyrPivoshenko/configflow/commit/a856932ab47b551258f19c60a5dd959e2f4ad539))
+* Apply formatter ([`4bd115a`](https://github.com/volodymyrPivoshenko/configflow/commit/4bd115abe954114196348a1320eb2ef9484234af))
+* Apply formatter ([`0dd5852`](https://github.com/volodymyrPivoshenko/configflow/commit/0dd5852c269c03fcbfe3134423ec2095b30c2ea6))
+* Remove outdated badge ([`6b76e19`](https://github.com/volodymyrPivoshenko/configflow/commit/6b76e194e2242393f14ec1607659f6c0c02c50e4))
+* Update `note` directive ([`d9d6cb3`](https://github.com/volodymyrPivoshenko/configflow/commit/d9d6cb3950c228d377f0187992cc3d59b905fd11))
+* Add a template for classes, exceptions, enums ([`40577c1`](https://github.com/volodymyrPivoshenko/configflow/commit/40577c12ec2fd900cb84d86761e065806610c538))
+* Add a template for classes, exceptions, enums ([`ea31c62`](https://github.com/volodymyrPivoshenko/configflow/commit/ea31c62e11c3cef3696d04ad2032a38a8d57cf0f))
+* Update theme ([`d82b6b2`](https://github.com/volodymyrPivoshenko/configflow/commit/d82b6b2131c0a13bfe44334b0b80db5a35210e0d))
+* Update theme ([`04054cb`](https://github.com/volodymyrPivoshenko/configflow/commit/04054cbff8c6160cbc3f8a8f5451bb7577f6fe00))
+* Add module template ([`008a403`](https://github.com/volodymyrPivoshenko/configflow/commit/008a40353d0f1578f13cbf3ae51b0f93582d019b))
+* Add `closed-issues` badge ([`773ce0e`](https://github.com/volodymyrPivoshenko/configflow/commit/773ce0ebdc3137d81f5843ad51ae1510b35908cd))
+* Update indents and tabs ([`55b9977`](https://github.com/volodymyrPivoshenko/configflow/commit/55b9977ea12644681c3845e99c65f495a03274ab))
+* Update logo ([`bef38a3`](https://github.com/volodymyrPivoshenko/configflow/commit/bef38a3eb3391582172934818db962141c4efd81))
+* Remove old logo ([`d2870a3`](https://github.com/volodymyrPivoshenko/configflow/commit/d2870a377df9b3c55d8692cfcc02ca1f1d380fbd))
+
 ## v0.1.2 (2022-03-16)
 
 ### Fix
