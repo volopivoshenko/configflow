@@ -2,17 +2,19 @@
 
 from __future__ import annotations
 
-from typing import Any
-from typing import Dict
+import typing
 
 import pydantic
+
+
+DictType = typing.Dict[str, typing.Any]
 
 
 class Source(pydantic.BaseModel):
     """An abstract source of a configuration."""
 
     @property
-    def content(self) -> Dict[str, Any]:
+    def content(self) -> DictType:
         """Get content of a source.
 
         Examples

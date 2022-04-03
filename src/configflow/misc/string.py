@@ -3,9 +3,7 @@
 from __future__ import annotations
 
 import ast
-
-from typing import Any
-from typing import Optional
+import typing
 
 import apm
 
@@ -45,7 +43,7 @@ class ErrorMessage(str):  # noqa: WPS600
         return self.__str__()
 
 
-def parse(value: str) -> Optional[Any]:
+def parse(value: str) -> typing.Optional[typing.Any]:
     """Parse a string value to the appropriate Python object.
 
     Note

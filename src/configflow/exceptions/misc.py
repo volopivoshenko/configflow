@@ -3,9 +3,7 @@
 from __future__ import annotations
 
 import json
-
-from typing import Any
-from typing import Dict
+import typing
 
 from configflow import misc
 
@@ -13,7 +11,7 @@ from configflow import misc
 class EmptyKeyError(Exception):
     """Raises if a dictionary contains an empty key."""
 
-    def __init__(self, dictionary: Dict[str, Any]) -> None:
+    def __init__(self, dictionary: typing.Dict[str, typing.Any]) -> None:
         """Initialize.
 
         Examples
@@ -33,7 +31,7 @@ class EmptyKeyError(Exception):
 class DuplicatedKeyError(Exception):
     """Raises if a dictionary contains a duplicated key."""
 
-    def __init__(self, key: str, dictionary: Dict[str, Any]) -> None:
+    def __init__(self, key: str, dictionary: typing.Dict[str, typing.Any]) -> None:
         """Initialize.
 
         Examples

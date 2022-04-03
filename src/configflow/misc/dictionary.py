@@ -3,21 +3,18 @@
 from __future__ import annotations
 
 import copy
-
-from typing import Any
-from typing import Callable
-from typing import Dict
-from typing import Optional
+import typing
 
 import apm
 
 from configflow import exceptions
 
 
-def deep_map(
-    function: Callable[[Any], Any],
-    dictionary: Dict[str, Any],
-) -> Dict[str, Any]:
+FunctionType = typing.Callable[[typing.Any], typing.Any]
+DictType = typing.Dict[str, typing.Any]
+
+
+def deep_map(function: FunctionType, dictionary: DictType) -> DictType:
     """Apply a function to the values of a dictionary.
 
     Note
@@ -63,7 +60,7 @@ def deep_map(
     )
 
 
-def update(to_dictionary: Dict[str, Any], from_dictionary: Dict[str, Any]) -> Dict[str, Any]:
+def update(to_dictionary: DictType, from_dictionary: DictType) -> DictType:
     """Update values of a dictionary based on another dictionary.
 
     Examples
@@ -96,10 +93,10 @@ def update(to_dictionary: Dict[str, Any], from_dictionary: Dict[str, Any]) -> Di
 
 
 def make_flat(
-    dictionary: Dict[str, Any],
+    dictionary: DictType,
     separator: str,
-    parent_key: Optional[str] = None,
-) -> Dict[str, Any]:
+    parent_key: typing.Optional[str] = None,
+) -> DictType:
     """Make a nested dictionary flat.
 
     Note
@@ -133,7 +130,7 @@ def make_flat(
     return dict(flatten_pairs)
 
 
-def make_nested(dictionary: Dict[str, Any], separator: str) -> Dict[str, Any]:  # noqa: WPS231
+def make_nested(dictionary: DictType, separator: str) -> DictType:  # noqa: WPS231
     """Make a flat dictionary nested.
 
     Raises
@@ -160,14 +157,14 @@ def make_nested(dictionary: Dict[str, Any], separator: str) -> Dict[str, Any]:  
     {'db': {'host': 'localhost', 'ports': {'v1': 8080, 'v2': 5000}}, ...}
     """
 
-    nested_dictionary: Dict[str, Any] = {}
+    nested_dictionary: DictType = {}
 
     for key, value in dictionary.items():
         if separator in key:
             inner_keys = key.split(separator)
             inner_dictionary = nested_dictionary
 
-            for index, inner_key in enumerate(inner_keys):
+            for index, inner_key in enumerate(key.split(separator)):
                 if inner_key == "":
                     raise exceptions.misc.EmptyKeyError(dictionary)
 

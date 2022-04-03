@@ -1,13 +1,15 @@
 """Tests configuration."""
 
-from typing import Any
-from typing import Dict
+import typing
 
 import pytest
 
 
+DictType = typing.Dict[str, typing.Any]
+
+
 @pytest.fixture(scope="module")
-def expected_ini_dict() -> Dict[str, Any]:
+def expected_ini_dict() -> DictType:
     """Get the expected dictionary - content of the fixture file."""
 
     return {
@@ -57,7 +59,7 @@ def expected_ini_dict() -> Dict[str, Any]:
 
 
 @pytest.fixture(scope="module")
-def expected_dotenv_dict() -> Dict[str, Any]:
+def expected_dotenv_dict() -> DictType:
     """Get the expected dictionary - content of the fixture file."""
 
     return {
@@ -101,7 +103,7 @@ def expected_dotenv_dict() -> Dict[str, Any]:
 
 
 @pytest.fixture(scope="module")
-def expected_yaml_dict() -> Dict[str, Any]:
+def expected_yaml_dict() -> DictType:
     """Get the expected dictionary - content of the fixture file."""
 
     return {

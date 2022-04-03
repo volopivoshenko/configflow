@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
+import typing
 import warnings
 
-from typing import Any
-from typing import Callable
+
+FunctionType = typing.Callable[[typing.Any], typing.Any]
 
 
-def deprecated(function: Callable[[Any], Any]) -> Any:
+def deprecated(function: FunctionType) -> typing.Any:
     """Show warning about the depreciation of a function or method.
 
     Examples
@@ -23,7 +24,7 @@ def deprecated(function: Callable[[Any], Any]) -> Any:
     [<warnings.WarningMessage object at ...]
     """
 
-    def wrapper(*args, **kwargs) -> Any:
+    def wrapper(*args, **kwargs) -> typing.Any:
         """Show warning about the depreciation of a function or method."""
 
         warnings.warn("Function {0!r} is deprecated.".format(function.__name__), DeprecationWarning)

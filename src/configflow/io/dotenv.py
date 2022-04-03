@@ -6,15 +6,16 @@ because it doesn't provide a common Python IO interface ``load | loads``.
 
 from __future__ import annotations
 
-from io import StringIO
-from typing import Any
-from typing import Dict
-from typing import TextIO
+import io
+import typing
 
-from dotenv import dotenv_values
+import dotenv
 
 
-def loads(stream: str) -> Dict[str, Any]:
+DictType = typing.Dict[str, typing.Any]
+
+
+def loads(stream: str) -> DictType:
     r"""Parse the stream and produce the corresponding Python object.
 
     Examples
@@ -24,10 +25,10 @@ def loads(stream: str) -> Dict[str, Any]:
     {'DB_HOST': 'localhost', 'DB_PORT': '8080'}
     """
 
-    return dict(dotenv_values(stream=StringIO(stream)))
+    return dict(dotenv.dotenv_values(stream=io.StringIO(stream)))
 
 
-def load(file_fp: TextIO) -> Dict[str, Any]:
+def load(file_fp: typing.TextIO) -> DictType:
     """Parse the file in a stream and produce the corresponding Python object.
 
     Examples

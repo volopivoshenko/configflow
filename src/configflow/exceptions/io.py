@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Type
+import typing
+import pathlib
 
 from configflow import io
 from configflow import misc
@@ -12,13 +12,17 @@ from configflow import misc
 class FileTypeError(Exception):
     """Raises if a file has the unsupported type."""
 
-    def __init__(self, filepath: Path, supported_types: Type[io.loader.FileType]) -> None:
+    def __init__(
+        self,
+        filepath: pathlib.Path,
+        supported_types: typing.Type[io.loader.FileType],
+    ) -> None:
         """Initialize.
 
         Examples
         --------
         >>> raise FileTypeError(
-        ...     filepath=Path("example.conf"),
+        ...     filepath=pathlib.Path("example.conf"),
         ...     supported_types=io.loader.FileType,
         ... )
         Traceback (most recent call last):

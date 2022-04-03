@@ -3,11 +3,9 @@
 from __future__ import annotations
 
 import json
-
-from pathlib import Path
-from types import ModuleType
-from typing import Any
-from typing import Dict
+import types
+import typing
+import pathlib
 
 import toml
 import yaml
@@ -16,6 +14,9 @@ import deepdiff
 
 from configflow import exceptions
 from configflow import io
+
+
+DictType = typing.Dict[str, typing.Any]
 
 
 @pytest.mark.parametrize(
@@ -56,12 +57,12 @@ from configflow import io
 )
 def test_get_loader(
     filepath: str,
-    expected_loader: ModuleType,
-    expected_dict: Dict[str, Any],
+    expected_loader: types.ModuleType,
+    expected_dict: DictType,
 ) -> None:
     """Test ``get_loader & load`` functions."""
 
-    loader = io.loader.get_loader(Path(filepath))
+    loader = io.loader.get_loader(pathlib.Path(filepath))
 
     with open(filepath, "r") as fixture_file:
         out_dict = loader(fixture_file)

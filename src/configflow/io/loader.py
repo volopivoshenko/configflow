@@ -4,12 +4,8 @@ from __future__ import annotations
 
 import enum
 import json
-
-from pathlib import Path
-from typing import Any
-from typing import Callable
-from typing import Dict
-from typing import TextIO
+import typing
+import pathlib
 
 import apm
 import toml
@@ -17,6 +13,9 @@ import yaml
 
 from configflow import exceptions
 from configflow import io
+
+
+LoaderType = typing.Callable[[typing.TextIO], typing.Dict[str, typing.Any]]
 
 
 class FileType(enum.Enum):
@@ -43,7 +42,7 @@ class FileType(enum.Enum):
         return self.name
 
 
-def get_loader(filepath: Path) -> Callable[[TextIO], Dict[str, Any]]:
+def get_loader(filepath: pathlib.Path) -> LoaderType:
     """Get a load function based on a file type.
 
     Raises
@@ -53,7 +52,7 @@ def get_loader(filepath: Path) -> Callable[[TextIO], Dict[str, Any]]:
 
     Examples
     --------
-    >>> get_loader(Path(".env"))
+    >>> get_loader(pathlib.Path(".env"))
     <function load at ...>
     """
 

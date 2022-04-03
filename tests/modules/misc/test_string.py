@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+import typing
 
 import pytest
 
@@ -26,10 +26,7 @@ from configflow import misc
         ),
     ],
 )
-def test_parse(
-    input_value: str,
-    expected_value: Union[str, int, float],
-) -> None:
+def test_parse(input_value: str, expected_value: typing.Union[str, int, float]) -> None:
     """Test ``parse`` function."""
 
     assert misc.string.parse(input_value) == expected_value

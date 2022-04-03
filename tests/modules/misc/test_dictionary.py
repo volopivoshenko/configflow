@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 
+import typing
 import functools
-
-from typing import Any
-from typing import Callable
-from typing import Dict
 
 import pytest
 import deepdiff
 
 from configflow import exceptions
 from configflow import misc
+
+
+FunctionType = typing.Callable[[typing.Any], typing.Any]
+DictType = typing.Dict[str, typing.Any]
 
 
 @pytest.mark.parametrize(
@@ -41,11 +42,7 @@ from configflow import misc
         ),
     ],
 )
-def test_deep_map(
-    func: Callable[[Any], Any],
-    input_dict: Dict[str, Any],
-    expected_dict: Dict[str, Any],
-) -> None:
+def test_deep_map(func: FunctionType, input_dict: DictType, expected_dict: DictType) -> None:
     """Test ``deep_map`` function."""
 
     out_dict = misc.dictionary.deep_map(func, input_dict)
@@ -94,11 +91,7 @@ def test_deep_map(
         ),
     ],
 )
-def test_update(
-    to_dict: Dict[str, Any],
-    from_dict: Dict[str, Any],
-    expected_dict: Dict[str, Any],
-) -> None:
+def test_update(to_dict: DictType, from_dict: DictType, expected_dict: DictType) -> None:
     """Test ``update`` function."""
 
     out_dict = misc.dictionary.update(to_dict, from_dict)
@@ -144,11 +137,7 @@ def test_update(
         ),
     ],
 )
-def test_make_flat(
-    separator: str,
-    input_dict: Dict[str, Any],
-    expected_dict: Dict[str, Any],
-) -> None:
+def test_make_flat(separator: str, input_dict: DictType, expected_dict: DictType) -> None:
     """Test ``make_flat`` function."""
 
     out_dict = misc.dictionary.make_flat(input_dict, separator)
@@ -258,11 +247,7 @@ def test_make_flat(
         ),
     ],
 )
-def test_make_nested(
-    separator: str,
-    input_dict: Dict[str, Any],
-    expected_dict: Dict[str, Any],
-) -> None:
+def test_make_nested(separator: str, input_dict: DictType, expected_dict: DictType) -> None:
     """Test ``make_nested`` function."""
 
     out_dict = misc.dictionary.make_nested(input_dict, separator)
