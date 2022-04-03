@@ -7,6 +7,14 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 <!--next-version-placeholder-->
 
+## v0.3.0 (2022-04-03)
+### Feature
+* Update badges ([`c25c38a`](https://github.com/volodymyrPivoshenko/configflow/commit/c25c38a2b1c259052025dda6b77103c5a076f1c9))
+
+### Documentation
+* Update LICENSE badge ([`881e17f`](https://github.com/volodymyrPivoshenko/configflow/commit/881e17f9b6acb769450bf481c498707e8fddb45b))
+* Update LICENSE badge ([`8428e40`](https://github.com/volodymyrPivoshenko/configflow/commit/8428e40fd7e19798e6cce68e7424719af758a009))
+
 ## v0.2.0 (2022-04-03)
 ### Feature
 * Update LICENSE ([`04dde3f`](https://github.com/volodymyrPivoshenko/configflow/commit/04dde3f5b9981a6111900f7f544984a81ca25269))
