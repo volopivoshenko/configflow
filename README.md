@@ -75,9 +75,6 @@
   <a href="https://codeclimate.com/github/volodymyrPivoshenko/configflow/maintainability">
     <img alt="codeclimate" src="https://api.codeclimate.com/v1/badges/c51574700d1cef487866/maintainability">
   </a>
-  <a href="https://app.codacy.com">
-    <img alt="codacy" src="https://app.codacy.com/project/badge/Grade/6ca9ed120fc8409da2d12c27ffa5509d">
-  </a>
 </p>
 
 <p align="center">
