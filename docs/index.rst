@@ -2,11 +2,6 @@
 Welcome to configflow's documentation!
 ======================================
 
-.. toctree::
-    :maxdepth: 1
-    :caption: Table of Contents
-
-
 Overview
 ========
 

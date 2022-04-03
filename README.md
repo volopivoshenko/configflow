@@ -75,9 +75,6 @@
   <a href="https://codeclimate.com/github/volodymyrPivoshenko/configflow/maintainability">
     <img alt="codeclimate" src="https://api.codeclimate.com/v1/badges/c51574700d1cef487866/maintainability">
   </a>
-  <a href="https://app.codacy.com">
-    <img alt="codacy" src="https://app.codacy.com/project/badge/Grade/6ca9ed120fc8409da2d12c27ffa5509d">
-  </a>
 </p>
 
 <p align="center">
@@ -147,7 +144,3 @@ Of course, you can also install these requirements manually with `pip install ..
 # Examples
 
 # See Also
-
-1. [dynaconf](https://www.dynaconf.com)
-2. [pydantic](https://pydantic-docs.helpmanual.io/usage/settings/)
-3. [confz](https://github.com/Zuehlke/ConfZ)

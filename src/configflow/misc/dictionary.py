@@ -3,25 +3,22 @@
 from __future__ import annotations
 
 import copy
-
-from typing import Any
-from typing import Callable
-from typing import Dict
-from typing import Optional
+import typing
 
 import apm
 
 from configflow import exceptions
 
 
-def deep_map(
-    function: Callable[[Any], Any],
-    dictionary: Dict[str, Any],
-) -> Dict[str, Any]:
+FunctionType = typing.Callable[[typing.Any], typing.Any]
+DictType = typing.Dict[str, typing.Any]
+
+
+def deep_map(function: FunctionType, dictionary: DictType) -> DictType:
     """Apply a function to the values of a dictionary.
 
-    Notes
-    -----
+    Note
+    ----
     If a value is a sequence ``list | set | tuple`` then a function will be applied
     to each element of a sequence.
 
@@ -63,7 +60,7 @@ def deep_map(
     )
 
 
-def update(to_dictionary: Dict[str, Any], from_dictionary: Dict[str, Any]) -> Dict[str, Any]:
+def update(to_dictionary: DictType, from_dictionary: DictType) -> DictType:
     """Update values of a dictionary based on another dictionary.
 
     Examples
@@ -80,8 +77,7 @@ def update(to_dictionary: Dict[str, Any], from_dictionary: Dict[str, Any]) -> Di
     ... "timeout": 10,
     ... }
     >>> update(to_dict, from_dict)
-    {'db': {'host': 'localhost', 'ports': {'v1': 8000, 'v2': 5000, 'v3': 80}},
-     'hub': {'env': 'dev', 'auth': 'basic'}, 'timeout': 10, 'warnings': 'suppress'}
+    {'db': {'host': 'localhost', 'ports': {'v1': 8000, 'v2': 5000, 'v3': 80}}, ...}
     """
 
     updated_dictionary = copy.deepcopy(to_dictionary)
@@ -97,14 +93,14 @@ def update(to_dictionary: Dict[str, Any], from_dictionary: Dict[str, Any]) -> Di
 
 
 def make_flat(
-    dictionary: Dict[str, Any],
+    dictionary: DictType,
     separator: str,
-    parent_key: Optional[str] = None,
-) -> Dict[str, Any]:
+    parent_key: typing.Optional[str] = None,
+) -> DictType:
     """Make a nested dictionary flat.
 
-    Notes
-    -----
+    Note
+    ----
     If a value is a sequence ``list | tuple | set`` then ``make_flat``
     will use numerical indices as key identifiers.
 
@@ -116,14 +112,12 @@ def make_flat(
     ... "timeout": 10,
     ... }
     >>> make_flat(nested_dict, separator="_")
-    {'db_host': 'localhost', 'db_ports_v1': 8080, 'db_ports_v2': 5000, 'hub_env': 'prod',
-     'hub_auth': 'basic', 'hub_ports': [80, 50], 'timeout': 10}
+    {'db_host': 'localhost', 'db_ports_v1': 8080, 'db_ports_v2': 5000, 'hub_env': 'prod', ...}
     """
 
     flatten_pairs = []  # type: ignore
 
-    # WPS110 - in this context value is a dummy and abstract name
-    for key, value in dictionary.items():  # noqa: WPS110
+    for key, value in dictionary.items():
         new_key = "".join((parent_key, separator, key)) if parent_key else key
 
         if isinstance(value, dict):
@@ -136,7 +130,7 @@ def make_flat(
     return dict(flatten_pairs)
 
 
-def make_nested(dictionary: Dict[str, Any], separator: str) -> Dict[str, Any]:  # noqa: WPS231
+def make_nested(dictionary: DictType, separator: str) -> DictType:  # noqa: WPS231
     """Make a flat dictionary nested.
 
     Raises
@@ -160,19 +154,17 @@ def make_nested(dictionary: Dict[str, Any], separator: str) -> Dict[str, Any]:  
     ... "timeout": 10,
     ... }
     >>> make_nested(flat_dict, separator="_")
-    {'db': {'host': 'localhost', 'ports': {'v1': 8080, 'v2': 5000}}, 'hub':
-     {'env': 'prod', 'auth': 'basic', 'ports': {'0': 80, '1': 50}}, 'timeout': 10}
+    {'db': {'host': 'localhost', 'ports': {'v1': 8080, 'v2': 5000}}, ...}
     """
 
-    nested_dictionary: Dict[str, Any] = {}
+    nested_dictionary: DictType = {}
 
-    # WPS110 - in this context value is a dummy and abstract name
-    for key, value in dictionary.items():  # noqa: WPS110
+    for key, value in dictionary.items():
         if separator in key:
             inner_keys = key.split(separator)
             inner_dictionary = nested_dictionary
 
-            for index, inner_key in enumerate(inner_keys):
+            for index, inner_key in enumerate(key.split(separator)):
                 if inner_key == "":
                     raise exceptions.misc.EmptyKeyError(dictionary)
 

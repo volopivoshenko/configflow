@@ -4,12 +4,10 @@ from __future__ import annotations
 
 import os
 import sys
+import typing
+import pathlib
 
-from pathlib import Path
-from typing import Any
-from typing import Dict
-from typing import Literal
-from typing import Optional
+import typing_extensions
 
 from configflow import exceptions
 from configflow import io
@@ -17,33 +15,37 @@ from configflow import misc
 from configflow import sources
 
 
+DictType = typing.Dict[str, typing.Any]
+PathType = typing.Optional[typing.Union[str, pathlib.Path]]
+
+
 class FileSource(sources.abstract.Source):
     """File as a source of a configuration.
 
     Attributes
     ----------
-    path : Optional[Path]
+    path : PathType
         Path to the configuration file, by default ``None``.
 
-    environment_variable : Optional[str]
+    environment_variable : typing.Optional[str]
         Name of the OS environment variable that contains the path to the configuration file,
         e.g. ``DEV_CONFIG``. It's alternative of the ``path`` attribute, by default ``None``.
 
-    command_line_argument : Optional[str]
+    command_line_argument : typing.Optional[str]
         Name of the command-line argument that contains the path to the configuration file,
         e.g. ``-c | --config``. It's alternative of the ``path`` attribute, by default ``None``.
 
-    separator : Literal[".", "_"]
+    separator : typing_extensions.Literal[".", "_"]
         A character will be used as a level hint during the dictionary parsing, by default ``.``.
     """
 
-    path: Optional[Path] = None
-    environment_variable: Optional[str] = None
-    command_line_argument: Optional[str] = None
-    separator: Literal[".", "_"] = "."
+    path: PathType = None
+    environment_variable: typing.Optional[str] = None
+    command_line_argument: typing.Optional[str] = None
+    separator: typing_extensions.Literal[".", "_"] = "."
 
     @property
-    def filepath(self) -> Path:
+    def filepath(self) -> pathlib.Path:
         """Get a path to a configuration file.
 
         Raises
@@ -51,35 +53,45 @@ class FileSource(sources.abstract.Source):
         CommandLineArgumentError
             If a command-line argument doesn't have a value.
 
-        InvalidSourceError
-            If a source doesn't have filepath.
+        SourceError
+            If a source doesn't have a filepath.
 
         Examples
         --------
-        >>> source = FileSource(path=Path("tests/fixtures/example.env"))
-        >>> source.filepath
-        PosixPath('tests/fixtures/example.env')
+        >>> source = FileSource(path=pathlib.Path("tests/fixtures/example.env"))
+        >>> source.filepath.as_posix()
+        tests/fixtures/example.env
         """
 
-        filepath: Path
+        filepath: pathlib.Path
 
         if self.path:
-            filepath = self.path
+            filepath = pathlib.Path(self.path)
 
-        elif self.environment_variable and os.getenv(self.environment_variable):
-            filepath = Path(os.getenv(self.environment_variable, ""))
+        elif self.environment_variable:
+            filepath = pathlib.Path(os.getenv(self.environment_variable, ""))
 
-        elif self.command_line_argument and self.command_line_argument in sys.argv:
-            index = sys.argv.index(self.command_line_argument)
+        elif self.command_line_argument:
+            try:
+                index = sys.argv.index(self.command_line_argument)
+
+            except ValueError:
+                raise exceptions.sources.CommandLineArgumentError(
+                    msg="Argument {0!r} doesn't not exist.",
+                    command_line_argument=self.command_line_argument,
+                )
 
             try:
-                filepath = Path(sys.argv[index + 1])
+                filepath = pathlib.Path(sys.argv[index + 1])
 
             except IndexError:
-                raise exceptions.sources.CommandLineArgumentError(self.command_line_argument)
+                raise exceptions.sources.CommandLineArgumentError(
+                    msg="Argument {0!r} doesn't have value.",
+                    command_line_argument=self.command_line_argument,
+                )
 
         else:
-            raise exceptions.sources.InvalidSourceError(
+            raise exceptions.sources.SourceError(
                 msg="Configuration filepath is not set.",
                 source=self,
             )
@@ -87,12 +99,12 @@ class FileSource(sources.abstract.Source):
         return filepath
 
     @property
-    def content(self) -> Dict[str, Any]:
+    def content(self) -> DictType:
         """Get content of a source.
 
         Examples
         --------
-        >>> source = FileSource(path=Path("tests/fixtures/example.yaml"))
+        >>> source = FileSource(path=pathlib.Path("tests/fixtures/example.yaml"))
         >>> source.content
         {'databases': ...}
         """

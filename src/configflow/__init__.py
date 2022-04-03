@@ -1,5 +1,6 @@
 """configflow - is the configuration management library for Python."""
 
+from configflow import exceptions
 from configflow import sources
 
 

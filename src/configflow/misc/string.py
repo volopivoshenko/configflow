@@ -3,9 +3,7 @@
 from __future__ import annotations
 
 import ast
-
-from typing import Any
-from typing import Optional
+import typing
 
 import apm
 
@@ -15,8 +13,8 @@ import apm
 class ErrorMessage(str):  # noqa: WPS600
     """Implementation of the error message.
 
-    Notes
-    -----
+    Note
+    ----
     By default, error messages in the exceptions don't support line breaks
     or any formatting, this decorator is solving that problem.
 
@@ -45,11 +43,11 @@ class ErrorMessage(str):  # noqa: WPS600
         return self.__str__()
 
 
-def parse(value: str) -> Optional[Any]:
+def parse(value: str) -> typing.Optional[typing.Any]:
     """Parse a string value to the appropriate Python object.
 
-    Notes
-    -----
+    Note
+    ----
     If a value is a sequence ``list | tuple | set`` then ``parse`` function will be applied
     to each element of a sequence.
 

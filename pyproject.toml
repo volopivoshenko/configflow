@@ -55,6 +55,7 @@ python-dotenv = "^0.19.2"
 toml = "^0.10.2"
 # utils
 awesome-pattern-matching = "^0.24.2"
+typing-extensions = "^4.1.1"
 
 [tool.poetry.dev-dependencies]
 # formatters
@@ -85,9 +86,8 @@ pytest-sugar = "^0.9.4"
 coverage = { extras = ["toml"], version = "^6.3.1" }
 # documentation
 Sphinx = "^4.4.0"
-sphinx-book-theme = "^0.2.0"
+sphinx-rtd-theme = "^1.0.0"
 # sphinx extensions
-autodocsumm = "^0.2.7"
 # file types
 lxml = "^4.8.0"
 # github
@@ -96,11 +96,6 @@ pre-commit = "^2.17.0"
 python-semantic-release = "^7.25.0"
 # utils
 deepdiff = "^5.7.0"
-# security fix
-cryptography = "^36.0.1"
-cffi = "^1.15.0"
-keyring = "21.8.0"
-packaging = "20.9"
 # repl
 ipython = "^7.31.1"
 
@@ -144,16 +139,18 @@ max-line-length = 100
 max-cognitive-average = 25
 max-cognitive-score = 25
 max-line-complexity = 20
-max-local-variables = 10
+max-local-variables = 7
 inline-quotes = '"'
 docstring_style = "numpy"
 exclude = [
     "__init__.py",
 ]
 per-file-ignores = [
-    "tests/*:S101,WPS226,WPS323",
+    "tests/*:S101,WPS122,WPS221,WPS226,WPS323",
 ]
 # S101 - asserts are the only way of checking conditions in tests
+# WPS122 - assigning to the _ is used for empty calls
+# WPS221 - high complexity is fine for the parameterized tests
 # WPS226 - duplicate strings are fine for literals in tests
 # WPS323 - % string is used in the logger default configuration
 extend-ignore = [
@@ -166,7 +163,7 @@ extend-ignore = [
 # DAR101, DAR201, DAR401, DAR402 - there's no sense to put all sections in docstrings
 # WPS110 - most of the wrong names are used in the abstract context
 # WPS348 - chaining is a good option for multiline methods calls
-# WPS437 - some classes doesn't have public attributes that we need
+# WPS437 - some classes don't have public attributes that we need
 
 [tool.mypy]
 python_version = "3.9"
@@ -175,16 +172,15 @@ ignore_missing_imports = true
 show_error_codes = true
 files = [
     "src",
-    "tests",
 ]
 
 [[tool.mypy.overrides]]
-module = "*.conftest.*"
+module = "*.conftest.py"
 ignore_errors = true
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-l -vv --xdoc --color=yes --cov=src"
+addopts = "-l -vv --xdoc --color=yes --cov=src --cov-report=term-missing"
 testpaths = [
     "src",
     "tests",

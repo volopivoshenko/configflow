@@ -2,28 +2,32 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-from typing import Type
+import typing
+import pathlib
 
 from configflow import io
 from configflow import misc
 
 
-class InvalidFileTypeError(Exception):
+class FileTypeError(Exception):
     """Raises if a file has the unsupported type."""
 
-    def __init__(self, filepath: Path, supported_types: Type[io.enums.FileType]) -> None:
+    def __init__(
+        self,
+        filepath: pathlib.Path,
+        supported_types: typing.Type[io.loader.FileType],
+    ) -> None:
         """Initialize.
 
         Examples
         --------
-        >>> raise InvalidFileTypeError(
-        ...     filepath=Path("example.conf"),
-        ...     supported_types=io.enums.FileType,
+        >>> raise FileTypeError(
+        ...     filepath=pathlib.Path("example.conf"),
+        ...     supported_types=io.loader.FileType,
         ... )
         Traceback (most recent call last):
         ...
-        configflow.exceptions.io.InvalidFileTypeError: ...
+        configflow.exceptions.io.FileTypeError: ...
         """
 
         msg = misc.string.ErrorMessage("File {0!r} has invalid type. Supported types:\n{1!s}")
