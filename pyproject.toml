@@ -45,6 +45,11 @@ packages = [
     { include = "configflow", from = "src" }
 ]
 
+[tool.poetry.urls]
+"Issues" = "https://github.com/volodymyrPivoshenko/configflow/issues"
+"Releases" = "https://github.com/volodymyrPivoshenko/configflow/releases"
+"Say Thanks!" = "https://www.buymeacoffee.com/volo.pivoshenko"
+
 [tool.poetry.dependencies]
 python = ">=3.7,<3.10"
 # data types
