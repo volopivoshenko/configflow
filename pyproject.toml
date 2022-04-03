@@ -2,7 +2,7 @@
 name = "configflow"
 version = "0.1.2"
 description = "configflow - is the configuration management library for Python."
-license = "MIT"
+license = "BSD-3-Clause"
 authors = [
     "Volodymyr Pivoshenko <volodymyr.pivoshenko@gmail.com>",
 ]
@@ -17,7 +17,7 @@ keywords = [
     "environment",
     "management",
     "pydantic",
-    "python"
+    "python",
 ]
 homepage = "https://configflow.readthedocs.io/en/latest"
 documentation = "https://configflow.readthedocs.io/en/latest"
@@ -25,7 +25,7 @@ repository = "https://github.com/volodymyrPivoshenko/configflow"
 readme = "README.md"
 classifiers = [
     "Development Status :: 1 - Planning",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: BSD License",
     "Operating System :: OS Independent",
     "Environment :: Other Environment",
     "Programming Language :: Python",
