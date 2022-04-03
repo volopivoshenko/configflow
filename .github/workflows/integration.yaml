@@ -20,6 +20,8 @@ jobs:
       - name: Checkout repository
         id: checkout-repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Install Python
         id: install-python
         uses: actions/setup-python@v2

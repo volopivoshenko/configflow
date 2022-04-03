@@ -17,6 +17,8 @@ jobs:
       - name: Checkout repository
         id: checkout-repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Run action
         id: run-action
         uses: ahmadnassri/action-dependabot-auto-merge@v2
