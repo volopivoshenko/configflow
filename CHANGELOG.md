@@ -7,6 +7,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 <!--next-version-placeholder-->
 
+## v0.3.1 (2022-04-03)
+### Fix
+* Update URLs ([`e1001a5`](https://github.com/volodymyrPivoshenko/configflow/commit/e1001a57478ff7036c2fa5fd982447baf8634ee2))
+
 ## v0.3.0 (2022-04-03)
 ### Feature
 * Update badges ([`c25c38a`](https://github.com/volodymyrPivoshenko/configflow/commit/c25c38a2b1c259052025dda6b77103c5a076f1c9))
