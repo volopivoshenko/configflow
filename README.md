@@ -6,7 +6,7 @@
 </div>
 
 <p align="center">
-  <a href="https://choosealicense.com/licenses/mit">
+  <a href="https://opensource.org/licenses/BSD-3-Clause">
     <img alt="license" src="https://img.shields.io/badge/License-BSD_3--Clause-red.svg">
   </a>
   <a href="https://pypi.org/project/configflow">
@@ -86,6 +86,9 @@
   </a>
   <a href="https://github.com/volodymyrPivoshenko/configflow/pulls">
     <img alt="pr" src="https://img.shields.io/github/issues-pr/volodymyrPivoshenko/configflow">
+  </a>
+  <a href="https://github.com/volodymyrPivoshenko/configflow/pulls">
+    <img alt="pr" src="https://img.shields.io/github/issues-pr-closed/volodymyrPivoshenko/configflow">
   </a>
   <a href="https://github.com/volodymyrPivoshenko/configflow/graphs/contributors">
     <img alt="contributors" src="https://img.shields.io/github/contributors/volodymyrPivoshenko/configflow">
