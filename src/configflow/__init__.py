@@ -13,7 +13,7 @@ __version__ = "0.1.2"
 __author__ = "Volodymyr Pivoshenko"
 __email__ = "volodymyr.pivoshenko@gmail.com"
 
-__license__ = "MIT"
+__license__ = "BSD-3-Clause"
 __copyright__ = "Copyright 2022, Volodymyr Pivoshenko"
 
 __all__ = ["sources"]
