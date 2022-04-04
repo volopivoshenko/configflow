@@ -65,7 +65,7 @@ typing-extensions = "^4.1.1"
 [tool.poetry.dev-dependencies]
 # formatters
 isort = "^5.10.1"
-black = "^22.1"
+black = "^22.3"
 # linters
 wemake-python-styleguide = "^0.16.0"
 safety = "^1.10.3"
