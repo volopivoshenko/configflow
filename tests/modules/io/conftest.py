@@ -162,3 +162,47 @@ def expected_yaml_dict() -> DictType:
             },
         },
     }
+
+
+@pytest.fixture(scope="module")
+def expected_properties_dict() -> DictType:
+    """Get the expected dictionary - content of the fixture file."""
+
+    return {
+        "databases.kafka.consumer.auto_offset_reset": "earliest",
+        "databases.kafka.consumer.bootstrap_servers": "localhost:9092",
+        "databases.kafka.consumer.key_deserializer": (
+            "org.apache.kafka.common.serialization.StringDeserializer"
+        ),
+        "databases.kafka.consumer.value_deserializer": (
+            "org.apache.kafka.common.serialization.StringDeserializer"
+        ),
+        "databases.kafka.producer.bootstrap_servers": "localhost:9092",
+        "databases.kafka.producer.key_deserializer": (
+            "org.apache.kafka.common.serialization.StringDeserializer"
+        ),
+        "databases.kafka.producer.value_deserializer": (
+            "org.apache.kafka.common.serialization.StringDeserializer"
+        ),
+        "databases.mysql.host": "localhost",
+        "databases.mysql.password": "admin",
+        "databases.mysql.port": "5001",
+        "databases.mysql.schema": "public",
+        "databases.mysql.user": "admin",
+        "databases.postgres.host": "localhost",
+        "databases.postgres.password": "admin",
+        "databases.postgres.port": "5432",
+        "databases.postgres.schema": "public",
+        "databases.postgres.user": "admin",
+        "logger.formatters.default.datefmt": "%Y-%m-%d %H:%M:%S",
+        "logger.formatters.default.format": "%(asctime)s %(levelname)-8s %(name)-15s %(message)s",
+        "logger.handlers.console.class": "logging.StreamHandler",
+        "logger.handlers.console.formatter": "default",
+        "logger.handlers.console.level": "INFO",
+        "logger.handlers.console.stream": "ext://sys.stdout",
+        "logger.handlers.file.backup_count": "3",
+        "logger.handlers.file.class": "logging.handlers.RotatingFileHandler",
+        "logger.handlers.file.filename": "logconfig.log",
+        "logger.handlers.file.formatter": "default",
+        "logger.handlers.file.max_bytes": "1024",
+    }

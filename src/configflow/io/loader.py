@@ -29,6 +29,7 @@ class FileType(enum.Enum):
     json: int = enum.auto()
     toml: int = enum.auto()
     env: int = enum.auto()
+    properties: int = enum.auto()
 
     def __str__(self) -> str:
         """Get string representation.
@@ -71,5 +72,6 @@ def get_loader(filepath: pathlib.Path) -> LoaderType:
         .of(FileType.json, lambda _: json.load)
         .of(FileType.toml, lambda _: toml.load)
         .of(FileType.env, lambda _: io.dotenv.load)
+        .of(FileType.properties, lambda _: io.properties.load)
         .otherwise(lambda _: yaml.load)
     )

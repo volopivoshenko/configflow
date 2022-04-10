@@ -7,8 +7,6 @@ import sys
 import typing
 import pathlib
 
-import typing_extensions
-
 from configflow import exceptions
 from configflow import io
 from configflow import misc
@@ -35,14 +33,14 @@ class FileSource(sources.abstract.Source):
         Name of the command-line argument that contains the path to the configuration file,
         e.g. ``-c | --config``. It's alternative of the ``path`` attribute, by default ``None``.
 
-    separator : typing_extensions.Literal[".", "_"]
+    separator : str
         A character will be used as a level hint during the dictionary parsing, by default ``.``.
     """
 
     path: PathType = None
     environment_variable: typing.Optional[str] = None
     command_line_argument: typing.Optional[str] = None
-    separator: typing_extensions.Literal[".", "_"] = "."
+    separator: str = "."
 
     @property
     def filepath(self) -> pathlib.Path:

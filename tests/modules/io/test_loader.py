@@ -47,6 +47,11 @@ DictType = typing.Dict[str, typing.Any]
             toml.load,
             pytest.lazy_fixture("expected_yaml_dict"),
         ),
+        (
+            "tests/fixtures/example.properties",
+            io.properties.load,
+            pytest.lazy_fixture("expected_properties_dict"),
+        ),
         pytest.param(
             "tests/fixtures/example.conf",
             toml.load,
