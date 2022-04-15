@@ -10,14 +10,26 @@ maintainers = [
     "Volodymyr Pivoshenko <volodymyr.pivoshenko@gmail.com>",
 ]
 keywords = [
-    "configuration",
-    "config",
-    "setup",
-    "settings",
+    "json",
+    "yaml",
+    "toml",
+    "dotenv",
+    "ini",
+    "cfg",
+    "properties",
+    "vault",
     "environment",
-    "management",
+    "command-line",
     "pydantic",
+    "setup",
+    "config",
+    "configuration",
+    "settings",
+    "management",
     "python",
+    "pypi",
+    "cross-platform",
+    "hacktoberfest",
 ]
 homepage = "https://configflow.readthedocs.io/en/latest"
 documentation = "https://configflow.readthedocs.io/en/latest"
