@@ -74,7 +74,7 @@ mypy = "^0.931"
 pyproject-flake8 = "^0.0.1-alpha.2"
 # mypy stubs
 types-toml = "^0.10.4"
-types-PyYAML = "^6.0.4"
+types-PyYAML = "^6.0.7"
 # tests
 tox = "^3.24.5"
 pytest = "^7.1.1"
