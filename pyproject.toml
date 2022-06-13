@@ -33,7 +33,7 @@ keywords = [
 ]
 homepage = "https://configflow.readthedocs.io/en/latest"
 documentation = "https://configflow.readthedocs.io/en/latest"
-repository = "https://github.com/volodymyrPivoshenko/configflow"
+repository = "https://github.com/volopivoshenko/configflow"
 readme = "README.md"
 classifiers = [
     "Development Status :: 1 - Planning",
@@ -58,62 +58,48 @@ packages = [
 ]
 
 [tool.poetry.urls]
-"Issues" = "https://github.com/volodymyrPivoshenko/configflow/issues"
-"Releases" = "https://github.com/volodymyrPivoshenko/configflow/releases"
-"Say Thanks!" = "https://www.buymeacoffee.com/volo.pivoshenko"
+"Issues" = "https://github.com/volopivoshenko/configflow/issues"
+"Releases" = "https://github.com/volopivoshenko/configflow/releases"
+"Say Thanks!" = "https://www.buymeacoffee.com/volopivoshenko"
 
 [tool.poetry.dependencies]
-python = ">=3.7,<3.10"
-# data types
-pydantic = "^1.9.0"
-# file types
-PyYAML = "^6.0.0"
-python-dotenv = "^0.19.2"
-toml = "^0.10.2"
+python = ">=3.7,<=3.10"
 # utils
+typing-extensions = "^4.2.0"
 awesome-pattern-matching = "^0.24.2"
 
 [tool.poetry.dev-dependencies]
 # formatters
 isort = "^5.10.1"
-black = "^22.1"
+black = "^22.3.0"
 # linters
-wemake-python-styleguide = "^0.16.0"
-safety = "^1.10.3"
-mypy = "^0.931"
+mypy = "^0.950"
+wemake-python-styleguide = "^0.16.1"
 # flake8 extensions
-pyproject-flake8 = "^0.0.1-alpha.2"
-# mypy stubs
-types-toml = "^0.10.4"
-types-PyYAML = "^6.0.4"
+flake8-pytest-style = "^1.6.0"
+pyproject-flake8 = "^0.0.1-alpha.4"
 # tests
-tox = "^3.24.5"
-pytest = "^7.1.1"
-xdoctest = "^0.15.10"
-# tox extensions
-tox-conda = "^0.9.2"
+pytest = "^7.1.2"
+xdoctest = "^1.0.0"
 # pytest extensions
-pytest-datafiles = "^2.0"
+pytest-datafiles = "^2.0.1"
 pytest-lazy-fixture = "^0.6.3"
 pytest-mock = "^3.7.0"
-pytest-randomly = "^3.11.0"
+pytest-randomly = "^3.12.0"
 pytest-cov = "^3.0.0"
 pytest-sugar = "^0.9.4"
-coverage = { extras = ["toml"], version = "^6.3.1" }
+coverage = { version = "^6.3.3", extras = ["toml"] }
 # documentation
-Sphinx = "^4.4.0"
-sphinx-rtd-theme = "^1.0.0"
+Sphinx = "^4.5.0"
 # sphinx extensions
-# file types
-lxml = "^4.8.0"
+sphinx-typlog-theme = "^0.8.0"
 # github
-pre-commit = "^2.17.0"
+pre-commit = "^2.19.0"
 # versioning
-python-semantic-release = "^7.25.0"
+python-semantic-release = "^7.28.0"
 # utils
-deepdiff = "^5.7.0"
-# repl
-ipython = "^7.31.1"
+deepdiff = "^5.8.1"
+poethepoet = "^0.13.1"
 
 [tool.semantic_release]
 branch = "main"
@@ -146,16 +132,16 @@ line-length = 100
 target-version = [
     "py37",
     "py38",
-    "py39"
+    "py39",
 ]
 include = '\.pyi?$'
 
 [tool.flake8]
 max-line-length = 100
-max-cognitive-average = 25
-max-cognitive-score = 25
-max-line-complexity = 20
-max-local-variables = 7
+max-cognitive-average = 15
+max-cognitive-score = 15
+max-line-complexity = 15
+max-local-variables = 10
 inline-quotes = '"'
 docstring_style = "numpy"
 exclude = [
@@ -190,10 +176,6 @@ files = [
     "src",
 ]
 
-[[tool.mypy.overrides]]
-module = "*.conftest.py"
-ignore_errors = true
-
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "-l -vv --xdoc --color=yes --cov=src --cov-report=term-missing"
@@ -204,9 +186,35 @@ testpaths = [
 
 [tool.coverage.run]
 omit = [
-    ".tox",
     "*/__init__.py",
     "*/enums.py",
+]
+
+[tool.poe.tasks]
+format = [
+    { cmd = "isort --settings-path pyproject.toml ." },
+    { cmd = "black --config pyproject.toml ." },
+]
+lint-flake8 = { cmd = "pflake8 --config pyproject.toml ." }
+lint-mypy = { cmd = "mypy --config-file pyproject.toml ." }
+lint = [
+    { ref = "lint-flake8" },
+    { ref = "lint-mypy" },
+]
+tests = { cmd = "pytest" }
+clean = [
+    { cmd = "find . -type f -name *.py[co] -delete" },
+    { cmd = "find . -type f -name .DS_Store -delete" },
+    { cmd = "find . -type d -name __pycache__ -exec rm -rf {} +" },
+    { cmd = "rm -rf dist" },
+    { cmd = "rm -rf .pytest" },
+    { cmd = "rm -rf .pytest_cache" },
+    { cmd = "rm -rf .coverage" },
+    { cmd = "rm -rf .flake8" },
+    { cmd = "rm -rf .mypy" },
+    { cmd = "rm -rf .mypy_cache" },
+    { cmd = "rm -rf docs/_build" },
+    { cmd = "rm -rf docs/_sources" },
 ]
 
 [tool.poetry.build]

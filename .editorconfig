@@ -16,28 +16,6 @@ ij_smart_tabs = false
 ij_visual_guides = none
 ij_wrap_on_typing = false
 
-[*.bib]
-ij_bibtex_keep_first_column_comment = true
-ij_bibtex_keep_indents_on_empty_lines = false
-ij_bibtex_wrap_long_lines = false
-
-[*.csv]
-max_line_length = 2147483647
-ij_csv_wrap_long_lines = false
-
-[*.proto]
-indent_size = 2
-tab_width = 2
-ij_continuation_indent_size = 4
-ij_protobuf_keep_blank_lines_in_code = 2
-ij_protobuf_keep_indents_on_empty_lines = false
-ij_protobuf_keep_line_breaks = true
-ij_protobuf_space_after_comma = true
-ij_protobuf_space_before_comma = false
-ij_protobuf_spaces_around_assignment_operators = true
-ij_protobuf_spaces_within_braces = false
-ij_protobuf_spaces_within_brackets = false
-
 [{*.ant,*.fxml,*.jhm,*.jnlp,*.jrxml,*.qrc,*.rng,*.tld,*.wsdl,*.xml,*.xsd,*.xsl,*.xslt,*.xul}]
 ij_xml_align_attributes = true
 ij_xml_align_text = false
@@ -57,16 +35,6 @@ ij_xml_space_around_equals_in_attribute = false
 ij_xml_space_inside_empty_tag = false
 ij_xml_text_wrap = normal
 
-[{*.bash,*.sh,*.zsh}]
-indent_size = 2
-tab_width = 2
-ij_shell_binary_ops_start_line = false
-ij_shell_keep_column_alignment_padding = false
-ij_shell_minify_program = false
-ij_shell_redirect_followed_by_space = false
-ij_shell_switch_cases_indented = false
-ij_shell_use_unix_line_separator = true
-
 [*.editorconfig]
 ij_editorconfig_align_group_field_declarations = false
 ij_editorconfig_space_after_colon = false
@@ -74,13 +42,6 @@ ij_editorconfig_space_after_comma = true
 ij_editorconfig_space_before_colon = false
 ij_editorconfig_space_before_comma = false
 ij_editorconfig_spaces_around_assignment_operators = true
-
-[{*.glstex,*.tex}]
-ij_latex_keep_first_column_comment = true
-ij_latex_keep_indents_on_empty_lines = false
-ij_latex_line_comment_add_space = false
-ij_latex_line_comment_at_first_column = true
-ij_latex_wrap_long_lines = false
 
 [{*.har,*.jsb2,*.jsb3,*.json,.babelrc,.eslintrc,.prettierrc,.stylelintrc,bowerrc,jest.config}]
 indent_size = 2

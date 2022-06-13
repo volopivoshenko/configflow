@@ -37,16 +37,12 @@ jobs:
       - name: Run flake8
         id: run-flake8
         run: |
-          python -m poetry run pflake8 --config pyproject.toml
+          python -m poetry run poe lint-flake8
       - name: Run mypy
         id: run-mypy
         run: |
-          python -m poetry run mypy --config-file pyproject.toml
-      - name: Run security linters
-        id: run-security-linters
-        run: |
-          python -m poetry check
-          python -m poetry run safety check --full-report
+          python -m poetry run poe lint-mypy
+
   tests:
     name: Run tests
     needs: linters
@@ -74,7 +70,7 @@ jobs:
       - name: Run pytest | xdoctest
         id: run-pytest-xdoctest
         run: |
-          python -m poetry run pytest --cov-report=xml
+          python -m poetry run poe tests
       - name: Upload coverage to Codecov
         id: upload-coverage-to-codecov
         uses: codecov/codecov-action@v1.0.13

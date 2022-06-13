@@ -13,21 +13,27 @@ repos:
       - id: detect-private-key
   - repo: local
     hooks:
+      - id: clean
+        name: clean
+        entry: poe
+        args: [ "clean" ]
+        language: system
+        pass_filenames: false
       - id: format
         name: format
-        entry: make
+        entry: poe
         args: [ "format" ]
         language: system
         pass_filenames: false
       - id: lint
         name: lint
-        entry: make
+        entry: poe
         args: [ "lint" ]
         language: system
         pass_filenames: false
       - id: tests
         name: tests
-        entry: make
+        entry: poe
         args: [ "tests" ]
         language: system
         pass_filenames: false

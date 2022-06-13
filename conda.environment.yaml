@@ -1,0 +1,6 @@
+name: configflow
+dependencies:
+  - python=3.9.12
+  - pip
+  - pip:
+    - poetry

@@ -6,7 +6,7 @@ labels: ''
 assignees: ''
 ---
 
-- [ ] I have searched the [issues](https://github.com/volodymyrPivoshenko/configflow/issues) of this repository and believe that this is not a duplicate.
+- [ ] I have searched the [issues](https://github.com/volopivoshenko/configflow/issues) of this repository and believe that this is not a duplicate.
 - [ ] I have searched the [documentation](https://configflow.readthedocs.io/en/latest) and believe that my question is not covered.
 
 **Is your feature request related to a problem? Please describe.**
