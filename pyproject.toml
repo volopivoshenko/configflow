@@ -153,6 +153,7 @@ extend-ignore = [
     "DAR201",
     "DAR401",
     "DAR402",
+    "WPS348"
 ]
 # D202 - code is hard to read without a blank line after a docstring
 # DAR101, DAR201, DAR401, DAR402 - there's no sense to put all sections in docstrings
