@@ -166,6 +166,9 @@ show_error_codes = true
 files = [
     "src",
 ]
+exclude = [
+    "tests",
+]
 
 [tool.pytest.ini_options]
 minversion = "6.0"

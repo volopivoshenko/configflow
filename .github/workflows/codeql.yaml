@@ -9,12 +9,13 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 
-name: "CodeQL"
+name: CodeQL
 
 on:
   push:
     branches:
       - main
+
   pull_request:
     branches:
       - main
@@ -30,19 +31,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ["python"]
+        language: [ "python" ]
     steps:
-    - name: Checkout repository
-      id: checkout-repository
-      uses: actions/checkout@v2
-    - name: Initialize CodeQL
-      id: initialize-codeql
-      uses: github/codeql-action/init@v1
-      with:
-        languages: ${{ matrix.language }}
-    - name: Autobuild
-      id: autobuild
-      uses: github/codeql-action/autobuild@v1
-    - name: Perform CodeQL analysis
-      id: perform-codeql-analysis
-      uses: github/codeql-action/analyze@v1
+      - name: Checkout repository
+        id: checkout-repository
+        uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        id: initialize-codeql
+        uses: github/codeql-action/init@v1
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Autobuild
+        id: autobuild
+        uses: github/codeql-action/autobuild@v1
+
+      - name: Perform CodeQL analysis
+        id: perform-codeql-analysis
+        uses: github/codeql-action/analyze@v1

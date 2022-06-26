@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
+title: ""
+labels: ""
+assignees: ""
 ---
 
 - [ ] I am on the [latest](https://github.com/volopivoshenko/configflow/releases/latest) version.

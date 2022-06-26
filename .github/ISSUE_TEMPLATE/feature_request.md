@@ -1,9 +1,9 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
+title: ""
+labels: ""
+assignees: ""
 ---
 
 - [ ] I have searched the [issues](https://github.com/volopivoshenko/configflow/issues) of this repository and believe that this is not a duplicate.

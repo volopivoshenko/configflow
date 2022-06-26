@@ -120,7 +120,7 @@
 
 - [Overview](#overview)
 - [Installation](#installation)
-    - [Optional dependencies](#optional-dependencies)
+  - [Optional dependencies](#optional-dependencies)
 - [Examples](#examples)
 - [See Also](#see-also)
 
