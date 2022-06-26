@@ -63,7 +63,7 @@ packages = [
 "Say Thanks!" = "https://www.buymeacoffee.com/volopivoshenko"
 
 [tool.poetry.dependencies]
-python = ">=3.7,<=3.10"
+python = ">=3.7,<3.10"
 # utils
 typing-extensions = "^4.2.0"
 awesome-pattern-matching = "^0.24.2"
@@ -89,17 +89,16 @@ pytest-randomly = "^3.12.0"
 pytest-cov = "^3.0.0"
 pytest-sugar = "^0.9.4"
 coverage = { version = "^6.3.3", extras = ["toml"] }
-# documentation
+# docs
 Sphinx = "^4.5.0"
 # sphinx extensions
 sphinx-typlog-theme = "^0.8.0"
-# github
-pre-commit = "^2.19.0"
-# versioning
+# version control
 python-semantic-release = "^7.28.0"
 # utils
 deepdiff = "^5.8.1"
 poethepoet = "^0.13.1"
+pre-commit = "^2.19.0"
 
 [tool.semantic_release]
 branch = "main"
@@ -146,26 +145,17 @@ inline-quotes = '"'
 docstring_style = "numpy"
 exclude = [
     "__init__.py",
+    "tests/*.py",
 ]
-per-file-ignores = [
-    "tests/*:S101,WPS122,WPS221,WPS226,WPS323",
-]
-# S101 - asserts are the only way of checking conditions in tests
-# WPS122 - assigning to the _ is used for empty calls
-# WPS221 - high complexity is fine for the parameterized tests
-# WPS226 - duplicate strings are fine for literals in tests
-# WPS323 - % string is used in the logger default configuration
 extend-ignore = [
-    "D202", "DAR101", "DAR201", "DAR401", "DAR402",
-    "WPS110",
-    "WPS348",
-    "WPS437",
+    "D202",
+    "DAR101",
+    "DAR201",
+    "DAR401",
+    "DAR402",
 ]
 # D202 - code is hard to read without a blank line after a docstring
 # DAR101, DAR201, DAR401, DAR402 - there's no sense to put all sections in docstrings
-# WPS110 - most of the wrong names are used in the abstract context
-# WPS348 - chaining is a good option for multiline methods calls
-# WPS437 - some classes don't have public attributes that we need
 
 [tool.mypy]
 python_version = "3.9"
@@ -178,7 +168,14 @@ files = [
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-l -vv --xdoc --color=yes --cov=src --cov-report=term-missing"
+addopts = [
+    "-l",
+    "-vv",
+    "--xdoc",
+    "--color=yes",
+    "--cov=src",
+    "--cov-report=term-missing",
+]
 testpaths = [
     "src",
     "tests",
