@@ -1,4 +1,3 @@
-<!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
   <a href="https://pypi.org/project/configflow">
     <img alt="logo" src="https://github.com/volopivoshenko/configflow/blob/main/docs/_static/assets/logo.svg?raw=True" height=200>
@@ -159,5 +158,4 @@ Of course, you can also install these requirements manually with `pip install ..
 # See Also
 
 [vault]: https://www.vaultproject.io/
-
 [hvac]: https://pypi.org/project/hvac

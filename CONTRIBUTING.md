@@ -184,31 +184,17 @@ As a standard of commit messages we are using **[conventional commits][commits]*
 > instructed, need to be first accepted into the `main` branch.
 
 [bug_report]: https://github.com/volopivoshenko/configflow/blob/main/.github/ISSUE_TEMPLATE/bug_report.md
-
 [issues]: https://github.com/volopivoshenko/configflow/issues
-
 [gist]: https://gist.github.com
-
 [feature_request]: https://github.com/volopivoshenko/configflow/blob/main/.github/ISSUE_TEMPLATE/feature_request.md
-
 [poetry]: https://github.com/python-poetry/poetry
-
 [isort]: https://github.com/PyCQA/isort
-
 [black]: https://github.com/psf/black
-
 [styleguide]: https://github.com/wemake-services/wemake-python-styleguide
-
 [mypy]: https://github.com/python/mypy
-
 [xdoctest]: https://github.com/Erotemic/xdoctest
-
 [pytest]: https://github.com/pytest-dev/pytest
-
 [pre-commit]: https://pre-commit.com
-
 [commits]: https://www.conventionalcommits.org/en/v1.0.0/
-
 [pull_request_template]: https://github.com/volopivoshenko/configflow/blob/main/.github/PULL_REQUEST_TEMPLATE.md
-
 [rebased]: https://docs.github.com/en/free-pro-team@latest/github/using-git/about-git-rebase
