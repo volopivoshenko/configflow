@@ -37,4 +37,4 @@ repos:
     hooks:
       - id: flake8
         entry: pflake8
-        additional_dependencies: [ pyproject-flake8 ]
+        additional_dependencies: [ pyproject-flake8, wemake-python-styleguide ]
