@@ -73,7 +73,7 @@ mypy = "^0.931"
 # flake8 extensions
 pyproject-flake8 = "^0.0.1-alpha.2"
 # mypy stubs
-types-toml = "^0.10.4"
+types-toml = "^0.10.7"
 types-PyYAML = "^6.0.4"
 # tests
 tox = "^3.24.5"
