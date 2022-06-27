@@ -3,26 +3,18 @@
 from __future__ import annotations
 
 import typing
-
-import pydantic
+import dataclasses
 
 
 DictType = typing.Dict[str, typing.Any]
 
 
-class Source(pydantic.BaseModel):
+@dataclasses.dataclass
+class Source:
     """An abstract source of a configuration."""
 
     @property
     def content(self) -> DictType:
-        """Get content of a source.
-
-        Examples
-        --------
-        >>> Source().content
-        Traceback (most recent call last):
-        ...
-        NotImplementedError
-        """
+        """Get content of a source."""
 
         raise NotImplementedError

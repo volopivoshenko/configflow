@@ -13,7 +13,7 @@ import pytest
 import deepdiff
 
 from configflow import exceptions
-from configflow import io
+from configflow import providers
 
 
 DictType = typing.Dict[str, typing.Any]
@@ -24,12 +24,12 @@ DictType = typing.Dict[str, typing.Any]
     [
         (
             "tests/fixtures/example.ini",
-            io.ini.load,
+            providers.ini.load,
             pytest.lazy_fixture("expected_ini_dict"),
         ),
         (
             "tests/fixtures/example.env",
-            io.dotenv.load,
+            providers.dotenv.load,
             pytest.lazy_fixture("expected_dotenv_dict"),
         ),
         (
@@ -49,7 +49,7 @@ DictType = typing.Dict[str, typing.Any]
         ),
         (
             "tests/fixtures/example.properties",
-            io.properties.load,
+            providers.properties.load,
             pytest.lazy_fixture("expected_properties_dict"),
         ),
         pytest.param(
@@ -67,7 +67,7 @@ def test_get_loader(
 ) -> None:
     """Test ``get_loader & load`` functions."""
 
-    loader = io.loader.get_loader(pathlib.Path(filepath))
+    loader = providers.loader.get_loader(pathlib.Path(filepath))
 
     with open(filepath, "r") as fixture_file:
         out_dict = loader(fixture_file)

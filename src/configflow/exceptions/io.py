@@ -5,8 +5,8 @@ from __future__ import annotations
 import typing
 import pathlib
 
-from configflow import io
 from configflow import misc
+from configflow import providers
 
 
 class FileTypeError(Exception):
@@ -15,7 +15,7 @@ class FileTypeError(Exception):
     def __init__(
         self,
         filepath: pathlib.Path,
-        supported_types: typing.Type[io.loader.FileType],
+        supported_types: typing.Type[providers.loader.FileType],
     ) -> None:
         """Initialize.
 
@@ -23,7 +23,7 @@ class FileTypeError(Exception):
         --------
         >>> raise FileTypeError(
         ...     filepath=pathlib.Path("example.conf"),
-        ...     supported_types=io.loader.FileType,
+        ...     supported_types=providers.loader.FileType,
         ... )
         Traceback (most recent call last):
         ...
@@ -32,7 +32,7 @@ class FileTypeError(Exception):
 
         msg = misc.string.ErrorMessage("File {0!r} has invalid type. Supported types:\n{1!s}")
         fmt_supported_types = "\n".join(
-            map(lambda s_type: "- {0!s}".format(s_type.name), supported_types),  # type: ignore
+            ("- {0!s}".format(s_type.name) for s_type in supported_types),  # type: ignore
         )
 
         super().__init__(msg.format(filepath.as_posix(), fmt_supported_types))

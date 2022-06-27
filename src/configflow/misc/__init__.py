@@ -1,4 +1,4 @@
-"""Package for the utility functionality, primitive data types, mixins and helper functions."""
+"""Package for the utility functionality."""
 
 from configflow.misc import decorators
 from configflow.misc import dictionary

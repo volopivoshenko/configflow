@@ -12,7 +12,7 @@ import toml
 import yaml
 
 from configflow import exceptions
-from configflow import io
+from configflow import providers
 
 
 LoaderType = typing.Callable[[typing.TextIO], typing.Dict[str, typing.Any]]
@@ -68,10 +68,10 @@ def get_loader(filepath: pathlib.Path) -> LoaderType:
     return (
         apm.case(file_type)
         .of(apm.OneOf(FileType.yaml, FileType.yml), lambda _: yaml.safe_load)
-        .of(apm.OneOf(FileType.ini, FileType.cfg), lambda _: io.ini.load)
+        .of(apm.OneOf(FileType.ini, FileType.cfg), lambda _: providers.ini.load)
         .of(FileType.json, lambda _: json.load)
         .of(FileType.toml, lambda _: toml.load)
-        .of(FileType.env, lambda _: io.dotenv.load)
-        .of(FileType.properties, lambda _: io.properties.load)
+        .of(FileType.env, lambda _: providers.dotenv.load)
+        .of(FileType.properties, lambda _: providers.properties.load)
         .otherwise(lambda _: yaml.load)
     )

@@ -8,8 +8,8 @@ import typing
 import pathlib
 
 from configflow import exceptions
-from configflow import io
 from configflow import misc
+from configflow import providers
 from configflow import sources
 
 
@@ -107,7 +107,7 @@ class FileSource(sources.abstract.Source):
         {'databases': ...}
         """
 
-        loader = io.loader.get_loader(self.filepath)
+        loader = providers.loader.get_loader(self.filepath)
 
         with open(self.filepath, "r") as file_fp:
             file_content = loader(file_fp)

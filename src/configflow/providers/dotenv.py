@@ -9,12 +9,20 @@ from __future__ import annotations
 import io
 import typing
 
-import dotenv
+from configflow import misc
+
+
+try:
+    import dotenv
+
+except ImportError:
+    dotenv = None
 
 
 DictType = typing.Dict[str, typing.Any]
 
 
+@misc.decorators.external(dependency=dotenv, pypi="python-dotenv")
 def loads(stream: str) -> DictType:
     r"""Parse the stream and produce the corresponding Python object.
 
