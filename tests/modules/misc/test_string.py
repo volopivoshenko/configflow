@@ -1,4 +1,4 @@
-"""Tests for the string helper functions and primitive data types."""
+"""Tests for the string helper functions."""
 
 from __future__ import annotations
 

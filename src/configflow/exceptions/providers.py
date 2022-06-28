@@ -22,7 +22,7 @@ class FileTypeError(Exception):
         Examples
         --------
         >>> raise FileTypeError(
-        ...     filepath=pathlib.Path("example.ycfl"),
+        ...     filepath=pathlib.Path("example.yacl"),
         ...     supported_types=providers.factory.FileType,
         ... )
         Traceback (most recent call last):
