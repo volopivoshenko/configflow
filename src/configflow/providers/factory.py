@@ -5,7 +5,6 @@ from __future__ import annotations
 import enum
 import json
 import types
-import typing
 import pathlib
 
 import apm
@@ -14,11 +13,12 @@ from configflow import exceptions
 from configflow import providers
 
 
-DependencyType = typing.Optional[types.ModuleType]
+DependencyType = types.ModuleType
 
 
+# WPS600 - inheritance from the str is the only way to implement correct behavior
 # noinspection PyArgumentList
-class FileType(str, enum.Enum):
+class FileType(str, enum.Enum):  # noqa: WPS600
     """Supported file types."""
 
     yaml: int = enum.auto()
@@ -56,12 +56,12 @@ def get_provider(filepath: pathlib.Path) -> DependencyType:
         raise exceptions.providers.FileTypeError(filepath, FileType)
 
     return (
-        apm.case(file_type)
+        apm.case(file_type)  # noqa: WPS221
         .of(FileType.json, lambda _: json)
         .of(FileType.toml, lambda _: providers.toml)
         .of(FileType.env, lambda _: providers.dotenv)
         .of(FileType.properties, lambda _: providers.properties)
         .of(apm.OneOf(FileType.yaml, FileType.yml), lambda _: providers.yaml)
         .of(apm.OneOf(FileType.ini, FileType.cfg, FileType.conf), lambda _: providers.ini)
-        .otherwise(lambda _: None)
+        .otherwise(lambda _: providers.ini)
     )

@@ -7,18 +7,17 @@ import typing
 from configflow import misc
 
 
-# WPS440, WPS443 - nested import is necessary for the modular package dependencies
 try:
-    import toml  # noqa: WPS443
+    import toml
 
 except ImportError:
-    toml = None  # noqa: WPS440
+    toml = None  # type: ignore[assignment]
 
 
 DictType = typing.Dict[str, typing.Any]
 
 
-@misc.decorators.external(dependency=toml, pypi="toml")
+@misc.decorators.external(dependency=toml, pypi="toml")  # type: ignore[call-arg]
 def loads(stream: str) -> DictType:
     r"""Parse the stream and produce the corresponding Python object.
 

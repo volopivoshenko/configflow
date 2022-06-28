@@ -82,6 +82,10 @@ wemake-python-styleguide = "^0.16.1"
 # flake8 extensions
 flake8-pytest-style = "^1.6.0"
 pyproject-flake8 = "^0.0.1-alpha.4"
+# mypy stubs
+types-PyYAML = "^6.0.9"
+types-decorator = "^5.1.7"
+types-toml = "^0.10.7"
 # tests
 pytest = "^7.1.2"
 xdoctest = "^1.0.0"
@@ -141,7 +145,7 @@ include = '\.pyi?$'
 
 [tool.flake8]
 max-line-length = 100
-max-cognitive-average = 15
+max-cognitive-average = 20
 max-cognitive-score = 15
 max-line-complexity = 15
 max-local-variables = 10
@@ -157,12 +161,18 @@ extend-ignore = [
     "DAR201",
     "DAR401",
     "DAR402",
+    "I003",
     "WPS110",
     "WPS348",
+    "WPS440",
+    "WPS433",
+    "WPS437",
 ]
 # D202 - code is hard to read without a blank line after a docstring
 # DAR101, DAR201, DAR401, DAR402 - there's no sense to put all sections in docstrings
 # WPS110 - most of the time, names are used in the right context
+# I003, WPS440, WPS443 - nested import is necessary for the modular package dependencies
+# WPS437 - for the native packages we must have access to the private methods
 
 [tool.mypy]
 python_version = "3.9"

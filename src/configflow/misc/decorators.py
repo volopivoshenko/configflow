@@ -59,8 +59,7 @@ def external(
     if dependency:
         return function(*args, **kwargs)
 
-    else:
-        msg = misc.string.ErrorMessage(
-            "{0!r} is not installed. Please install it with `poetry add configflow[{0!s}]`."
-        )
-        raise ImportError(msg.format(pypi))
+    msg = misc.string.ErrorMessage(
+        "{0!r} is not installed. Please install it with `poetry add configflow[{0!s}]`.",
+    )
+    raise ImportError(msg.format(pypi))

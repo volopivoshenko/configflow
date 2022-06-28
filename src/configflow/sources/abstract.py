@@ -10,7 +10,7 @@ DictType = typing.Dict[str, typing.Any]
 
 
 @dataclasses.dataclass
-class Source:
+class Source(object):
     """An abstract source of a configuration."""
 
     @property
@@ -24,7 +24,7 @@ class Source:
 
         fields = tuple(self.__dict__.items())
 
-        signature_parts = map(lambda pair: "{0!s}={1!r}".format(*pair), fields)
+        signature_parts = ("{0!s}={1!r}".format(*pair) for pair in fields)
         signature = ", ".join(signature_parts)
 
         return "{0!s}({1!s})".format(self.__class__.__name__, signature)

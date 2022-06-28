@@ -45,7 +45,7 @@ class FileSource(sources.abstract.Source):
     separator: str = "."
 
     @property
-    def filepath(self) -> pathlib.Path:
+    def filepath(self) -> pathlib.Path:  # noqa: WPS231
         """Get a path to a configuration file.
 
         Raises

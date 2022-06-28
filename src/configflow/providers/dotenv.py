@@ -12,18 +12,17 @@ import typing
 from configflow import misc
 
 
-# WPS440, WPS443 - nested import is necessary for the modular package dependencies
 try:
-    import dotenv  # noqa: WPS433
+    import dotenv
 
 except ImportError:
-    dotenv = None  # noqa: WPS440
+    dotenv = None  # type: ignore[assignment]
 
 
 DictType = typing.Dict[str, typing.Any]
 
 
-@misc.decorators.external(dependency=dotenv, pypi="python-dotenv")
+@misc.decorators.external(dependency=dotenv, pypi="python-dotenv")  # type: ignore[call-arg]
 def loads(stream: str) -> DictType:
     r"""Parse the stream and produce the corresponding Python object.
 
