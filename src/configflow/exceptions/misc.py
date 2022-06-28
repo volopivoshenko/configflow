@@ -1,4 +1,4 @@
-"""Module for the exceptions that relate to the utility functionality."""
+"""Module for the utility functionality exceptions."""
 
 from __future__ import annotations
 

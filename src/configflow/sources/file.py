@@ -6,6 +6,7 @@ import os
 import sys
 import typing
 import pathlib
+import dataclasses
 
 from configflow import exceptions
 from configflow import misc
@@ -17,6 +18,7 @@ DictType = typing.Dict[str, typing.Any]
 PathType = typing.Optional[typing.Union[str, pathlib.Path]]
 
 
+@dataclasses.dataclass
 class FileSource(sources.abstract.Source):
     """File as a source of a configuration.
 
@@ -107,10 +109,10 @@ class FileSource(sources.abstract.Source):
         {'databases': ...}
         """
 
-        loader = providers.loader.get_loader(self.filepath)
+        provider = providers.factory.get_provider(self.filepath)
 
         with open(self.filepath, "r") as file_fp:
-            file_content = loader(file_fp)
+            file_content = provider.load(file_fp)
 
         file_content = misc.dictionary.make_flat(file_content, separator=self.separator)
         return misc.dictionary.make_nested(file_content, separator=self.separator)

@@ -53,11 +53,11 @@ def parse(value: str) -> typing.Optional[typing.Any]:
 
     Warnings
     --------
-    - Currently ``parse`` function supports only primitive data types ``int | str | float``
-      and sequences ``list | tuple | set``. Sequences such as ``dict`` will be returned as they are
-      without parsing their inner values.
+    Currently ``parse`` function supports only primitive data types ``int | str | float``
+    and sequences ``list | tuple | set``. Sequences such as ``dict`` will be returned as they are
+    without parsing their inner values.
 
-    - If a value can't be parsed it will be returned as it is.
+    If a value can't be parsed it will be returned as it is.
 
     Examples
     --------

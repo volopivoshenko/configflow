@@ -67,7 +67,7 @@ def test_get_loader(
 ) -> None:
     """Test ``get_loader & load`` functions."""
 
-    loader = providers.loader.get_loader(pathlib.Path(filepath))
+    loader = providers.loader.get_provider(pathlib.Path(filepath))
 
     with open(filepath, "r") as fixture_file:
         out_dict = loader(fixture_file)

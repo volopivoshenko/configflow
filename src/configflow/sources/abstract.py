@@ -18,3 +18,18 @@ class Source:
         """Get content of a source."""
 
         raise NotImplementedError
+
+    def __repr__(self) -> str:
+        """Get object representation."""
+
+        fields = tuple(self.__dict__.items())
+
+        signature_parts = map(lambda pair: "{0!s}={1!r}".format(*pair), fields)
+        signature = ", ".join(signature_parts)
+
+        return "{0!s}({1!s})".format(self.__class__.__name__, signature)
+
+    def __str__(self) -> str:
+        """Get string representation."""
+
+        return self.__repr__()

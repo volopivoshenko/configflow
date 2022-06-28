@@ -12,11 +12,12 @@ import typing
 from configflow import misc
 
 
+# WPS440, WPS443 - nested import is necessary for the modular package dependencies
 try:
-    import dotenv
+    import dotenv  # noqa: WPS433
 
 except ImportError:
-    dotenv = None
+    dotenv = None  # noqa: WPS440
 
 
 DictType = typing.Dict[str, typing.Any]
@@ -33,7 +34,7 @@ def loads(stream: str) -> DictType:
     {'DB_HOST': 'localhost', 'DB_PORT': '8080'}
     """
 
-    return dict(dotenv.dotenv_values(stream=io.StringIO(stream)))
+    return dict(dotenv.dotenv_values(stream=io.StringIO(stream)))  # type: ignore
 
 
 def load(file_fp: typing.TextIO) -> DictType:
