@@ -7,6 +7,22 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 <!--next-version-placeholder-->
 
+## v0.4.0 (2022-07-16)
+### Feature
+* Update providers ([`5e494e4`](https://github.com/volopivoshenko/configflow/commit/5e494e4e81d281e0dfa78d96ad5bbbeab5f60236))
+* Update providers ([`8f3339f`](https://github.com/volopivoshenko/configflow/commit/8f3339fe468187f6068ac917a17d6acddc026e9c))
+* Add decorator for the external dependencies ([`8825772`](https://github.com/volopivoshenko/configflow/commit/88257722e0b58b0c3785c8c9581d126921944e80))
+* Add support of the `PROPERTIES` files ([`c645497`](https://github.com/volopivoshenko/configflow/commit/c645497db2402b7e38fa0c0fe93800b7414ed981))
+
+### Fix
+* Update tests ([`8bae33a`](https://github.com/volopivoshenko/configflow/commit/8bae33a8e60cc4dc07ab2fdf7551e8275ea8d655))
+* Update tests ([`85eebb2`](https://github.com/volopivoshenko/configflow/commit/85eebb28233e09acae5f0754472b0bcc9918ab3b))
+
+### Documentation
+* Update keywords ([`24bb239`](https://github.com/volopivoshenko/configflow/commit/24bb239e78cfe42ad3100d7bb3931bcf2548df53))
+* Apply formatter ([`40489a8`](https://github.com/volopivoshenko/configflow/commit/40489a8b3bfa6d49a0bd76506dcb10a386d20395))
+* Add sponsorship ([`8fbb540`](https://github.com/volopivoshenko/configflow/commit/8fbb5409fff66212210fdf4c8129d58ad8fc3538))
+
 ## v0.3.1 (2022-04-03)
 
 ### Fix
