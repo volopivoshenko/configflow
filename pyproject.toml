@@ -3,25 +3,33 @@ name = "configflow"
 version = "0.3.1"
 description = "configflow - is the configuration management library for Python."
 license = "BSD-3-Clause"
-authors = [
-    "Volodymyr Pivoshenko <volodymyr.pivoshenko@gmail.com>",
-]
-maintainers = [
-    "Volodymyr Pivoshenko <volodymyr.pivoshenko@gmail.com>",
-]
+authors = ["Volodymyr Pivoshenko <volodymyr.pivoshenko@gmail.com>"]
+maintainers = ["Volodymyr Pivoshenko <volodymyr.pivoshenko@gmail.com>"]
 keywords = [
-    "configuration",
-    "config",
-    "setup",
-    "settings",
+    "json",
+    "yaml",
+    "toml",
+    "dotenv",
+    "ini",
+    "cfg",
+    "properties",
+    "vault",
     "environment",
-    "management",
+    "command-line",
     "pydantic",
+    "setup",
+    "config",
+    "configuration",
+    "settings",
+    "management",
     "python",
+    "pypi",
+    "cross-platform",
+    "hacktoberfest",
 ]
 homepage = "https://configflow.readthedocs.io/en/latest"
 documentation = "https://configflow.readthedocs.io/en/latest"
-repository = "https://github.com/volodymyrPivoshenko/configflow"
+repository = "https://github.com/volopivoshenko/configflow"
 readme = "README.md"
 classifiers = [
     "Development Status :: 1 - Planning",
@@ -41,68 +49,64 @@ classifiers = [
     "Topic :: Scientific/Engineering",
     "Natural Language :: English",
 ]
-packages = [
-    { include = "configflow", from = "src" }
-]
+packages = [{ include = "configflow", from = "src" }]
 
 [tool.poetry.urls]
-"Issues" = "https://github.com/volodymyrPivoshenko/configflow/issues"
-"Releases" = "https://github.com/volodymyrPivoshenko/configflow/releases"
-"Say Thanks!" = "https://www.buymeacoffee.com/volo.pivoshenko"
+"Issues" = "https://github.com/volopivoshenko/configflow/issues"
+"Releases" = "https://github.com/volopivoshenko/configflow/releases"
+"Say Thanks!" = "https://www.buymeacoffee.com/volopivoshenko"
 
 [tool.poetry.dependencies]
 python = ">=3.7,<3.10"
-# data types
-pydantic = "^1.9.0"
-# file types
-PyYAML = "^6.0.0"
-python-dotenv = "^0.19.2"
-toml = "^0.10.2"
 # utils
+decorator = "^5.1.1"
+typing-extensions = "^4.2.0"
 awesome-pattern-matching = "^0.24.2"
-typing-extensions = "^4.1.1"
+# file types
+PyYAML = { version = "^6.0", optional = true }
+toml = { version = "^0.10.2", optional = true }
+python-dotenv = { version = "^0.20.0", optional = true }
+
+[tool.poetry.extras]
+toml = ["toml"]
+yaml = ["PyYAML"]
+dotenv = ["python-dotenv"]
 
 [tool.poetry.dev-dependencies]
 # formatters
 isort = "^5.10.1"
-black = "^22.1"
+black = "^22.6.0"
 # linters
-wemake-python-styleguide = "^0.16.0"
-safety = "^1.10.3"
-mypy = "^0.931"
+mypy = "^0.961"
+wemake-python-styleguide = "^0.16.1"
 # flake8 extensions
-pyproject-flake8 = "^0.0.1-alpha.2"
+flake8-pytest-style = "^1.6.0"
+pyproject-flake8 = "^0.0.1-alpha.4"
 # mypy stubs
-types-toml = "^0.10.4"
-types-PyYAML = "^6.0.4"
+types-PyYAML = "^6.0.9"
+types-decorator = "^5.1.7"
+types-toml = "^0.10.7"
 # tests
-tox = "^3.24.5"
-pytest = "^7.1.1"
-xdoctest = "^0.15.10"
-# tox extensions
-tox-conda = "^0.9.2"
+pytest = "^7.1.2"
+xdoctest = "^1.0.0"
 # pytest extensions
-pytest-datafiles = "^2.0"
+pytest-datafiles = "^2.0.1"
 pytest-lazy-fixture = "^0.6.3"
 pytest-mock = "^3.7.0"
-pytest-randomly = "^3.11.0"
+pytest-randomly = "^3.12.0"
 pytest-cov = "^3.0.0"
 pytest-sugar = "^0.9.4"
-coverage = { extras = ["toml"], version = "^6.3.1" }
-# documentation
-Sphinx = "^4.4.0"
-sphinx-rtd-theme = "^1.0.0"
+coverage = { version = "^6.3.3", extras = ["toml"] }
+# docs
+Sphinx = "^5.0.2"
 # sphinx extensions
-# file types
-lxml = "^4.8.0"
-# github
-pre-commit = "^2.17.0"
-# versioning
-python-semantic-release = "^7.25.0"
+sphinx-typlog-theme = "^0.8.0"
+# version control
+python-semantic-release = "^7.28.0"
 # utils
-deepdiff = "^5.7.0"
-# repl
-ipython = "^7.31.1"
+deepdiff = "^5.8.1"
+poethepoet = "^0.14.0"
+pre-commit = "^2.19.0"
 
 [tool.semantic_release]
 branch = "main"
@@ -115,7 +119,7 @@ remove_dist = false
 version_toml = "pyproject.toml:tool.poetry.version"
 version_variable = [
     "src/configflow/__init__.py:__version__",
-    "docs/conf.py:release"
+    "docs/conf.py:release",
 ]
 
 [tool.isort]
@@ -135,57 +139,59 @@ line-length = 100
 target-version = [
     "py37",
     "py38",
-    "py39"
+    "py39",
 ]
 include = '\.pyi?$'
 
 [tool.flake8]
 max-line-length = 100
-max-cognitive-average = 25
-max-cognitive-score = 25
-max-line-complexity = 20
-max-local-variables = 7
+max-cognitive-average = 20
+max-cognitive-score = 15
+max-line-complexity = 15
+max-local-variables = 10
 inline-quotes = '"'
 docstring_style = "numpy"
 exclude = [
     "__init__.py",
+    "tests/*.py",
 ]
-per-file-ignores = [
-    "tests/*:S101,WPS122,WPS221,WPS226,WPS323",
-]
-# S101 - asserts are the only way of checking conditions in tests
-# WPS122 - assigning to the _ is used for empty calls
-# WPS221 - high complexity is fine for the parameterized tests
-# WPS226 - duplicate strings are fine for literals in tests
-# WPS323 - % string is used in the logger default configuration
 extend-ignore = [
-    "D202", "DAR101", "DAR201", "DAR401", "DAR402",
+    "D202",
+    "DAR101",
+    "DAR201",
+    "DAR401",
+    "DAR402",
+    "I003",
     "WPS110",
     "WPS348",
+    "WPS440",
+    "WPS433",
     "WPS437",
 ]
 # D202 - code is hard to read without a blank line after a docstring
 # DAR101, DAR201, DAR401, DAR402 - there's no sense to put all sections in docstrings
-# WPS110 - most of the wrong names are used in the abstract context
-# WPS348 - chaining is a good option for multiline methods calls
-# WPS437 - some classes don't have public attributes that we need
+# WPS110 - most of the time, names are used in the right context
+# I003, WPS440, WPS443 - nested import is necessary for the modular package dependencies
+# WPS437 - for the native packages we must have access to the private methods
 
 [tool.mypy]
 python_version = "3.9"
 warn_unused_configs = true
 ignore_missing_imports = true
 show_error_codes = true
-files = [
-    "src",
-]
-
-[[tool.mypy.overrides]]
-module = "*.conftest.py"
-ignore_errors = true
+files = ["src"]
+exclude = ["tests"]
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-l -vv --xdoc --color=yes --cov=src --cov-report=term-missing"
+addopts = [
+    "-l",
+    "-vv",
+    "--xdoc",
+    "--color=yes",
+    "--cov=src",
+    "--cov-report=term-missing",
+]
 testpaths = [
     "src",
     "tests",
@@ -193,9 +199,35 @@ testpaths = [
 
 [tool.coverage.run]
 omit = [
-    ".tox",
     "*/__init__.py",
     "*/enums.py",
+]
+
+[tool.poe.tasks]
+format = [
+    { cmd = "isort --settings-path pyproject.toml ." },
+    { cmd = "black --config pyproject.toml ." },
+]
+lint-flake8 = { cmd = "pflake8 --config pyproject.toml ." }
+lint-mypy = { cmd = "mypy --config-file pyproject.toml ." }
+lint = [
+    { ref = "lint-flake8" },
+    { ref = "lint-mypy" },
+]
+tests = { cmd = "pytest" }
+clean = [
+    { cmd = "find . -type f -name *.py[co] -delete" },
+    { cmd = "find . -type f -name .DS_Store -delete" },
+    { cmd = "find . -type d -name __pycache__ -exec rm -rf {} +" },
+    { cmd = "rm -rf dist" },
+    { cmd = "rm -rf .pytest" },
+    { cmd = "rm -rf .pytest_cache" },
+    { cmd = "rm -rf .coverage" },
+    { cmd = "rm -rf .flake8" },
+    { cmd = "rm -rf .mypy" },
+    { cmd = "rm -rf .mypy_cache" },
+    { cmd = "rm -rf docs/_build" },
+    { cmd = "rm -rf docs/_sources" },
 ]
 
 [tool.poetry.build]
