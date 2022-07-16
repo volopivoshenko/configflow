@@ -1,4 +1,4 @@
-"""Module for the exceptions that relate to the configuration sources."""
+"""Module for the configuration sources exceptions."""
 
 from __future__ import annotations
 

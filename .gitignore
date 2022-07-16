@@ -135,7 +135,6 @@ dmypy.json
 # IDEs
 .idea
 .vscode
-.atom
 
 # OS
 .DS_Store

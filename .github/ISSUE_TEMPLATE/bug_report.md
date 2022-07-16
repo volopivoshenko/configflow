@@ -1,13 +1,13 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
+title: ""
+labels: ""
+assignees: ""
 ---
 
-- [ ] I am on the [latest](https://github.com/volodymyrPivoshenko/configflow/releases/latest) version.
-- [ ] I have searched the [issues](https://github.com/volodymyrPivoshenko/configflow/issues) of this repository and believe that this is not a duplicate.
+- [ ] I am on the [latest](https://github.com/volopivoshenko/configflow/releases/latest) version.
+- [ ] I have searched the [issues](https://github.com/volopivoshenko/configflow/issues) of this repository and believe that this is not a duplicate.
 
 **Describe the bug**
 

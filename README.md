@@ -1,7 +1,6 @@
-<!--suppress HtmlDeprecatedAttribute -->
 <div align="center">
   <a href="https://pypi.org/project/configflow">
-    <img alt="logo" src="https://github.com/volodymyrPivoshenko/configflow/blob/main/docs/_static/assets/logo.svg?raw=True" height=200>
+    <img alt="logo" src="https://github.com/volopivoshenko/configflow/blob/main/docs/_static/assets/logo.svg?raw=True" height=200>
   </a>
 </div>
 
@@ -15,8 +14,8 @@
   <a href="https://pypi.org/project/configflow">
     <img alt="pypi" src="https://img.shields.io/pypi/v/configflow?logo=pypi">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/releases">
-    <img alt="release" src="https://img.shields.io/github/v/release/volodymyrPivoshenko/configflow?logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/releases">
+    <img alt="release" src="https://img.shields.io/github/v/release/volopivoshenko/configflow?logo=github">
   </a>
   <a href="https://www.sphinx-doc.org/en/master">
     <img alt="sphinx" src="https://img.shields.io/badge/made_with-Sphinx-1f425f.svg?logo=readthedocs">
@@ -51,14 +50,14 @@
   <a href="https://github.com/dependabot">
     <img alt="dependabot" src="https://img.shields.io/badge/dependabot-enable-success?logo=Dependabot">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/integration.yaml">
-    <img alt="integration" src="https://img.shields.io/github/workflow/status/volodymyrPivoshenko/configflow/Integration?label=integration&logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/actions/workflows/integration.yaml">
+    <img alt="integration" src="https://img.shields.io/github/workflow/status/volopivoshenko/configflow/Integration?label=integration&logo=github">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/deployment.yaml">
-    <img alt="deployment" src="https://img.shields.io/github/workflow/status/volodymyrPivoshenko/configflow/Deployment?label=deployment&logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/actions/workflows/deployment.yaml">
+    <img alt="deployment" src="https://img.shields.io/github/workflow/status/volopivoshenko/configflow/Deployment?label=deployment&logo=github">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/actions/workflows/codeql.yaml">
-    <img alt="codeql" src="https://img.shields.io/github/workflow/status/volodymyrPivoshenko/configflow/CodeQL?label=codeQL&logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/actions/workflows/codeql.yaml">
+    <img alt="codeql" src="https://img.shields.io/github/workflow/status/volopivoshenko/configflow/CodeQL?label=codeQL&logo=github">
   </a>
   <a href="https://configflow.readthedocs.io/en/latest">
     <img alt="docs" src="https://img.shields.io/readthedocs/configflow?logo=readthedocs">
@@ -69,44 +68,44 @@
 </p>
 
 <p align="center">
-  <a href="https://codecov.io/gh/volodymyrPivoshenko/configflow">
-    <img alt="coverage" src="https://img.shields.io/codecov/c/gh/volodymyrPivoshenko/configflow?logo=codecov&token=yyck08xfTN"/>
+  <a href="https://codecov.io/gh/volopivoshenko/configflow">
+    <img alt="coverage" src="https://img.shields.io/codecov/c/gh/volopivoshenko/configflow?logo=codecov&token=yyck08xfTN"/>
   </a>
-  <a href="https://lgtm.com/projects/g/volodymyrPivoshenko/configflow/alerts/">
-    <img alt="alerts" src="https://img.shields.io/lgtm/alerts/github/volodymyrPivoshenko/configflow?logo=lgtm"/>
+  <a href="https://lgtm.com/projects/g/volopivoshenko/configflow/alerts/">
+    <img alt="alerts" src="https://img.shields.io/lgtm/alerts/github/volopivoshenko/configflow?logo=lgtm"/>
   </a>
-  <a href="https://lgtm.com/projects/g/volodymyrPivoshenko/configflow/context:python">
-    <img alt="grade" src="https://img.shields.io/lgtm/grade/python/github/volodymyrPivoshenko/configflow?logo=lgtm"/>
+  <a href="https://lgtm.com/projects/g/volopivoshenko/configflow/context:python">
+    <img alt="grade" src="https://img.shields.io/lgtm/grade/python/github/volopivoshenko/configflow?logo=lgtm"/>
   </a>
-  <a href="https://codeclimate.com/github/volodymyrPivoshenko/configflow/maintainability">
-    <img alt="codeclimate" src="https://img.shields.io/codeclimate/maintainability/volodymyrPivoshenko/configflow?logo=codeclimate">
+  <a href="https://codeclimate.com/github/volopivoshenko/configflow/maintainability">
+    <img alt="codeclimate" src="https://img.shields.io/codeclimate/maintainability/volopivoshenko/configflow?logo=codeclimate">
   </a>
   <a href="https://pypi.org/project/configflow">
     <img alt="downloads" src="https://img.shields.io/pypi/dm/configflow?logo=pypi">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/">
-    <img alt="stars" src="https://img.shields.io/github/stars/volodymyrPivoshenko/configflow?logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/">
+    <img alt="stars" src="https://img.shields.io/github/stars/volopivoshenko/configflow?logo=github">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/volodymyrPivoshenko/configflow/issues">
-    <img alt="issues" src="https://img.shields.io/github/issues/volodymyrPivoshenko/configflow?logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/issues">
+    <img alt="issues" src="https://img.shields.io/github/issues/volopivoshenko/configflow?logo=github">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/issues">
-    <img alt="issues" src="https://img.shields.io/github/issues-closed/volodymyrPivoshenko/configflow?logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/issues">
+    <img alt="issues" src="https://img.shields.io/github/issues-closed/volopivoshenko/configflow?logo=github">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/pulls">
-    <img alt="pr" src="https://img.shields.io/github/issues-pr/volodymyrPivoshenko/configflow?logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/pulls">
+    <img alt="pr" src="https://img.shields.io/github/issues-pr/volopivoshenko/configflow?logo=github">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/pulls">
-    <img alt="pr" src="https://img.shields.io/github/issues-pr-closed/volodymyrPivoshenko/configflow?logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/pulls">
+    <img alt="pr" src="https://img.shields.io/github/issues-pr-closed/volopivoshenko/configflow?logo=github">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/graphs/contributors">
-    <img alt="contributors" src="https://img.shields.io/github/contributors/volodymyrPivoshenko/configflow?logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/graphs/contributors">
+    <img alt="contributors" src="https://img.shields.io/github/contributors/volopivoshenko/configflow?logo=github">
   </a>
-  <a href="https://github.com/volodymyrPivoshenko/configflow/commits/main">
-    <img alt="commit" src="https://img.shields.io/github/last-commit/volodymyrPivoshenko/configflow?logo=github">
+  <a href="https://github.com/volopivoshenko/configflow/commits/main">
+    <img alt="commit" src="https://img.shields.io/github/last-commit/volopivoshenko/configflow?logo=github">
   </a>
 
 </p>
@@ -119,15 +118,13 @@
 
 # Overview
 
-`configflow` – is the configuration management package. It easily allows you to:
+- [Overview](#overview)
+- [Installation](#installation)
+  - [Optional dependencies](#optional-dependencies)
+- [Examples](#examples)
+- [See Also](#see-also)
 
-- Load your configuration from files, environment variables, command-line arguments and more
-  sources.
-- Transform the loaded data into the desired format and validate it
-  via [`pydantic`](https://github.com/samuelcolvin/pydantic).
-- Access the results
-  as [`Python dataclass-like objects`](https://docs.python.org/3/library/dataclasses.html).
-- Make your codebase very flexible.
+`configflow` – is the configuration management package.
 
 # Installation
 
@@ -143,8 +140,7 @@ poetry add configflow
 
 `configflow` has next optional dependencies:
 
-- If you are using [`Vault by HashiCorp`](https://www.vaultproject.io/) as a config source you can
-  add [`hvac`](https://pypi.org/project/hvac).
+- If you are using [`Vault by HashiCorp`][vault] as a config source you can add [`hvac`][hvac].
 
 To install these along with `configflow`:
 
@@ -160,3 +156,6 @@ Of course, you can also install these requirements manually with `pip install ..
 # Examples
 
 # See Also
+
+[vault]: https://www.vaultproject.io/
+[hvac]: https://pypi.org/project/hvac

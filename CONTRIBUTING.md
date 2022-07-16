@@ -1,5 +1,20 @@
 # Contributing
 
+- [Contributing](#contributing)
+  - [Table of Contents](#table-of-contents)
+  - [Reporting Bugs](#reporting-bugs)
+    - [How Do I Submit a Bug Report?](#how-do-i-submit-a-bug-report)
+  - [Suggesting Enhancements](#suggesting-enhancements)
+    - [How Do I Submit an Enhancement Suggestion?](#how-do-i-submit-an-enhancement-suggestion)
+  - [Contributing to Code](#contributing-to-code)
+    - [Dependencies](#dependencies)
+    - [Code Formatters](#code-formatters)
+    - [Linters](#linters)
+    - [Tests](#tests)
+    - [Pre-Commit](#pre-commit)
+    - [Commits](#commits)
+    - [Pull Requests](#pull-requests)
+
 First off, thanks for taking the time to contribute!
 
 The following is a set of guidelines for contributing to `configflow`. These are mostly guidelines,
@@ -30,25 +45,24 @@ helps maintainers and the community understand your report, reproduce the behavi
 related reports.
 
 Before creating bug reports, please check this list to be sure that you need to create one. When you
-are creating a bug report, please include as many details as possible. Fill out the
-[required template](https://github.com/volodymyrPivoshenko/configflow/blob/main/.github/ISSUE_TEMPLATE/bug_report.md)
-the information it asks helps the maintainers resolve the issue faster.
+are creating a bug report, please include as many details as possible. Fill out
+the [required template][bug_report] the information it asks helps the maintainers resolve the issue
+faster.
 
 > **Note:** If you find a **Closed** issue that seems like it is the same thing that you're
-> experiencing, open a new issue and include a link to the original issue in the body of your new one.
+> experiencing, open a new issue and include a link to the original issue in the body of your new
+> one.
 
 ### How Do I Submit a Bug Report?
 
-Bugs are tracked on the [issue tracker](https://github.com/volodymyrPivoshenko/configflow/issues)
-where you can create a new one and provide the following information by filling in
-[the template](https://github.com/volodymyrPivoshenko/configflow/blob/main/.github/ISSUE_TEMPLATE/bug_report.md)
-.
+Bugs are tracked on the [issue tracker][issues] where you can create a new one and provide
+the following information by filling in [the template][bug_report].
 
 Explain the problem and include additional details to help maintainers reproduce the problem:
 
 - **Use a clear and descriptive title** for the issue to identify the problem.
 - **Describe the exact steps which reproduce the problem** in as many details as possible.
-- **Provide your `pyproject.toml` file** in a [gist](https://gist.github.com) after removing
+- **Provide your `pyproject.toml` file** in a [gist][gist] after removing
   potential private information.
 - **Provide specific examples to demonstrate the steps to reproduce the issue**. Include links to
   files or GitHub projects, or "copy-paste-able" snippets, which you use in those examples.
@@ -74,15 +88,13 @@ helps maintainers and the community understand your suggestion and find related 
 
 Before creating enhancement suggestions, please check this list as you might find out that you don't
 need to create one. When you are creating an enhancement suggestion, please include as many details
-as possible. Fill
-in [the template](https://github.com/volodymyrPivoshenko/configflow/blob/main/.github/ISSUE_TEMPLATE/feature_request.md)
-, including the steps that you imagine you would take if the feature you're requesting existed.
+as possible. Fill in [the template][feature_request], including the steps that you imagine you would
+take if the feature you're requesting existed.
 
 ### How Do I Submit an Enhancement Suggestion?
 
-Enhancement suggestions are tracked on
-the [issue tracker](https://github.com/volodymyrPivoshenko/configflow/issues)
-where you can create a new one and provide the following information:
+Enhancement suggestions are tracked on the [issue tracker][issues] where you can create a new one
+and provide the following information:
 
 - **Use a clear and descriptive title** for the issue to identify the suggestion.
 - **Provide a step-by-step description of the suggested enhancement** in as many details as
@@ -95,7 +107,7 @@ where you can create a new one and provide the following information:
 
 ### Dependencies
 
-We use `poetry` to manage the [dependencies](https://github.com/python-poetry/poetry).
+We use `poetry` to manage the [dependencies][poetry].
 
 To install them and activate `virtualenv` you will need to run commands:
 
@@ -106,39 +118,41 @@ poetry shell
 
 ### Code Formatters
 
-- [`isort`](https://github.com/PyCQA/isort)
-- [`black`](https://github.com/psf/black)
+- [`isort`][isort]
+- [`black`][black]
 
 To format code you will need to run command:
 
 ```shell
-make format
+poe format
 ```
 
 ### Linters
 
-- [`flake8 | wemake-python-styleguide`](https://github.com/wemake-services/wemake-python-styleguide)
-- [`mypy`](https://github.com/python/mypy)
-- [`safety`](https://github.com/pyupio/safety)
+- [`flake8 | wemake-python-styleguide`][styleguide]
+- [`mypy`][mypy]
 
 To lint code you will need to run command:
 
 ```shell
-make lint
+poe lint
 ```
 
 ### Tests
 
-We use `pytest` to run unit tests:
+- [`xdoctest`][xdoctest]
+- [`pytest`][pytest]
+
+To run unit tests:
 
 ```shell
-make tests
+poe tests
 ```
 
 ### Pre-Commit
 
 To make sure that you don't accidentally commit code that does not follow the coding style, you can
-install a `pre-commit` hook that will check that everything is in order:
+install a [`pre-commit`][pre-commit] hook that will check that everything is in order:
 
 ```shell
 poetry run pre-commit install
@@ -155,18 +169,32 @@ not be merged.
 
 ### Commits
 
-As a standard of commit messages we are
-using **[conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)**
+As a standard of commit messages we are using **[conventional commits][commits]**.
 
 ### Pull Requests
 
-- Fill
-  in [the required template](https://github.com/volodymyrPivoshenko/configflow/blob/main/.github/PULL_REQUEST_TEMPLATE.md)
+- Fill in [the required template][pull_request_template].
 - Be sure that your pull request contains tests that cover the changed or added code.
 - If your changes warrant a documentation change, the pull request must also update the
   documentation.
 
-> **Note:** Make sure your branch is [rebased](https://docs.github.com/en/free-pro-team@latest/github/using-git/about-git-rebase)
-> against the latest `main` branch. A maintainer might ask you to ensure the branch is up-to-date
-> prior to merging your PR if changes have conflicts. All pull requests, unless otherwise instructed,
-> need to be first accepted into the `main` branch.
+> **Note:** Make sure your branch is [rebased][rebased] against the latest `main` branch. A
+> maintainer might ask you to ensure the branch is up-to-date
+> prior to merging your PR if changes have conflicts. All pull requests, unless otherwise
+> instructed, need to be first accepted into the `main` branch.
+
+[bug_report]: https://github.com/volopivoshenko/configflow/blob/main/.github/ISSUE_TEMPLATE/bug_report.md
+[issues]: https://github.com/volopivoshenko/configflow/issues
+[gist]: https://gist.github.com
+[feature_request]: https://github.com/volopivoshenko/configflow/blob/main/.github/ISSUE_TEMPLATE/feature_request.md
+[poetry]: https://github.com/python-poetry/poetry
+[isort]: https://github.com/PyCQA/isort
+[black]: https://github.com/psf/black
+[styleguide]: https://github.com/wemake-services/wemake-python-styleguide
+[mypy]: https://github.com/python/mypy
+[xdoctest]: https://github.com/Erotemic/xdoctest
+[pytest]: https://github.com/pytest-dev/pytest
+[pre-commit]: https://pre-commit.com
+[commits]: https://www.conventionalcommits.org/en/v1.0.0/
+[pull_request_template]: https://github.com/volopivoshenko/configflow/blob/main/.github/PULL_REQUEST_TEMPLATE.md
+[rebased]: https://docs.github.com/en/free-pro-team@latest/github/using-git/about-git-rebase

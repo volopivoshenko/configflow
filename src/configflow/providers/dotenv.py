@@ -9,12 +9,20 @@ from __future__ import annotations
 import io
 import typing
 
-import dotenv
+from configflow import misc
+
+
+try:
+    import dotenv
+
+except ImportError:
+    dotenv = None  # type: ignore[assignment]
 
 
 DictType = typing.Dict[str, typing.Any]
 
 
+@misc.decorators.external(dependency=dotenv, pypi="python-dotenv")  # type: ignore[call-arg]
 def loads(stream: str) -> DictType:
     r"""Parse the stream and produce the corresponding Python object.
 
@@ -25,7 +33,7 @@ def loads(stream: str) -> DictType:
     {'DB_HOST': 'localhost', 'DB_PORT': '8080'}
     """
 
-    return dict(dotenv.dotenv_values(stream=io.StringIO(stream)))
+    return dict(dotenv.dotenv_values(stream=io.StringIO(stream)))  # type: ignore
 
 
 def load(file_fp: typing.TextIO) -> DictType:

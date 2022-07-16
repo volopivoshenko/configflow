@@ -6,12 +6,11 @@ import os
 import sys
 import typing
 import pathlib
-
-import typing_extensions
+import dataclasses
 
 from configflow import exceptions
-from configflow import io
 from configflow import misc
+from configflow import providers
 from configflow import sources
 
 
@@ -19,6 +18,7 @@ DictType = typing.Dict[str, typing.Any]
 PathType = typing.Optional[typing.Union[str, pathlib.Path]]
 
 
+@dataclasses.dataclass
 class FileSource(sources.abstract.Source):
     """File as a source of a configuration.
 
@@ -35,17 +35,17 @@ class FileSource(sources.abstract.Source):
         Name of the command-line argument that contains the path to the configuration file,
         e.g. ``-c | --config``. It's alternative of the ``path`` attribute, by default ``None``.
 
-    separator : typing_extensions.Literal[".", "_"]
+    separator : str
         A character will be used as a level hint during the dictionary parsing, by default ``.``.
     """
 
     path: PathType = None
     environment_variable: typing.Optional[str] = None
     command_line_argument: typing.Optional[str] = None
-    separator: typing_extensions.Literal[".", "_"] = "."
+    separator: str = "."
 
     @property
-    def filepath(self) -> pathlib.Path:
+    def filepath(self) -> pathlib.Path:  # noqa: WPS231
         """Get a path to a configuration file.
 
         Raises
@@ -109,10 +109,10 @@ class FileSource(sources.abstract.Source):
         {'databases': ...}
         """
 
-        loader = io.loader.get_loader(self.filepath)
+        provider = providers.factory.get_provider(self.filepath)
 
         with open(self.filepath, "r") as file_fp:
-            file_content = loader(file_fp)
+            file_content = provider.load(file_fp)
 
         file_content = misc.dictionary.make_flat(file_content, separator=self.separator)
         return misc.dictionary.make_nested(file_content, separator=self.separator)
